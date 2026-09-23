@@ -1,0 +1,38 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Antigravity/Agent config files
+claude/
+gemini/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.gemini/
+
+# Node
+node_modules/
+.next/
+out/
+build/
+app/.next/
+app/node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+pipeline/out/
+venv/
+.venv/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Misc
+backend_implementation_plan.md
+Frontend design inspo.md
+AI Model Directory — PRD.md

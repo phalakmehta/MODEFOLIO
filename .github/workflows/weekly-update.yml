@@ -1,0 +1,45 @@
+name: Weekly update
+on:
+  schedule:
+    - cron: "0 3 * * 1"      # Mondays 03:00 UTC
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  pull-requests: write
+concurrency: weekly-update
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL: gemini-2.5-flash
+      GEMINI_CONTENT_MODEL: gemini-2.5-flash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r pipeline/requirements.txt
+      - run: mkdir -p pipeline/out
+      - name: 1. Sync models
+        run: python pipeline/update_models.py
+      - name: 2. Build news digest
+        if: ${{ !cancelled() }}
+        run: python pipeline/build_news.py
+      - name: 3. Generate content
+        if: ${{ !cancelled() }}
+        run: python pipeline/generate_content.py
+      - name: Validate data
+        id: validate
+        if: ${{ !cancelled() }}
+        run: python pipeline/validate_data.py
+      - name: Assemble PR body
+        if: ${{ !cancelled() }}
+        run: cat pipeline/out/*.md > pipeline/out/pr-body.md
+      - uses: peter-evans/create-pull-request@v7
+        if: ${{ !cancelled() && steps.validate.outcome == 'success' }}
+        with:
+          branch: automation/weekly-update
+          title: "Weekly update: models, news, content"
+          body-path: pipeline/out/pr-body.md
+          commit-message: "chore(data): weekly update"
+          labels: automated,data

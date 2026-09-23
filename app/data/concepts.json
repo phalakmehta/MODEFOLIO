@@ -1,0 +1,163 @@
+[
+  {
+    "term": "Context Window",
+    "slug": "context-window",
+    "definition": "The maximum amount of text a model can read and consider at once, measured in tokens. Think of it as the model's short-term memory — everything in the conversation (your questions, its answers, any documents you paste in) must fit within this limit.",
+    "realWorldConsequence": "A model with a 128K context window can handle roughly a 300-page book in one go. A 4K context window limits you to about 6 pages. If your task involves long documents, code reviews, or multi-turn conversations, context window size directly determines whether the model can even see all the relevant information.",
+    "relatedTerms": ["tokens", "max-output-tokens"]
+  },
+  {
+    "term": "Tokens",
+    "slug": "tokens",
+    "definition": "The basic units that AI models use to process text. A token is roughly ¾ of a word — 'hamburger' is 3 tokens, 'I' is 1 token. Models read and generate text in tokens, not words, which is why pricing and limits are measured this way.",
+    "realWorldConsequence": "When a model says it costs $2 per 1 million tokens, that's roughly $2 per 750,000 words — about 10 full-length novels. When it says 'max output 8,192 tokens,' that means it can write about 6,000 words in a single response before it stops, regardless of whether it's finished.",
+    "relatedTerms": ["context-window", "input-output-pricing"]
+  },
+  {
+    "term": "Input/Output Pricing",
+    "slug": "input-output-pricing",
+    "definition": "AI models charge differently for reading your input (the text you send) versus generating output (the text they send back). Input tokens are almost always cheaper because reading is computationally easier than generating new text.",
+    "realWorldConsequence": "If you're building an app that sends a lot of context (like a full codebase) but only needs short answers, your costs are driven by the input price. If you need the model to write long documents, the output price matters more. A model with $2 input / $10 output pricing means generating text costs 5x more than reading it.",
+    "relatedTerms": ["tokens"]
+  },
+  {
+    "term": "Max Output Tokens",
+    "slug": "max-output-tokens",
+    "definition": "The maximum length of text a model can generate in a single response. Even if the model has more to say, it will stop when it hits this limit.",
+    "realWorldConsequence": "A model with 4,096 max output tokens can write about 3,000 words per response — enough for a short article but not a full report. If you need longer outputs, you either need a model with higher limits (some go up to 100K tokens) or you need to ask the model to continue across multiple requests.",
+    "relatedTerms": ["tokens", "context-window"]
+  },
+  {
+    "term": "Dense Model",
+    "slug": "dense-model",
+    "definition": "A model architecture where every parameter (every learned value in the neural network) is used for every single query. It's the straightforward approach — the whole model works on every problem, regardless of type.",
+    "realWorldConsequence": "Dense models tend to have more consistent behavior but are more expensive to run per query, since the entire model activates every time. GPT-4o, Claude Opus 4, and most well-known models are dense. You pay for the full model's compute on every request, even for simple questions.",
+    "relatedTerms": ["mixture-of-experts", "parameters"]
+  },
+  {
+    "term": "Mixture of Experts (MoE)",
+    "slug": "mixture-of-experts",
+    "definition": "A model architecture that contains multiple specialized sub-networks ('experts'), but only activates a small subset of them for each query. A routing system decides which experts are most relevant to your specific question.",
+    "realWorldConsequence": "MoE models can be very large in total parameters but cheap to run, because only a fraction activates per query. DeepSeek V3 has 671B total parameters but only uses 37B per query — giving you the knowledge of a huge model at the cost of a smaller one. The tradeoff: quality can be less consistent since different experts activate for different queries.",
+    "relatedTerms": ["dense-model", "parameters"]
+  },
+  {
+    "term": "Parameters",
+    "slug": "parameters",
+    "definition": "The individual learned values in a neural network — essentially the model's stored knowledge and capabilities, encoded as numbers. More parameters generally means more capacity to learn and remember, but also more compute needed to run.",
+    "realWorldConsequence": "A 7B parameter model can run on a good laptop. A 70B parameter model needs a serious GPU. A 400B+ parameter model needs a cluster of GPUs. Parameter count roughly correlates with capability, but architecture and training quality matter at least as much — a well-trained 70B model can outperform a poorly-trained 200B model.",
+    "relatedTerms": ["dense-model", "mixture-of-experts"]
+  },
+  {
+    "term": "RLHF",
+    "slug": "rlhf",
+    "definition": "Reinforcement Learning from Human Feedback — a training technique where human evaluators rate the model's outputs, and those ratings are used to train the model to produce better responses. It's what makes modern AI models helpful and safe rather than just technically capable.",
+    "realWorldConsequence": "RLHF is why ChatGPT feels helpful and conversational rather than just autocompleting text. Models without extensive RLHF (like some open-source models) can be technically capable but feel 'rough' — less natural in conversation, less likely to refuse harmful requests, and less aligned with what users actually want.",
+    "relatedTerms": ["fine-tuning"]
+  },
+  {
+    "term": "Fine-tuning",
+    "slug": "fine-tuning",
+    "definition": "Taking a pre-trained model and training it further on a specific dataset to specialize it for a particular task or domain. Like teaching a general-purpose doctor to become a specialist.",
+    "realWorldConsequence": "If you need a model that's expert in your company's specific terminology, coding style, or domain (legal, medical, financial), fine-tuning a base model can dramatically improve quality compared to prompting alone. The tradeoff: it requires labeled training data and costs money to train.",
+    "relatedTerms": ["rlhf"]
+  },
+  {
+    "term": "Temperature",
+    "slug": "temperature",
+    "definition": "A setting that controls how 'random' or 'creative' a model's outputs are. Low temperature (0-0.3) makes the model more deterministic and focused. High temperature (0.7-1.0) makes it more creative and varied.",
+    "realWorldConsequence": "Use low temperature for factual tasks (data extraction, code generation, classification) where you want consistent, predictable output. Use high temperature for creative tasks (brainstorming, creative writing, generating diverse options) where you want variety. Setting temperature to 0 means the model will give nearly identical answers to the same question every time.",
+    "relatedTerms": ["top-p"]
+  },
+  {
+    "term": "Top-p (Nucleus Sampling)",
+    "slug": "top-p",
+    "definition": "A setting that controls output diversity by limiting which words the model considers for each position. A top-p of 0.9 means the model only considers the words that make up 90% of the probability — cutting off the unlikely, weird options.",
+    "realWorldConsequence": "Top-p and temperature both affect creativity but in different ways. Most of the time, adjusting temperature alone is sufficient. If you're getting outputs that include odd, out-of-place words, lowering top-p can help. The default (usually 1.0) works fine for most tasks.",
+    "relatedTerms": ["temperature"]
+  },
+  {
+    "term": "Benchmark",
+    "slug": "benchmark",
+    "definition": "A standardized test used to measure and compare AI model performance. Benchmarks like MMLU (general knowledge), HumanEval (coding), and MATH test specific capabilities under controlled conditions.",
+    "realWorldConsequence": "Benchmarks are useful for rough comparisons but have serious limitations. They test clean, well-formed problems — not the messy, ambiguous tasks you'll actually use the model for. A model that scores 90% on HumanEval (coding puzzles) might still struggle with real-world coding that involves understanding a codebase, handling edge cases, and iterating on feedback.",
+    "relatedTerms": ["mmlu", "humaneval", "swe-bench"]
+  },
+  {
+    "term": "MMLU",
+    "slug": "mmlu",
+    "definition": "Massive Multitask Language Understanding — a benchmark that tests general knowledge across 57 subjects including math, history, law, medicine, and computer science. It's essentially a standardized exam covering undergraduate-level knowledge.",
+    "realWorldConsequence": "MMLU scores tell you how much a model 'knows' in a textbook sense. A score of 90% means the model answers correctly on 90% of multiple-choice questions across diverse subjects. But high MMLU scores don't mean the model can apply that knowledge well in open-ended conversations — it's the difference between passing a test and being a good tutor.",
+    "relatedTerms": ["benchmark"]
+  },
+  {
+    "term": "HumanEval",
+    "slug": "humaneval",
+    "definition": "A benchmark that tests a model's ability to write correct Python functions. It provides function signatures with descriptions and checks whether the model's code passes unit tests.",
+    "realWorldConsequence": "HumanEval tests isolated function writing — a narrow but important coding skill. A high score (90%+) means the model can write correct, working code for well-defined problems. But real-world coding involves reading existing code, understanding context, debugging, and making design decisions — none of which HumanEval measures.",
+    "relatedTerms": ["benchmark", "swe-bench"]
+  },
+  {
+    "term": "SWE-bench",
+    "slug": "swe-bench",
+    "definition": "Software Engineering Benchmark — tests whether a model can fix real bugs from actual GitHub repositories. Unlike HumanEval, it requires understanding full codebases, not just writing isolated functions.",
+    "realWorldConsequence": "SWE-bench is the closest thing to a real-world coding test. A high score means the model can read a codebase, understand a bug report, and produce a working fix. But even SWE-bench tests well-defined bugs with known solutions — it doesn't measure the ability to design new features, refactor systems, or work autonomously on open-ended coding tasks.",
+    "relatedTerms": ["benchmark", "humaneval"]
+  },
+  {
+    "term": "GPQA",
+    "slug": "gpqa",
+    "definition": "Graduate-Level Google-Proof Questions — a benchmark of extremely hard science questions (biology, physics, chemistry) written by domain experts to be difficult even for PhD holders. 'Google-proof' means the answers aren't easily findable online.",
+    "realWorldConsequence": "GPQA scores indicate how well a model handles genuinely hard scientific reasoning, not just knowledge recall. The 'Diamond' subset is the hardest — human experts only score about 65%. A model scoring above 70% on GPQA Diamond is demonstrating real reasoning ability, not just memorization.",
+    "relatedTerms": ["benchmark"]
+  },
+  {
+    "term": "Agentic",
+    "slug": "agentic",
+    "definition": "Describes AI systems that can work autonomously on multi-step tasks — planning what to do, executing steps, observing results, and adjusting their approach. An 'agentic' model doesn't just answer questions; it can independently work through complex workflows.",
+    "realWorldConsequence": "Agentic capability is the frontier of AI usefulness. A model that's good at agentic tasks can be given a goal ('fix the bugs in this project') and autonomously plan, code, test, and iterate. Most models today are better at single-turn responses than sustained autonomous work. This is one of the biggest gaps between benchmark scores and real-world value — the best benchmark model isn't necessarily the best agent.",
+    "relatedTerms": ["swe-bench"]
+  },
+  {
+    "term": "Multimodal",
+    "slug": "multimodal",
+    "definition": "A model that can process multiple types of input — not just text, but also images, audio, or video. A multimodal model can look at a photo and answer questions about it, or transcribe and analyze audio.",
+    "realWorldConsequence": "If you need to analyze images (screenshots, charts, photos), process audio, or work with video, you need a multimodal model. Text-only models literally cannot see images. The quality of multimodal understanding varies widely — some models handle images well but audio poorly, or vice versa.",
+    "relatedTerms": ["modality"]
+  },
+  {
+    "term": "Open Source vs Closed Source",
+    "slug": "open-vs-closed",
+    "definition": "Open-source models publish their full weights (the learned parameters), allowing anyone to download, run, modify, and fine-tune them. Closed-source models are only accessible through an API — you send text in, get text back, but can't see or modify the model itself.",
+    "realWorldConsequence": "Open-source models give you full control — you can run them on your own hardware (no data sent to third parties), fine-tune them for your specific needs, and avoid vendor lock-in. The tradeoff: self-hosting requires GPUs and expertise, and open models often have weaker safety guardrails. Closed models are easier to use (just call an API) but you depend entirely on the provider's pricing, policies, and availability.",
+    "relatedTerms": ["fine-tuning", "parameters"]
+  },
+  {
+    "term": "Chain-of-Thought (CoT)",
+    "slug": "chain-of-thought",
+    "definition": "A technique where the model reasons through a problem step-by-step before giving a final answer, rather than jumping straight to a conclusion. Some models do this internally (hidden), others show their reasoning transparently.",
+    "realWorldConsequence": "Chain-of-thought dramatically improves accuracy on math, logic, and complex reasoning tasks. Models like o3 and DeepSeek R1 use CoT extensively. The tradeoff is speed and cost — reasoning tokens still count toward your bill, so a problem that takes 100 tokens without CoT might use 1,000+ tokens with it. For simple questions, CoT is unnecessary overhead.",
+    "relatedTerms": ["agentic", "temperature"]
+  },
+  {
+    "term": "Hallucination",
+    "slug": "hallucination",
+    "definition": "When an AI model generates information that sounds confident and plausible but is factually incorrect. The model isn't 'lying' — it's generating the most statistically likely text, which sometimes means fabricating facts, citations, or details.",
+    "realWorldConsequence": "Hallucination is the single biggest practical risk of using AI models. Every model hallucinates to some degree. More capable models hallucinate less, but none are immune. Always verify factual claims, especially citations, statistics, dates, and technical details. This is why AI works best as a copilot (human reviews the output) rather than running fully autonomously on high-stakes tasks.",
+    "relatedTerms": ["benchmark", "rlhf"]
+  },
+  {
+    "term": "Latency",
+    "slug": "latency",
+    "definition": "The time between sending a request to the model and receiving the first part of its response. Sometimes called 'time to first token.' Lower latency means the model starts responding faster.",
+    "realWorldConsequence": "For chat applications, latency matters a lot — users expect near-instant responses. Reasoning models (o3, R1) can have latencies of 10-30+ seconds because they 'think' before responding. For batch processing or background tasks, latency matters much less than cost and quality.",
+    "relatedTerms": ["tokens", "chain-of-thought"]
+  },
+  {
+    "term": "API",
+    "slug": "api",
+    "definition": "Application Programming Interface — the way your code talks to an AI model. Instead of typing into a chat window, you send requests programmatically and receive responses that your application can process. All major model providers offer APIs.",
+    "realWorldConsequence": "Using the API (instead of the chat interface) is how you build real applications with AI. It gives you control over parameters like temperature, lets you process data at scale, and integrate AI into your workflows. API access usually costs money per token, while chat interfaces may be included in a subscription.",
+    "relatedTerms": ["tokens", "input-output-pricing"]
+  }
+]
