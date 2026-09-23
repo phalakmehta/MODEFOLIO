@@ -27,7 +27,8 @@ export async function POST(req: NextRequest) {
       matchScore: r.matchScore,
       reason: r.reason,
       tradeoff: r.tradeoff,
-      benchmarkNote: r.benchmarkNote
+      benchmarkNote: r.benchmarkNote,
+      modelData: r.modelData
     }));
 
     if (process.env.WIZARD_LLM === "1" && process.env.GEMINI_API_KEY) {
