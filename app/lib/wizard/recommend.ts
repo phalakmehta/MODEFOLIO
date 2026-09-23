@@ -40,7 +40,7 @@ export function recommend(answers: WizardAnswers) {
 
     // Primary task
     if (answers.task !== "other" && answers.task !== "chat") {
-      let taskKey = answers.task;
+      let taskKey: string = answers.task;
       if (taskKey === "cheap-volume") taskKey = "cheapVolume";
       weightedScore += (scores[taskKey] || 5) * 1.0;
       totalWeight += 1.0;

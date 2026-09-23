@@ -4,7 +4,7 @@ import newsData from '@/data/model-news.json';
 // Merge news into models
 export const getModels = () => {
   return modelsData.map(model => {
-    const news = (newsData as Record<str, any>)[model.id] || [];
+    const news = (newsData as Record<string, any>)[model.id] || [];
     return {
       ...model,
       news

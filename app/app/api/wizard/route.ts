@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     if (process.env.WIZARD_LLM === "1" && process.env.GEMINI_API_KEY) {
       try {
         const { GoogleGenAI } = await import('@google/genai');
-        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+        const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
         
         const prompt = `Rewrite the reason field to be a friendly, personalized explanation based on these answers: Task=${answers.task}, Budget=${answers.budget}, Agentic=${answers.agentic}, LongContext=${answers.longContext}. Keep it short.
         Models: ${JSON.stringify(result.recommendations.map(r => ({ id: r.modelId, name: r.modelData.name, summary: r.modelData.summary })))}`;
