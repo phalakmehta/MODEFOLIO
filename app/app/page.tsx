@@ -5,6 +5,7 @@ import Fuse from 'fuse.js';
 import models from '@/data/models.json';
 import ModelCard from '@/components/ModelCard';
 import ScrollReveal from '@/components/ScrollReveal';
+import NewsSection from '@/components/NewsSection';
 import { useTranslation } from '@/app/TranslationContext';
 
 export default function HomePage() {
@@ -129,6 +130,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* News Section */}
+      <NewsSection />
 
       {/* Interactive Directory Section */}
       <section style={{ marginTop: 'var(--space-10)', paddingBottom: 'var(--space-11)' }}>
