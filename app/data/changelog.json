@@ -1,0 +1,107 @@
+[
+  {
+    "date": "2026-09-23",
+    "modelId": "cohere-command-a-plus",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "openai-gpt-6-luna-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "openai-gpt-6-luna",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "openai-gpt-6-sol-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "openai-gpt-6-sol",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "anthropic-claude-opus-5.5",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "x-ai-grok-4.7",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "qwen-qwen3.8-omni-flash",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "deepseek-deepseek-v4.1-flash",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "openai-gpt-6-astra",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "openai-gpt-6-astra-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "qwen-qwen3.8-max-0902",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "google-gemini-3.8-flash",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "anthropic-claude-fable-5.1",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-23",
+    "modelId": "qwen-qwen3.8-flash",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  }
+]

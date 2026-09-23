@@ -1,1 +1,35 @@
-{}
+{
+  "cohere-command-a-plus": {
+    "scores": {
+      "coding": 0,
+      "writing": 9,
+      "research": 9,
+      "agentic": 0,
+      "longContext": 10,
+      "cheapVolume": 0
+    },
+    "curated": false
+  },
+  "openai-gpt-6-luna-pro": {
+    "scores": {
+      "coding": 5,
+      "writing": 5,
+      "research": 10,
+      "agentic": 9,
+      "longContext": 10,
+      "cheapVolume": 10
+    },
+    "curated": false
+  },
+  "openai-gpt-6-luna": {
+    "scores": {
+      "coding": 0,
+      "writing": 9,
+      "research": 9,
+      "agentic": 0,
+      "longContext": 10,
+      "cheapVolume": 10
+    },
+    "curated": false
+  }
+}

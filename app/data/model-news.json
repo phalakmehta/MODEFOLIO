@@ -1,1 +1,105 @@
-{}
+{
+  "claude-opus-5": [
+    {
+      "date": "2026-09-23",
+      "headline": "Anthropic's Claude Opus 5.5 is Cheaper But Has Agent Compatibility Issues",
+      "url": "https://thenewstack.io/claude-opus-agent-migration/"
+    }
+  ],
+  "gemini-muse": [
+    {
+      "date": "2026-09-23",
+      "headline": "Google Confirms Gemini AI Models Hacked Three Companies",
+      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/"
+    }
+  ],
+  "gemini-glimmer": [
+    {
+      "date": "2026-09-23",
+      "headline": "Google Confirms Gemini AI Models Hacked Three Companies",
+      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/"
+    }
+  ],
+  "gemini-flash-v4": [
+    {
+      "date": "2026-09-23",
+      "headline": "Google Confirms Gemini AI Models Hacked Three Companies",
+      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/"
+    }
+  ],
+  "gemini-deep-think": [
+    {
+      "date": "2026-09-23",
+      "headline": "Google Confirms Gemini AI Models Hacked Three Companies",
+      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/"
+    }
+  ],
+  "gemini-1-5-pro": [
+    {
+      "date": "2026-09-23",
+      "headline": "Google Confirms Gemini AI Models Hacked Three Companies",
+      "url": "https://arstechnica.com/google/2026/09/google-confirms-gemini-models-hacked-three-companies-in-may-2026/"
+    }
+  ],
+  "deepseek-flash-4": [
+    {
+      "date": "2026-09-21",
+      "headline": "DeepSeek AI Models Show Increased Security Bugs with Political Prompts",
+      "url": "https://venturebeat.com/security/deepseek-injects-50-more-security-bugs-when-prompted-with-chinese-political"
+    },
+    {
+      "date": "2026-09-17",
+      "headline": "DeepSeek Launches Faster V4.1 Flash Model with Improved Memory Handling",
+      "url": "https://zartbot.github.io/blog/model_arch/dsv41flash_arch/en.html"
+    }
+  ],
+  "deepseek-r2": [
+    {
+      "date": "2026-09-21",
+      "headline": "DeepSeek AI Models Show Increased Security Bugs with Political Prompts",
+      "url": "https://venturebeat.com/security/deepseek-injects-50-more-security-bugs-when-prompted-with-chinese-political"
+    }
+  ],
+  "deepseek-v3": [
+    {
+      "date": "2026-09-21",
+      "headline": "DeepSeek AI Models Show Increased Security Bugs with Political Prompts",
+      "url": "https://venturebeat.com/security/deepseek-injects-50-more-security-bugs-when-prompted-with-chinese-political"
+    }
+  ],
+  "deepseek-r1": [
+    {
+      "date": "2026-09-21",
+      "headline": "DeepSeek AI Models Show Increased Security Bugs with Political Prompts",
+      "url": "https://venturebeat.com/security/deepseek-injects-50-more-security-bugs-when-prompted-with-chinese-political"
+    }
+  ],
+  "deepseek-coder-v2": [
+    {
+      "date": "2026-09-21",
+      "headline": "DeepSeek AI Models Show Increased Security Bugs with Political Prompts",
+      "url": "https://venturebeat.com/security/deepseek-injects-50-more-security-bugs-when-prompted-with-chinese-political"
+    }
+  ],
+  "qwen-4": [
+    {
+      "date": "2026-09-23",
+      "headline": "Qwen Image 2.1 Model Challenges Top AI Image Generators with Small Size",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-claims-new-qwen-image-2-1-ai-model-beats-google-nano-banana-2-0-with-minuscule-7b-parameter-model-benchmarks-show-open-weight-contender-is-competitive-with-openai-and-meta-image-models"
+    }
+  ],
+  "qwen-2-5-72b": [
+    {
+      "date": "2026-09-23",
+      "headline": "Qwen Image 2.1 Model Challenges Top AI Image Generators with Small Size",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-claims-new-qwen-image-2-1-ai-model-beats-google-nano-banana-2-0-with-minuscule-7b-parameter-model-benchmarks-show-open-weight-contender-is-competitive-with-openai-and-meta-image-models"
+    }
+  ],
+  "qwen-2-5-coder": [
+    {
+      "date": "2026-09-23",
+      "headline": "Qwen Image 2.1 Model Challenges Top AI Image Generators with Small Size",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-claims-new-qwen-image-2-1-ai-model-beats-google-nano-banana-2-0-with-minuscule-7b-parameter-model-benchmarks-show-open-weight-contender-is-competitive-with-openai-and-meta-image-models"
+    }
+  ]
+}
