@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import models from '@/data/models.json';
 
 interface WizardOption {
   value: string;
@@ -62,94 +61,28 @@ interface Answers {
   [key: string]: string;
 }
 
-interface ScoredModel {
-  model: typeof models[0];
-  score: number;
-  reasons: string[];
-}
-
-function scoreModels(answers: Answers): ScoredModel[] {
-  return models.map((model) => {
-    let score = 0;
-    const reasons: string[] = [];
-
-    // Task matching
-    const taskMap: Record<string, string[]> = {
-      coding: ['coding', 'agentic'],
-      writing: ['writing', 'general'],
-      research: ['research', 'complex reasoning', 'long documents'],
-      data: ['fast', 'cheap', 'high-volume'],
-      chatbot: ['chatbot', 'fast', 'general'],
-      general: ['general'],
-    };
-    const relevantTags = taskMap[answers.task] || [];
-    const tagMatches = model.useCaseTags.filter((t) => relevantTags.includes(t));
-    score += tagMatches.length * 20;
-    if (tagMatches.length > 0) {
-      reasons.push(`Strong fit for ${answers.task}: tagged as ${tagMatches.join(', ')}`);
-    }
-
-    // Budget
-    if (answers.budget === 'cheap') {
-      if (model.specs.pricing.input <= 0.5) {
-        score += 30;
-        reasons.push(`Very affordable at $${model.specs.pricing.input.toFixed(2)}/1M input tokens`);
-      } else if (model.specs.pricing.input <= 2) {
-        score += 15;
-      } else {
-        score -= 20;
-        reasons.push(`Expensive at $${model.specs.pricing.input.toFixed(2)}/1M input tokens`);
-      }
-    } else if (answers.budget === 'unlimited') {
-      const maxBenchmark = Math.max(...model.benchmarks.map((b) => b.score));
-      if (maxBenchmark > 90) {
-        score += 20;
-        reasons.push(`Top-tier benchmark performance (${maxBenchmark}%)`);
-      }
-    } else {
-      if (model.specs.pricing.input <= 3 && model.specs.pricing.input > 0.3) {
-        score += 15;
-        reasons.push('Good balance of capability and cost');
-      }
-    }
-
-    // Context needs
-    if (answers.context === 'long') {
-      if (model.specs.contextWindow >= 1000000) {
-        score += 25;
-        reasons.push(`Massive ${(model.specs.contextWindow / 1000000).toFixed(0)}M token context window handles very long documents`);
-      } else if (model.specs.contextWindow >= 200000) {
-        score += 10;
-      } else {
-        score -= 10;
-      }
-    } else if (answers.context === 'short') {
-      score += 5; // Any model works
-    }
-
-    // Complexity
-    if (answers.complexity === 'complex') {
-      if (model.useCaseTags.includes('complex reasoning') || model.useCaseTags.includes('agentic')) {
-        score += 30;
-        reasons.push('Built for complex, multi-step reasoning tasks');
-      }
-    } else if (answers.complexity === 'simple') {
-      if (model.useCaseTags.includes('fast') || model.useCaseTags.includes('cheap')) {
-        score += 15;
-        reasons.push('Fast and efficient — no need to pay for reasoning overhead on simple tasks');
-      }
-    }
-
-    return { model, score, reasons };
-  })
-  .sort((a, b) => b.score - a.score)
-  .slice(0, 3);
+interface Recommendation {
+  modelId: string;
+  rank: number;
+  matchScore: number;
+  reason: string;
+  tradeoff: string;
+  benchmarkNote: string | null;
+  modelData: {
+    name: string;
+    provider: string;
+    summary: string;
+    pricing: { input: number; output: number; unit: string };
+  };
 }
 
 export default function WizardClient() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [showResults, setShowResults] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<Recommendation[]>([]);
+  const [apiMessage, setApiMessage] = useState<string | null>(null);
 
   const step = STEPS[currentStep];
   const selectedValue = answers[step?.key];
@@ -158,17 +91,63 @@ export default function WizardClient() {
     setAnswers((prev) => ({ ...prev, [step.key]: value }));
   };
 
+  const submitWizard = async () => {
+    setLoading(true);
+    setShowResults(true);
+
+    // Map frontend answers to API format
+    const taskMap: Record<string, string> = {
+      coding: 'coding',
+      writing: 'writing',
+      research: 'research',
+      data: 'cheap-volume',
+      chatbot: 'chat',
+      general: 'other'
+    };
+    
+    const budgetMap: Record<string, string> = {
+      unlimited: 'high',
+      moderate: 'medium',
+      cheap: 'low'
+    };
+
+    const payload = {
+      task: taskMap[answers.task] || 'other',
+      budget: budgetMap[answers.budget] || 'medium',
+      longContext: answers.context === 'long',
+      agentic: answers.complexity === 'complex'
+    };
+
+    try {
+      const res = await fetch('/api/wizard', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      
+      const data = await res.json();
+      setResults(data.recommendations || []);
+      setApiMessage(data.message || null);
+    } catch (err) {
+      console.error("Error fetching wizard results:", err);
+      setApiMessage("Failed to fetch recommendations. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const next = () => {
     if (currentStep < STEPS.length - 1) {
       setCurrentStep((prev) => prev + 1);
     } else {
-      setShowResults(true);
+      submitWizard();
     }
   };
 
   const back = () => {
     if (showResults) {
       setShowResults(false);
+      setLoading(false);
     } else if (currentStep > 0) {
       setCurrentStep((prev) => prev - 1);
     }
@@ -178,9 +157,9 @@ export default function WizardClient() {
     setCurrentStep(0);
     setAnswers({});
     setShowResults(false);
+    setResults([]);
+    setApiMessage(null);
   };
-
-  const results = showResults ? scoreModels(answers) : [];
 
   return (
     <div className="page-container">
@@ -236,43 +215,57 @@ export default function WizardClient() {
               </button>
             </div>
           </>
+        ) : loading ? (
+          <div style={{ textAlign: 'center', padding: 'var(--space-8) 0' }}>
+            <h2 className="wizard-question">Calculating best fit...</h2>
+            <p style={{ color: 'var(--text-secondary)' }}>Analyzing model context, pricing, and capabilities against your answers.</p>
+          </div>
         ) : (
           <>
             <div className="section-label">Your Recommendations</div>
             <h2 className="wizard-question" style={{ marginBottom: 'var(--space-4)' }}>
               Here&rsquo;s what we&rsquo;d suggest
             </h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
-              Based on your answers, these models are the best fit for your needs.
-              Rankings consider task fit, budget, context requirements, and complexity.
-            </p>
+            
+            {apiMessage ? (
+              <p style={{ color: 'var(--error)', marginBottom: 'var(--space-6)' }}>{apiMessage}</p>
+            ) : (
+              <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
+                Based on your answers, these models are the best fit for your needs.
+                Rankings consider task fit, budget, context requirements, and complexity.
+              </p>
+            )}
 
             {results.map((result, i) => (
               <Link
-                key={result.model.id}
-                href={`/models/${result.model.id}`}
+                key={result.modelId}
+                href={`/models/${result.modelId}`}
                 className="result-card"
                 style={{ textDecoration: 'none', display: 'block' }}
               >
                 <div className="result-rank">
                   {i === 0 ? '★ Best Match' : `#${i + 1}`}
                 </div>
-                <div className="result-model-name">{result.model.name}</div>
+                <div className="result-model-name">{result.modelData.name}</div>
                 <div style={{ marginBottom: 'var(--space-2)' }}>
-                  <span className="model-card-provider">{result.model.provider}</span>
+                  <span className="model-card-provider">{result.modelData.provider}</span>
                   <span className="price-badge" style={{ marginLeft: 'var(--space-2)' }}>
-                    ${result.model.specs.pricing.input.toFixed(2)} / 1M input
+                    ${result.modelData.pricing.input.toFixed(2)} / 1M input
                   </span>
                 </div>
                 <div className="result-reasoning">
-                  {result.reasons.length > 0 ? (
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                      {result.reasons.map((r, j) => (
-                        <li key={j} style={{ marginBottom: '4px' }}>→ {r}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>{result.model.summary}</p>
+                  <p>{result.reason}</p>
+                  
+                  {result.benchmarkNote && (
+                    <div style={{ marginTop: 'var(--space-3)', padding: 'var(--space-3)', backgroundColor: 'var(--bg-card)', borderRadius: 'var(--radius-sm)', fontSize: '0.875rem' }}>
+                      <strong>⚠️ Benchmark Note:</strong> {result.benchmarkNote}
+                    </div>
+                  )}
+                  
+                  {result.tradeoff && (
+                    <div style={{ marginTop: 'var(--space-2)', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                      <em>Tradeoff: {result.tradeoff}</em>
+                    </div>
                   )}
                 </div>
               </Link>
