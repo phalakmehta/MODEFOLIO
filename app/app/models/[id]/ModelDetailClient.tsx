@@ -24,7 +24,7 @@ interface Model {
   benchmarkCaveat: string;
   useCaseTags: string[];
   howToUse: { apiExample?: string; playgroundUrl?: string; docsUrl?: string };
-  news: { date: string; headline: string; url: string }[];
+  news?: { date: string; headline: string; url: string }[];
 }
 
 function formatNumber(n: number): string {
