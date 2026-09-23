@@ -9,24 +9,12 @@ export type WizardAnswers = {
   agentic: boolean;
 };
 
-// Hardcoded blended price cap for low budget ($1 per 1M tokens)
-const LOW_BUDGET_CAP = 1.0;
-
 export function recommend(answers: WizardAnswers) {
   let candidates = modelsData as any[];
   
-  // 1. Hard filters
+  // 1. Soft Context Filter (loosened to 100k)
   if (answers.longContext) {
-    candidates = candidates.filter(m => m.specs.contextWindow >= 200000);
-  }
-  
-  if (answers.budget === "low") {
-    candidates = candidates.filter(m => {
-      const p = m.specs.pricing;
-      // Blended price: 80% input, 20% output assumption
-      const blended = (p.input * 0.8) + (p.output * 0.2);
-      return blended <= LOW_BUDGET_CAP;
-    });
+    candidates = candidates.filter(m => m.specs.contextWindow >= 100000);
   }
 
   // 2. Category weights scoring
@@ -38,40 +26,60 @@ export function recommend(answers: WizardAnswers) {
     let totalWeight = 0;
     let weightedScore = 0;
 
-    // Primary task
-    if (answers.task !== "other" && answers.task !== "chat") {
-      let taskKey: string = answers.task;
-      if (taskKey === "cheap-volume") taskKey = "cheapVolume";
-      weightedScore += (scores[taskKey] || 5) * 1.0;
-      totalWeight += 1.0;
-    }
+    // Primary task logic
+    let taskKey: string = answers.task;
+    if (taskKey === "cheap-volume") taskKey = "cheapVolume";
+    if (taskKey === "chat") taskKey = "writing"; 
+    if (taskKey === "other") taskKey = "research"; 
+    
+    weightedScore += (scores[taskKey] || 5) * 1.5; 
+    totalWeight += 1.5;
 
-    // Agentic
+    // Agentic logic
     if (answers.agentic) {
-      weightedScore += (scores.agentic || 5) * 0.7;
-      totalWeight += 0.7;
+      weightedScore += (scores.agentic || 5) * 1.2;
+      totalWeight += 1.2;
     }
 
-    // Long Context
+    // Long Context logic
     if (answers.longContext) {
-      weightedScore += (scores.longContext || 5) * 0.5;
-      totalWeight += 0.5;
+      weightedScore += (scores.longContext || 5) * 0.8;
+      totalWeight += 0.8;
     }
 
-    // Budget weighting
-    if (answers.budget === "low") {
-      weightedScore += (scores.cheapVolume || 5) * 0.9;
-      totalWeight += 0.9;
-    } else if (answers.budget === "medium") {
-      weightedScore += (scores.cheapVolume || 5) * 0.4;
-      totalWeight += 0.4;
-    }
-
-    if (totalWeight === 0) totalWeight = 1;
-    const matchScore = Number((weightedScore / totalWeight).toFixed(1));
-
-    // Blended price for tie-breaking
+    // Blended price: 80% input, 20% output
     const blendedPrice = (model.specs.pricing.input * 0.8) + (model.specs.pricing.output * 0.2);
+
+    // Budget weighting (Soft Penalties instead of hard deletes)
+    if (answers.budget === "low") {
+      weightedScore += (scores.cheapVolume || 5) * 1.5;
+      totalWeight += 1.5;
+      // Penalize expensive models
+      if (blendedPrice > 1.5) {
+        weightedScore -= (blendedPrice - 1.5) * 0.5; 
+      }
+    } else if (answers.budget === "medium") {
+      weightedScore += (scores.cheapVolume || 5) * 0.5;
+      totalWeight += 0.5;
+      if (blendedPrice > 5.0) {
+        weightedScore -= (blendedPrice - 5.0) * 0.2;
+      }
+    } else if (answers.budget === "high") {
+      // Reward premium expensive models natively
+      if (blendedPrice < 0.5) {
+        weightedScore -= 0.5;
+      }
+      // Add benchmark boosts for high budget flagships
+      const mmlu = model.benchmarks?.find((b: any) => b.name.toLowerCase().includes('mmlu'))?.score;
+      if (mmlu && mmlu > 80) {
+        weightedScore += (mmlu - 80) * 0.1; 
+      }
+    }
+
+    if (weightedScore < 0) weightedScore = 0;
+    if (totalWeight === 0) totalWeight = 1;
+    let matchScore = Number((weightedScore / totalWeight).toFixed(1));
+    if (matchScore > 10) matchScore = 10;
 
     return { model, matchScore, blendedPrice };
   });
@@ -97,7 +105,7 @@ export function recommend(answers: WizardAnswers) {
       modelId: model.id,
       rank: index + 1,
       matchScore,
-      reason: `With a score of ${matchScore}/10 for your needs, ${model.name} is a great choice. ${model.summary}`,
+      reason: `With a heuristic score of ${matchScore}/10 for your criteria, ${model.name} is a solid match. ${model.summary}`,
       tradeoff: model.inPractice?.weaknesses?.[0] || "May have specific limitations.",
       benchmarkNote,
       modelData: {
@@ -112,7 +120,7 @@ export function recommend(answers: WizardAnswers) {
   if (top3.length === 0) {
     return {
       recommendations: [],
-      message: "No models matched your exact criteria. Try loosening your budget or context requirements."
+      message: "No models matched your criteria perfectly. Try loosening your context requirements."
     };
   }
 
