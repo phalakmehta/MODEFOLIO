@@ -110,7 +110,7 @@ export default function ModelDetailClient({ model }: { model: Model }) {
         <ScrollReveal>
           <div className="pudding-block" style={{ backgroundColor: 'var(--color-anthropic)', color: 'var(--bg-primary)' }}>
             <h2 className="pudding-section-title">In Practice</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', marginTop: 'var(--space-5)' }}>
+            <div className="responsive-grid-2" style={{ marginTop: 'var(--space-5)' }}>
               <div>
                 <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', textTransform: 'uppercase', marginBottom: 'var(--space-3)' }}>What it rules at</h3>
                 <ul style={{ listStyle: 'none', padding: 0, fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)' }}>
@@ -139,7 +139,7 @@ export default function ModelDetailClient({ model }: { model: Model }) {
 
         {/* ARCHITECTURE & COST GRID */}
         <ScrollReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)', marginTop: 'var(--space-8)' }}>
+          <div className="responsive-grid-2" style={{ marginTop: 'var(--space-8)' }}>
             <div className="pudding-block" style={{ backgroundColor: 'var(--color-google)', color: 'var(--bg-primary)' }}>
               <h2 className="pudding-section-title" style={{ fontSize: 'var(--text-4xl)' }}>Architecture</h2>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xl)', fontWeight: 700, margin: 'var(--space-4) 0' }}>
