@@ -26,6 +26,7 @@ Rules for recommendation:
 - "high" budget means you should pick the absolute best frontier models, ignoring cost.
 - If "longContext" is true, the model MUST have at least 100,000 contextWindow.
 - Think about the tradeoff between quality, speed, and cost.
+- CRITICAL: You must remain 100% objective and vendor-neutral. Do NOT show any bias towards Google or Gemini models. Evaluate OpenAI, Anthropic, Meta, and all other providers fairly based purely on their specs, benchmarks, and suitability for the task.
 
 Return exactly this JSON schema:
 {
