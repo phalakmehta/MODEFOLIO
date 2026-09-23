@@ -7,6 +7,7 @@ import BsToggle from './BsToggle';
 
 const NAV_ITEMS = [
   { href: '/', label: 'Directory' },
+  { href: '/news', label: 'News' },
   { href: '/compare', label: 'Compare' },
   { href: '/wizard', label: 'Wizard' },
   { href: '/glossary', label: 'Glossary' },

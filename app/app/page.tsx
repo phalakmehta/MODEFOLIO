@@ -5,7 +5,6 @@ import Fuse from 'fuse.js';
 import models from '@/data/models.json';
 import ModelCard from '@/components/ModelCard';
 import ScrollReveal from '@/components/ScrollReveal';
-import NewsSection from '@/components/NewsSection';
 import { useTranslation } from '@/app/TranslationContext';
 
 export default function HomePage() {
@@ -80,9 +79,6 @@ export default function HomePage() {
           is intentionally misleading. Let&rsquo;s cut the bullshit.
         </p>
       </header>
-
-      {/* News Section */}
-      <NewsSection />
 
       {/* Scrollytelling Section */}
       <section className="scrolly-container">
