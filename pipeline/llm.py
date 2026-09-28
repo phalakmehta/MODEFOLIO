@@ -22,6 +22,9 @@ def generate_json(prompt: str, schema_class: Type[T], system_instruction: str = 
     if not model_name:
         model_name = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
         
+    schema_json = schema_class.model_json_schema()
+    sys_instruction_with_schema = f"{system_instruction}\n\nIMPORTANT: You must output ONLY valid JSON that strictly conforms to this JSON Schema:\n{schema_json}"
+        
     max_retries = 2
     for attempt in range(max_retries + 1):
         try:
@@ -29,9 +32,8 @@ def generate_json(prompt: str, schema_class: Type[T], system_instruction: str = 
                 model=model_name,
                 contents=prompt,
                 config=types.GenerateContentConfig(
-                    system_instruction=system_instruction if system_instruction else None,
+                    system_instruction=sys_instruction_with_schema,
                     response_mime_type="application/json",
-                    response_schema=schema_class,
                     temperature=0.2,
                 ),
             )
