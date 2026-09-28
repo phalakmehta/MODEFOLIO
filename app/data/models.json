@@ -26,19 +26,19 @@
       "contextWindow": 1000000,
       "maxOutputTokens": 131072,
       "pricing": {
-        "input": 4.0,
-        "output": 12.0,
+        "input": 4,
+        "output": 12,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -87,11 +87,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -140,11 +140,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -185,19 +185,19 @@
       "contextWindow": 1050000,
       "maxOutputTokens": 128000,
       "pricing": {
-        "input": 2.0,
-        "output": 10.0,
+        "input": 2,
+        "output": 10,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -238,19 +238,19 @@
       "contextWindow": 1050000,
       "maxOutputTokens": 128000,
       "pricing": {
-        "input": 2.0,
-        "output": 10.0,
+        "input": 2,
+        "output": 10,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -291,19 +291,19 @@
       "contextWindow": 1000000,
       "maxOutputTokens": 128000,
       "pricing": {
-        "input": 4.0,
-        "output": 20.0,
+        "input": 4,
+        "output": 20,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -351,11 +351,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -396,19 +396,19 @@
       "contextWindow": 1050000,
       "maxOutputTokens": 128000,
       "pricing": {
-        "input": 10.0,
-        "output": 50.0,
+        "input": 10,
+        "output": 50,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -449,19 +449,19 @@
       "contextWindow": 1050000,
       "maxOutputTokens": 128000,
       "pricing": {
-        "input": 10.0,
-        "output": 50.0,
+        "input": 10,
+        "output": 50,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -501,19 +501,19 @@
       "contextWindow": 1000000,
       "maxOutputTokens": 131072,
       "pricing": {
-        "input": 2.0,
-        "output": 6.0,
+        "input": 2,
+        "output": 6,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -562,11 +562,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -614,11 +614,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -659,18 +659,18 @@
       "maxOutputTokens": 131072,
       "pricing": {
         "input": 0.42,
-        "output": 3.0,
+        "output": 3,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -684,7 +684,7 @@
     "news": []
   },
   {
-    "id": "qwen-qwen3.8-27b:free",
+    "id": "qwen-qwen3.8-27b-free",
     "name": "Qwen: Qwen3.8 27B (free)",
     "provider": "Alibaba",
     "releaseDate": "2026",
@@ -710,19 +710,19 @@
       "contextWindow": 262144,
       "maxOutputTokens": 235929,
       "pricing": {
-        "input": 0.0,
-        "output": 0.0,
+        "input": 0,
+        "output": 0,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -762,19 +762,19 @@
       "contextWindow": 1048576,
       "maxOutputTokens": 131072,
       "pricing": {
-        "input": 2.0,
-        "output": 6.0,
+        "input": 2,
+        "output": 6,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -822,11 +822,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -874,11 +874,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -926,11 +926,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -978,11 +978,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1030,11 +1030,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1082,11 +1082,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1134,11 +1134,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1179,18 +1179,18 @@
       "maxOutputTokens": 235929,
       "pricing": {
         "input": 0.15,
-        "output": 1.0,
+        "output": 1,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1238,11 +1238,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1290,11 +1290,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1342,11 +1342,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1394,11 +1394,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1446,11 +1446,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1498,11 +1498,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
@@ -1550,11 +1550,11 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.0
+        "score": 90
       },
       {
         "name": "HumanEval",
-        "score": 92.0
+        "score": 92
       }
     ],
     "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
