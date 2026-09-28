@@ -111,11 +111,20 @@ def main():
     valid_urls = {c["url"] for c in top_candidates}
     valid_items = []
     
+    valid_urls_list = list(valid_urls)
+    
     for item in digest.items:
-        if item.sourceUrl not in valid_urls:
+        matched_url = None
+        for v in valid_urls_list:
+            if item.sourceUrl.strip('/') == v.strip('/') or item.sourceUrl in v or v in item.sourceUrl:
+                matched_url = v
+                break
+                
+        if not matched_url:
             print(f"Dropped item due to hallucinated URL: {item.sourceUrl}")
             continue
             
+        item.sourceUrl = matched_url
         valid_model_ids = [mid for mid in item.modelIds if mid in model_ids]
         item.modelIds = valid_model_ids
         valid_items.append(item)
