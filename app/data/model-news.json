@@ -1,1 +1,40 @@
-{}
+{
+  "deepseek-v3": [
+    {
+      "date": "2026-09-25",
+      "headline": "DeepSeek AI Outperforms OpenAI's GPT-6 Sol in Drug Discovery",
+      "url": "https://eval.raycaster.ai/benchmarks/biopharma-bench/"
+    }
+  ],
+  "openai-gpt-6-sol": [
+    {
+      "date": "2026-09-25",
+      "headline": "DeepSeek AI Outperforms OpenAI's GPT-6 Sol in Drug Discovery",
+      "url": "https://eval.raycaster.ai/benchmarks/biopharma-bench/"
+    }
+  ],
+  "claude-3-opus": [
+    {
+      "date": "2026-09-27",
+      "headline": "Allegations Surface That Anthropic May Be Secretly Reducing AI Model Performance",
+      "url": "https://github.com/ninjahawk/livenerf"
+    },
+    {
+      "date": "2026-09-27",
+      "headline": "Anthropic's AI May Have Made a Scientific Discovery on Its Own",
+      "url": "https://www.nytimes.com/2026/09/27/science/anthropic-biology-enzyme-mestre.html"
+    }
+  ],
+  "claude-3-5-sonnet": [
+    {
+      "date": "2026-09-27",
+      "headline": "Allegations Surface That Anthropic May Be Secretly Reducing AI Model Performance",
+      "url": "https://github.com/ninjahawk/livenerf"
+    },
+    {
+      "date": "2026-09-27",
+      "headline": "Anthropic's AI May Have Made a Scientific Discovery on Its Own",
+      "url": "https://www.nytimes.com/2026/09/27/science/anthropic-biology-enzyme-mestre.html"
+    }
+  ]
+}

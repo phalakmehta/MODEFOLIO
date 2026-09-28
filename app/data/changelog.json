@@ -103,5 +103,47 @@
     "type": "new-model-detected",
     "source": "openrouter",
     "status": "needs-review"
+  },
+  {
+    "date": "2026-09-28",
+    "modelId": "anthropic-claude-sonnet-5.5",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-28",
+    "modelId": "qwen-qwen3.8-max-prime",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-28",
+    "modelId": "cohere-command-a-plus",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-28",
+    "modelId": "openai-gpt-6-luna-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-28",
+    "modelId": "openai-gpt-6-luna",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-09-28",
+    "modelId": "openai-gpt-6-sol-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
   }
 ]
