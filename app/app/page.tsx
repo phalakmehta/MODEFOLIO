@@ -16,7 +16,7 @@ export default function HomePage() {
   const [search, setSearch] = useState('');
   const [showOpenOnly, setShowOpenOnly] = useState(false);
 
-  const fuse = useMemo(() => new Fuse(models, { keys: ['name', 'provider', 'tags'], threshold: 0.3 }), []);
+  const fuse = useMemo(() => new Fuse(models, { keys: ['name', 'provider', 'useCaseTags'], threshold: 0.3 }), []);
   
   const filtered = useMemo(() => {
     let result = search ? fuse.search(search).map(r => r.item) : [...models];

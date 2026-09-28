@@ -195,7 +195,7 @@ def main():
             "name": or_model.get("name", internal_id),
             "provider": provider,
             "releaseDate": datetime.datetime.fromtimestamp(created, datetime.timezone.utc).strftime("%Y-%m"),
-            "openSource": False,
+            "openSource": provider in ["meta-llama", "qwen", "mistralai"],
             "modality": ["text"],
             "summary": "",
             "inPractice": {"strengths": [], "weaknesses": []},
