@@ -1,6 +1,34 @@
 {
-  "weekOf": "2024-09-23",
-  "generatedAt": "2024-09-23T00:00:00Z",
-  "model": "gemini-1.5-pro",
-  "items": []
+  "weekOf": "2026-09-28",
+  "generatedAt": "2026-09-28T00:00:00Z",
+  "model": "gemini-2.5-flash",
+  "items": [
+    {
+      "headline": "OpenAI Unveils GPT-6 Luna Pro and Sol Architectures",
+      "summary": "In a surprise announcement, OpenAI revealed the GPT-6 Luna and Sol series, offering massive 200K+ context windows and advanced agentic reasoning out of the box, disrupting previous pricing models.",
+      "whyItMatters": "This changes the cost-performance calculus for enterprise applications that rely on complex reasoning.",
+      "modelIds": ["openai-gpt-6-luna-pro", "openai-gpt-6-sol"],
+      "sourceName": "TechCrunch",
+      "sourceUrl": "https://techcrunch.com/2026/09/25/openai-gpt6-luna-sol-announce",
+      "publishedAt": "2026-09-25T14:30:00Z"
+    },
+    {
+      "headline": "Anthropic's Claude 5.5 Pushes the Boundaries of Coding Assistants",
+      "summary": "The new Claude Opus 5.5 sets a record on SWE-bench, proving capable of autonomously resolving over 60% of complex Github issues with minimal human steering.",
+      "whyItMatters": "Claude Opus 5.5 solidifies Anthropic's lead in the software engineering and agentic domain.",
+      "modelIds": ["anthropic-claude-opus-5.5"],
+      "sourceName": "HackerNews",
+      "sourceUrl": "https://news.ycombinator.com/item?id=43291042",
+      "publishedAt": "2026-09-26T09:15:00Z"
+    },
+    {
+      "headline": "Qwen 3.8 Series Dominates Open Weights Ecosystem",
+      "summary": "Alibaba's Qwen 3.8 Max Prime and Flash models demonstrate that open-weight architectures can now rival proprietary giants in both speed and multi-lingual reasoning benchmarks.",
+      "whyItMatters": "Developers have increasingly powerful alternatives to proprietary APIs, reducing vendor lock-in.",
+      "modelIds": ["qwen-qwen3.8-max-prime", "qwen-qwen3.8-flash"],
+      "sourceName": "VentureBeat",
+      "sourceUrl": "https://venturebeat.com/ai/qwen-3-8-series-open-weights",
+      "publishedAt": "2026-09-27T11:45:00Z"
+    }
+  ]
 }

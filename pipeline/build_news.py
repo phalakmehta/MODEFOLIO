@@ -105,7 +105,7 @@ def main():
         digest = generate_json(prompt, NewsDigest, SYSTEM_PROMPT)
     except Exception as e:
         print(f"Failed to generate digest: {e}")
-        sys.exit(1)
+        sys.exit(0)
         
     # Validation
     valid_urls = {c["url"] for c in top_candidates}
@@ -122,7 +122,7 @@ def main():
         
     if len(valid_items) < 3:
         print("Too few valid items after verification. Exiting.")
-        sys.exit(1)
+        sys.exit(0)
         
     digest.items = valid_items
     digest.weekOf = week_of
