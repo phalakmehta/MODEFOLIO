@@ -1,23 +1,24 @@
 [
   {
-    "id": "claude-opus-5",
-    "name": "Claude Opus 5",
-    "provider": "Anthropic",
-    "releaseDate": "2025/2026",
+    "id": "gpt-4o",
+    "name": "GPT-4o",
+    "provider": "OpenAI",
+    "releaseDate": "2024-05-13",
     "openSource": false,
     "modality": [
       "text",
-      "code"
+      "image",
+      "video"
     ],
-    "summary": "A highly capable dense model from Anthropic, specializing in coding and agentic and complex reasoning. Scores 93.1% on MMLU.",
+    "summary": "A highly capable dense model from OpenAI, specializing in general, multimodal, fast. Scores 88.7% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at coding",
-        "Cost effective at $20.00 input"
+        "Excellent at general",
+        "Cost effective at $2.500 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -25,200 +26,11 @@
       "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
-      "contextWindow": 400000,
+      "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 20,
-        "output": 100,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 93.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 97.2
-      },
-      {
-        "name": "MATH-500",
-        "score": 97.8
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 74.5
-      }
-    ],
-    "benchmarkCaveat": "While Claude Opus 5 scores 93.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "agentic",
-      "complex reasoning"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "claude-sonnet-5",
-    "name": "Claude Sonnet 5",
-    "provider": "Anthropic",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Anthropic, specializing in coding and writing and value. Scores 91.8% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $4.00 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 400000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 4,
-        "output": 20,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 91.8
-      },
-      {
-        "name": "HumanEval",
-        "score": 95.6
-      },
-      {
-        "name": "MATH-500",
-        "score": 96.4
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 73.4
-      }
-    ],
-    "benchmarkCaveat": "While Claude Sonnet 5 scores 91.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "writing",
-      "value"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "claude-fable",
-    "name": "Fable",
-    "provider": "Anthropic",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Anthropic, specializing in fast and cheap and chatbot. Scores 87.3% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at fast",
-        "Cost effective at $0.25 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 200000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.25,
-        "output": 1.25,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 87.3
-      },
-      {
-        "name": "HumanEval",
-        "score": 89.5
-      },
-      {
-        "name": "MATH-500",
-        "score": 91.7
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 69.8
-      }
-    ],
-    "benchmarkCaveat": "While Fable scores 87.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "fast",
-      "cheap",
-      "chatbot"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "claude-3-5-sonnet",
-    "name": "Claude 3.5 Sonnet",
-    "provider": "Anthropic",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Anthropic, specializing in coding and writing. Scores 88.7% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $3.00 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 200000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 15,
+        "input": 2.5,
+        "output": 10,
         "unit": "per 1M tokens"
       }
     },
@@ -229,46 +41,48 @@
       },
       {
         "name": "HumanEval",
-        "score": 92
+        "score": 90.2
       },
       {
-        "name": "MATH-500",
-        "score": 93.1
+        "name": "MATH",
+        "score": 79.8
       },
       {
-        "name": "GPQA Diamond",
-        "score": 71
+        "name": "GPQA",
+        "score": 53.2
       }
     ],
-    "benchmarkCaveat": "While Claude 3.5 Sonnet scores 88.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While GPT-4o scores 88.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "coding",
-      "writing"
+      "general",
+      "multimodal",
+      "fast"
     ],
     "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
+      "docsUrl": "https://platform.openai.com/docs"
     },
     "news": []
   },
   {
-    "id": "claude-3-opus",
-    "name": "Claude 3 Opus",
-    "provider": "Anthropic",
-    "releaseDate": "2025/2026",
+    "id": "gpt-4o-mini",
+    "name": "GPT-4o mini",
+    "provider": "OpenAI",
+    "releaseDate": "2024-07-18",
     "openSource": false,
     "modality": [
       "text",
-      "code"
+      "image",
+      "video"
     ],
-    "summary": "A highly capable dense model from Anthropic, specializing in legacy and writing. Scores 86.8% on MMLU.",
+    "summary": "A highly capable dense model from OpenAI, specializing in cheap-volume, chat, general. Scores 82% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at legacy",
-        "Cost effective at $15.00 input"
+        "Excellent at cheap-volume",
+        "Cost effective at $0.150 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -276,543 +90,40 @@
       "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
-      "contextWindow": 200000,
+      "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 15,
-        "output": 75,
+        "input": 0.15,
+        "output": 0.6,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 86.8
+        "score": 82
       },
       {
         "name": "HumanEval",
-        "score": 84.9
+        "score": 87
       },
       {
-        "name": "MATH-500",
-        "score": 91.1
+        "name": "MATH",
+        "score": 73.8
       },
       {
-        "name": "GPQA Diamond",
-        "score": 69.4
+        "name": "GPQA",
+        "score": 49.2
       }
     ],
-    "benchmarkCaveat": "While Claude 3 Opus scores 86.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While GPT-4o mini scores 82% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "legacy",
-      "writing"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-muse",
-    "name": "Gemini Muse",
-    "provider": "Google",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "image",
-      "video"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in multimodal and creative and general. Scores 92.4% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at multimodal",
-        "Cost effective at $3.00 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 2000000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 12,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 92.4
-      },
-      {
-        "name": "HumanEval",
-        "score": 91.3
-      },
-      {
-        "name": "MATH-500",
-        "score": 97
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 73.9
-      }
-    ],
-    "benchmarkCaveat": "While Gemini Muse scores 92.4% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "multimodal",
-      "creative",
+      "cheap-volume",
+      "chat",
       "general"
     ],
     "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-glimmer",
-    "name": "Gemini Glimmer",
-    "provider": "Google",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in fast and cheap and high-volume. Scores 82.1% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at fast",
-        "Cost effective at $0.03 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 524288,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.03,
-        "output": 0.1,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 82.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 81.5
-      },
-      {
-        "name": "MATH-500",
-        "score": 86.2
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 65.7
-      }
-    ],
-    "benchmarkCaveat": "While Gemini Glimmer scores 82.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "fast",
-      "cheap",
-      "high-volume"
-    ],
-    "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-flash-v4",
-    "name": "Gemini Flash V4",
-    "provider": "Google",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in fast and value and multimodal. Scores 91.7% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at fast",
-        "Cost effective at $0.10 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 2000000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.1,
-        "output": 0.4,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 91.7
-      },
-      {
-        "name": "HumanEval",
-        "score": 92.1
-      },
-      {
-        "name": "MATH-500",
-        "score": 96.3
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 73.4
-      }
-    ],
-    "benchmarkCaveat": "While Gemini Flash V4 scores 91.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "fast",
-      "value",
-      "multimodal"
-    ],
-    "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-deep-think",
-    "name": "Gemini Deep Think",
-    "provider": "Google",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in research and math and complex reasoning. Scores 94.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at research",
-        "Cost effective at $2.50 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 2000000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 2.5,
-        "output": 15,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 94.2
-      },
-      {
-        "name": "HumanEval",
-        "score": 94.8
-      },
-      {
-        "name": "MATH-500",
-        "score": 98.9
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 75.4
-      }
-    ],
-    "benchmarkCaveat": "While Gemini Deep Think scores 94.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "research",
-      "math",
-      "complex reasoning"
-    ],
-    "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-1-5-pro",
-    "name": "Gemini 1.5 Pro",
-    "provider": "Google",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in legacy and long documents. Scores 85.9% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at legacy",
-        "Cost effective at $1.25 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 2000000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 1.25,
-        "output": 5,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 85.9
-      },
-      {
-        "name": "HumanEval",
-        "score": 84.1
-      },
-      {
-        "name": "MATH-500",
-        "score": 90.2
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 68.7
-      }
-    ],
-    "benchmarkCaveat": "While Gemini 1.5 Pro scores 85.9% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "legacy",
-      "long documents"
-    ],
-    "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gpt-5",
-    "name": "GPT-5",
-    "provider": "OpenAI",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from OpenAI, specializing in general and coding and research. Scores 93.5% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at general",
-        "Cost effective at $3.00 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 1000000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 15,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 93.5
-      },
-      {
-        "name": "HumanEval",
-        "score": 95.1
-      },
-      {
-        "name": "MATH-500",
-        "score": 98.2
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 74.8
-      }
-    ],
-    "benchmarkCaveat": "While GPT-5 scores 93.5% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "general",
-      "coding",
-      "research"
-    ],
-    "howToUse": {
-      "docsUrl": "https://openai.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gpt-5-mini",
-    "name": "GPT-5 mini",
-    "provider": "OpenAI",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from OpenAI, specializing in cheap and fast and general. Scores 88.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at cheap",
-        "Cost effective at $0.20 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 256000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.2,
-        "output": 0.8,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 88.2
-      },
-      {
-        "name": "HumanEval",
-        "score": 90.3
-      },
-      {
-        "name": "MATH-500",
-        "score": 92.6
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 70.6
-      }
-    ],
-    "benchmarkCaveat": "While GPT-5 mini scores 88.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "cheap",
-      "fast",
-      "general"
-    ],
-    "howToUse": {
-      "docsUrl": "https://openai.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "o3",
-    "name": "o3",
-    "provider": "OpenAI",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from OpenAI, specializing in complex reasoning and math and coding. Scores 95.1% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at complex reasoning",
-        "Cost effective at $5.00 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 200000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 5,
-        "output": 20,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 95.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 96
-      },
-      {
-        "name": "MATH-500",
-        "score": 99.9
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 76.1
-      }
-    ],
-    "benchmarkCaveat": "While o3 scores 95.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "complex reasoning",
-      "math",
-      "coding"
-    ],
-    "howToUse": {
-      "docsUrl": "https://openai.com/docs"
+      "docsUrl": "https://platform.openai.com/docs"
     },
     "news": []
   },
@@ -820,21 +131,21 @@
     "id": "o1-preview",
     "name": "o1-preview",
     "provider": "OpenAI",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-09-12",
     "openSource": false,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable moe model from OpenAI, specializing in complex reasoning and legacy. Scores 90.8% on MMLU.",
+    "summary": "A highly capable moe model from OpenAI, specializing in research, coding, math. Scores 90.8% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at complex reasoning",
-        "Cost effective at $15.00 input"
+        "Excellent at research",
+        "Cost effective at $15.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -860,44 +171,107 @@
         "score": 92.4
       },
       {
-        "name": "MATH-500",
-        "score": 95.3
+        "name": "MATH",
+        "score": 81.7
       },
       {
-        "name": "GPQA Diamond",
-        "score": 72.6
+        "name": "GPQA",
+        "score": 54.5
       }
     ],
     "benchmarkCaveat": "While o1-preview scores 90.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "complex reasoning",
-      "legacy"
+      "research",
+      "coding",
+      "math"
     ],
     "howToUse": {
-      "docsUrl": "https://openai.com/docs"
+      "docsUrl": "https://platform.openai.com/docs"
     },
     "news": []
   },
   {
-    "id": "gpt-4o",
-    "name": "GPT-4o",
+    "id": "o1-mini",
+    "name": "o1-mini",
     "provider": "OpenAI",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-09-12",
+    "openSource": false,
+    "modality": [
+      "text",
+      "code"
+    ],
+    "summary": "A highly capable moe model from OpenAI, specializing in coding, math. Scores 85.2% on MMLU.",
+    "inPractice": {
+      "strengths": [
+        "Excellent at coding",
+        "Cost effective at $3.000 input"
+      ],
+      "weaknesses": [
+        "May struggle with very specific edge cases",
+        "Benchmark scores don't always map to real world vibes"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
+    },
+    "specs": {
+      "contextWindow": 128000,
+      "maxOutputTokens": 16384,
+      "pricing": {
+        "input": 3,
+        "output": 12,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 85.2
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.4
+      },
+      {
+        "name": "MATH",
+        "score": 76.7
+      },
+      {
+        "name": "GPQA",
+        "score": 51.1
+      }
+    ],
+    "benchmarkCaveat": "While o1-mini scores 85.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "useCaseTags": [
+      "coding",
+      "math"
+    ],
+    "howToUse": {
+      "docsUrl": "https://platform.openai.com/docs"
+    },
+    "news": []
+  },
+  {
+    "id": "claude-3-5-sonnet",
+    "name": "Claude 3.5 Sonnet",
+    "provider": "Anthropic",
+    "releaseDate": "2024-06-20",
     "openSource": false,
     "modality": [
       "text",
       "image",
       "video"
     ],
-    "summary": "A highly capable dense model from OpenAI, specializing in general and multimodal and fast. Scores 88.7% on MMLU.",
+    "summary": "A highly capable dense model from Anthropic, specializing in coding, writing, general. Scores 88.7% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at general",
-        "Cost effective at $2.50 input"
+        "Excellent at coding",
+        "Cost effective at $3.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -905,11 +279,11 @@
       "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
-      "contextWindow": 128000,
+      "contextWindow": 200000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 2.5,
-        "output": 10,
+        "input": 3,
+        "output": 15,
         "unit": "per 1M tokens"
       }
     },
@@ -920,48 +294,47 @@
       },
       {
         "name": "HumanEval",
-        "score": 90.2
+        "score": 92
       },
       {
-        "name": "MATH-500",
-        "score": 93.1
+        "name": "MATH",
+        "score": 79.8
       },
       {
-        "name": "GPQA Diamond",
-        "score": 71
+        "name": "GPQA",
+        "score": 53.2
       }
     ],
-    "benchmarkCaveat": "While GPT-4o scores 88.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Claude 3.5 Sonnet scores 88.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "general",
-      "multimodal",
-      "fast"
+      "coding",
+      "writing",
+      "general"
     ],
     "howToUse": {
-      "docsUrl": "https://openai.com/docs"
+      "docsUrl": "https://anthropic.com/docs"
     },
     "news": []
   },
   {
-    "id": "gpt-4o-mini",
-    "name": "GPT-4o mini",
-    "provider": "OpenAI",
-    "releaseDate": "2025/2026",
+    "id": "claude-3-opus",
+    "name": "Claude 3 Opus",
+    "provider": "Anthropic",
+    "releaseDate": "2024-03-04",
     "openSource": false,
     "modality": [
       "text",
-      "image",
-      "video"
+      "code"
     ],
-    "summary": "A highly capable dense model from OpenAI, specializing in cheap and fast. Scores 82% on MMLU.",
+    "summary": "A highly capable dense model from Anthropic, specializing in writing, research. Scores 86.8% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at cheap",
-        "Cost effective at $0.15 input"
+        "Excellent at writing",
+        "Cost effective at $15.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -969,61 +342,125 @@
       "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
-      "contextWindow": 128000,
+      "contextWindow": 200000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.15,
-        "output": 0.6,
+        "input": 15,
+        "output": 75,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 82
+        "score": 86.8
       },
       {
         "name": "HumanEval",
-        "score": 87.2
+        "score": 84.9
       },
       {
-        "name": "MATH-500",
-        "score": 86.1
+        "name": "MATH",
+        "score": 78.1
       },
       {
-        "name": "GPQA Diamond",
-        "score": 65.6
+        "name": "GPQA",
+        "score": 52.1
       }
     ],
-    "benchmarkCaveat": "While GPT-4o mini scores 82% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Claude 3 Opus scores 86.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "cheap",
-      "fast"
+      "writing",
+      "research"
     ],
     "howToUse": {
-      "docsUrl": "https://openai.com/docs"
+      "docsUrl": "https://anthropic.com/docs"
     },
     "news": []
   },
   {
-    "id": "llama-5-400b",
-    "name": "Llama 5 400B",
-    "provider": "Meta",
-    "releaseDate": "2025/2026",
-    "openSource": true,
+    "id": "claude-3-haiku",
+    "name": "Claude 3 Haiku",
+    "provider": "Anthropic",
+    "releaseDate": "2024-03-13",
+    "openSource": false,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable moe model from Meta, specializing in open-source and general and coding. Scores 92.1% on MMLU.",
+    "summary": "A highly capable dense model from Anthropic, specializing in cheap-volume, research, fast. Scores 75.2% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.40 input"
+        "Excellent at cheap-volume",
+        "Cost effective at $0.250 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
+    },
+    "specs": {
+      "contextWindow": 200000,
+      "maxOutputTokens": 16384,
+      "pricing": {
+        "input": 0.25,
+        "output": 1.25,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 75.2
+      },
+      {
+        "name": "HumanEval",
+        "score": 75.9
+      },
+      {
+        "name": "MATH",
+        "score": 67.7
+      },
+      {
+        "name": "GPQA",
+        "score": 45.1
+      }
+    ],
+    "benchmarkCaveat": "While Claude 3 Haiku scores 75.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "useCaseTags": [
+      "cheap-volume",
+      "research",
+      "fast"
+    ],
+    "howToUse": {
+      "docsUrl": "https://anthropic.com/docs"
+    },
+    "news": []
+  },
+  {
+    "id": "gemini-1-5-pro",
+    "name": "Gemini 1.5 Pro",
+    "provider": "Google",
+    "releaseDate": "2024-04-09",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image",
+      "video"
+    ],
+    "summary": "A highly capable moe model from Google, specializing in research, coding, multimodal. Scores 85.9% on MMLU.",
+    "inPractice": {
+      "strengths": [
+        "Excellent at research",
+        "Cost effective at $3.500 input"
+      ],
+      "weaknesses": [
+        "May struggle with very specific edge cases",
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1031,165 +468,104 @@
       "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
     },
     "specs": {
-      "contextWindow": 524288,
+      "contextWindow": 2000000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.4,
-        "output": 1.6,
+        "input": 3.5,
+        "output": 10.5,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 92.1
+        "score": 85.9
       },
       {
         "name": "HumanEval",
-        "score": 93.5
+        "score": 84.1
       },
       {
-        "name": "MATH-500",
-        "score": 96.7
+        "name": "MATH",
+        "score": 77.3
       },
       {
-        "name": "GPQA Diamond",
-        "score": 73.7
+        "name": "GPQA",
+        "score": 51.5
       }
     ],
-    "benchmarkCaveat": "While Llama 5 400B scores 92.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Gemini 1.5 Pro scores 85.9% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "general",
-      "coding"
+      "research",
+      "coding",
+      "multimodal"
     ],
     "howToUse": {
-      "docsUrl": "https://meta.com/docs"
+      "docsUrl": "https://google.com/docs"
     },
     "news": []
   },
   {
-    "id": "llama-5-70b",
-    "name": "Llama 5 70B",
-    "provider": "Meta",
-    "releaseDate": "2025/2026",
-    "openSource": true,
+    "id": "gemini-1-5-flash",
+    "name": "Gemini 1.5 Flash",
+    "provider": "Google",
+    "releaseDate": "2024-05-14",
+    "openSource": false,
     "modality": [
       "text",
-      "code"
+      "image",
+      "video"
     ],
-    "summary": "A highly capable dense model from Meta, specializing in open-source and value. Scores 88.5% on MMLU.",
+    "summary": "A highly capable moe model from Google, specializing in cheap-volume, multimodal, fast. Scores 78.9% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.15 input"
+        "Excellent at cheap-volume",
+        "Cost effective at $0.075 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
+      "type": "mixture-of-experts",
+      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
     },
     "specs": {
-      "contextWindow": 524288,
+      "contextWindow": 1000000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.15,
-        "output": 0.6,
+        "input": 0.075,
+        "output": 0.3,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 88.5
+        "score": 78.9
       },
       {
         "name": "HumanEval",
-        "score": 90.1
+        "score": 71.5
       },
       {
-        "name": "MATH-500",
-        "score": 92.9
+        "name": "MATH",
+        "score": 71
       },
       {
-        "name": "GPQA Diamond",
-        "score": 70.8
+        "name": "GPQA",
+        "score": 47.3
       }
     ],
-    "benchmarkCaveat": "While Llama 5 70B scores 88.5% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Gemini 1.5 Flash scores 78.9% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "value"
+      "cheap-volume",
+      "multimodal",
+      "fast"
     ],
     "howToUse": {
-      "docsUrl": "https://meta.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "llama-5-8b",
-    "name": "Llama 5 8B",
-    "provider": "Meta",
-    "releaseDate": "2025/2026",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Meta, specializing in open-source and fast and cheap. Scores 79.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.05 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 256000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.05,
-        "output": 0.15,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 79.2
-      },
-      {
-        "name": "HumanEval",
-        "score": 78.5
-      },
-      {
-        "name": "MATH-500",
-        "score": 83.2
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 63.4
-      }
-    ],
-    "benchmarkCaveat": "While Llama 5 8B scores 79.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "open-source",
-      "fast",
-      "cheap"
-    ],
-    "howToUse": {
-      "docsUrl": "https://meta.com/docs"
+      "docsUrl": "https://google.com/docs"
     },
     "news": []
   },
@@ -1197,21 +573,21 @@
     "id": "llama-3-1-405b",
     "name": "Llama 3.1 405B",
     "provider": "Meta",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-07-23",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Meta, specializing in open-source and legacy. Scores 88.6% on MMLU.",
+    "summary": "A highly capable dense model from Meta, specializing in general, coding, research. Scores 88.6% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.70 input"
+        "Excellent at general",
+        "Cost effective at $3.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1222,8 +598,8 @@
       "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.7,
-        "output": 2,
+        "input": 3,
+        "output": 3,
         "unit": "per 1M tokens"
       }
     },
@@ -1237,18 +613,145 @@
         "score": 89
       },
       {
-        "name": "MATH-500",
-        "score": 93
+        "name": "MATH",
+        "score": 79.7
       },
       {
-        "name": "GPQA Diamond",
-        "score": 70.9
+        "name": "GPQA",
+        "score": 53.2
       }
     ],
     "benchmarkCaveat": "While Llama 3.1 405B scores 88.6% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "legacy"
+      "general",
+      "coding",
+      "research"
+    ],
+    "howToUse": {
+      "docsUrl": "https://meta.com/docs"
+    },
+    "news": []
+  },
+  {
+    "id": "llama-3-1-70b",
+    "name": "Llama 3.1 70B",
+    "provider": "Meta",
+    "releaseDate": "2024-07-23",
+    "openSource": true,
+    "modality": [
+      "text",
+      "code"
+    ],
+    "summary": "A highly capable dense model from Meta, specializing in general, chat, coding. Scores 83.6% on MMLU.",
+    "inPractice": {
+      "strengths": [
+        "Excellent at general",
+        "Cost effective at $0.520 input"
+      ],
+      "weaknesses": [
+        "May struggle with very specific edge cases",
+        "Benchmark scores don't always map to real world vibes"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
+    },
+    "specs": {
+      "contextWindow": 128000,
+      "maxOutputTokens": 16384,
+      "pricing": {
+        "input": 0.52,
+        "output": 0.75,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 83.6
+      },
+      {
+        "name": "HumanEval",
+        "score": 80.5
+      },
+      {
+        "name": "MATH",
+        "score": 75.2
+      },
+      {
+        "name": "GPQA",
+        "score": 50.2
+      }
+    ],
+    "benchmarkCaveat": "While Llama 3.1 70B scores 83.6% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "useCaseTags": [
+      "general",
+      "chat",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://meta.com/docs"
+    },
+    "news": []
+  },
+  {
+    "id": "llama-3-1-8b",
+    "name": "Llama 3.1 8B",
+    "provider": "Meta",
+    "releaseDate": "2024-07-23",
+    "openSource": true,
+    "modality": [
+      "text",
+      "code"
+    ],
+    "summary": "A highly capable dense model from Meta, specializing in cheap-volume, fast, chat. Scores 73% on MMLU.",
+    "inPractice": {
+      "strengths": [
+        "Excellent at cheap-volume",
+        "Cost effective at $0.050 input"
+      ],
+      "weaknesses": [
+        "May struggle with very specific edge cases",
+        "Benchmark scores don't always map to real world vibes"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
+    },
+    "specs": {
+      "contextWindow": 128000,
+      "maxOutputTokens": 16384,
+      "pricing": {
+        "input": 0.05,
+        "output": 0.05,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 73
+      },
+      {
+        "name": "HumanEval",
+        "score": 72.6
+      },
+      {
+        "name": "MATH",
+        "score": 65.7
+      },
+      {
+        "name": "GPQA",
+        "score": 43.8
+      }
+    ],
+    "benchmarkCaveat": "While Llama 3.1 8B scores 73% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "useCaseTags": [
+      "cheap-volume",
+      "fast",
+      "chat"
     ],
     "howToUse": {
       "docsUrl": "https://meta.com/docs"
@@ -1259,21 +762,21 @@
     "id": "llama-3-2-3b",
     "name": "Llama 3.2 3B",
     "provider": "Meta",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-09-25",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Meta, specializing in open-source and edge and cheap. Scores 63.4% on MMLU.",
+    "summary": "A highly capable dense model from Meta, specializing in edge, cheap-volume. Scores 63.4% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.02 input"
+        "Excellent at edge",
+        "Cost effective at $0.020 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1299,19 +802,18 @@
         "score": 60.1
       },
       {
-        "name": "MATH-500",
-        "score": 66.6
+        "name": "MATH",
+        "score": 57.1
       },
       {
-        "name": "GPQA Diamond",
-        "score": 50.7
+        "name": "GPQA",
+        "score": 38
       }
     ],
     "benchmarkCaveat": "While Llama 3.2 3B scores 63.4% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
       "edge",
-      "cheap"
+      "cheap-volume"
     ],
     "howToUse": {
       "docsUrl": "https://meta.com/docs"
@@ -1319,401 +821,24 @@
     "news": []
   },
   {
-    "id": "deepseek-flash-4",
-    "name": "DeepSeek Flash 4",
-    "provider": "DeepSeek",
-    "releaseDate": "2025/2026",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from DeepSeek, specializing in open-source and coding and cheap. Scores 89.8% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.10 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 256000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.1,
-        "output": 0.4,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 89.8
-      },
-      {
-        "name": "HumanEval",
-        "score": 97.5
-      },
-      {
-        "name": "MATH-500",
-        "score": 94.3
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 71.8
-      }
-    ],
-    "benchmarkCaveat": "While DeepSeek Flash 4 scores 89.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "open-source",
-      "coding",
-      "cheap"
-    ],
-    "howToUse": {
-      "docsUrl": "https://deepseek.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "deepseek-r2",
-    "name": "DeepSeek R2",
-    "provider": "DeepSeek",
-    "releaseDate": "2025/2026",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from DeepSeek, specializing in open-source and complex reasoning and math. Scores 93.1% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.40 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 256000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.4,
-        "output": 1.6,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 93.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 92.1
-      },
-      {
-        "name": "MATH-500",
-        "score": 97.8
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 74.5
-      }
-    ],
-    "benchmarkCaveat": "While DeepSeek R2 scores 93.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "open-source",
-      "complex reasoning",
-      "math"
-    ],
-    "howToUse": {
-      "docsUrl": "https://deepseek.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "deepseek-v3",
-    "name": "DeepSeek V3",
-    "provider": "DeepSeek",
-    "releaseDate": "2025/2026",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from DeepSeek, specializing in open-source and general. Scores 87.1% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.14 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.14,
-        "output": 0.28,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 87.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 88.2
-      },
-      {
-        "name": "MATH-500",
-        "score": 91.5
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 69.7
-      }
-    ],
-    "benchmarkCaveat": "While DeepSeek V3 scores 87.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "open-source",
-      "general"
-    ],
-    "howToUse": {
-      "docsUrl": "https://deepseek.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "deepseek-r1",
-    "name": "DeepSeek R1",
-    "provider": "DeepSeek",
-    "releaseDate": "2025/2026",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from DeepSeek, specializing in open-source and complex reasoning and legacy. Scores 90.8% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.55 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.55,
-        "output": 2.19,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 90.8
-      },
-      {
-        "name": "HumanEval",
-        "score": 91.5
-      },
-      {
-        "name": "MATH-500",
-        "score": 95.3
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 72.6
-      }
-    ],
-    "benchmarkCaveat": "While DeepSeek R1 scores 90.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "open-source",
-      "complex reasoning",
-      "legacy"
-    ],
-    "howToUse": {
-      "docsUrl": "https://deepseek.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "deepseek-coder-v2",
-    "name": "DeepSeek Coder V2",
-    "provider": "DeepSeek",
-    "releaseDate": "2025/2026",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from DeepSeek, specializing in open-source and coding and legacy. Scores 79.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.14 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.14,
-        "output": 0.28,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 79.2
-      },
-      {
-        "name": "HumanEval",
-        "score": 90.2
-      },
-      {
-        "name": "MATH-500",
-        "score": 83.2
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 63.4
-      }
-    ],
-    "benchmarkCaveat": "While DeepSeek Coder V2 scores 79.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "open-source",
-      "coding",
-      "legacy"
-    ],
-    "howToUse": {
-      "docsUrl": "https://deepseek.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "mistral-frontier",
-    "name": "Mistral Frontier",
-    "provider": "Mistral",
-    "releaseDate": "2025/2026",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from Mistral, specializing in multilingual and general and coding. Scores 91.5% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at multilingual",
-        "Cost effective at $2.50 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 256000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 2.5,
-        "output": 10,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 91.5
-      },
-      {
-        "name": "HumanEval",
-        "score": 92.8
-      },
-      {
-        "name": "MATH-500",
-        "score": 96.1
-      },
-      {
-        "name": "GPQA Diamond",
-        "score": 73.2
-      }
-    ],
-    "benchmarkCaveat": "While Mistral Frontier scores 91.5% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "multilingual",
-      "general",
-      "coding"
-    ],
-    "howToUse": {
-      "docsUrl": "https://mistral.com/docs"
-    },
-    "news": []
-  },
-  {
     "id": "mistral-large-2",
     "name": "Mistral Large 2",
     "provider": "Mistral",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-07-24",
     "openSource": false,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Mistral, specializing in multilingual and legacy. Scores 84% on MMLU.",
+    "summary": "A highly capable dense model from Mistral, specializing in general, coding, writing. Scores 84% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at multilingual",
-        "Cost effective at $2.00 input"
+        "Excellent at general",
+        "Cost effective at $2.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1736,21 +861,22 @@
       },
       {
         "name": "HumanEval",
-        "score": 86.1
+        "score": 92
       },
       {
-        "name": "MATH-500",
-        "score": 88.2
+        "name": "MATH",
+        "score": 75.6
       },
       {
-        "name": "GPQA Diamond",
-        "score": 67.2
+        "name": "GPQA",
+        "score": 50.4
       }
     ],
     "benchmarkCaveat": "While Mistral Large 2 scores 84% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "multilingual",
-      "legacy"
+      "general",
+      "coding",
+      "writing"
     ],
     "howToUse": {
       "docsUrl": "https://mistral.com/docs"
@@ -1761,21 +887,21 @@
     "id": "mixtral-8x22b",
     "name": "Mixtral 8x22B",
     "provider": "Mistral",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-04-10",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable moe model from Mistral, specializing in open-source and legacy. Scores 77.3% on MMLU.",
+    "summary": "A highly capable moe model from Mistral, specializing in general, chat. Scores 77.3% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.60 input"
+        "Excellent at general",
+        "Cost effective at $0.600 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1801,18 +927,18 @@
         "score": 75.1
       },
       {
-        "name": "MATH-500",
-        "score": 81.2
+        "name": "MATH",
+        "score": 69.6
       },
       {
-        "name": "GPQA Diamond",
-        "score": 61.8
+        "name": "GPQA",
+        "score": 46.4
       }
     ],
     "benchmarkCaveat": "While Mixtral 8x22B scores 77.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "legacy"
+      "general",
+      "chat"
     ],
     "howToUse": {
       "docsUrl": "https://mistral.com/docs"
@@ -1821,23 +947,23 @@
   },
   {
     "id": "mistral-nemo",
-    "name": "Mistral Nemo (12B)",
+    "name": "Mistral Nemo",
     "provider": "Mistral",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-07-18",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Mistral, specializing in open-source and edge. Scores 68.1% on MMLU.",
+    "summary": "A highly capable dense model from Mistral, specializing in edge, fast. Scores 68.1% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.10 input"
+        "Excellent at edge",
+        "Cost effective at $0.100 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1863,18 +989,18 @@
         "score": 65.2
       },
       {
-        "name": "MATH-500",
-        "score": 71.5
+        "name": "MATH",
+        "score": 61.3
       },
       {
-        "name": "GPQA Diamond",
-        "score": 54.5
+        "name": "GPQA",
+        "score": 40.9
       }
     ],
-    "benchmarkCaveat": "While Mistral Nemo (12B) scores 68.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Mistral Nemo scores 68.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "edge"
+      "edge",
+      "fast"
     ],
     "howToUse": {
       "docsUrl": "https://mistral.com/docs"
@@ -1882,65 +1008,64 @@
     "news": []
   },
   {
-    "id": "qwen-4",
-    "name": "Qwen 4",
-    "provider": "Alibaba",
-    "releaseDate": "2025/2026",
+    "id": "deepseek-coder-v2",
+    "name": "DeepSeek Coder V2",
+    "provider": "DeepSeek",
+    "releaseDate": "2024-06-17",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Alibaba, specializing in open-source and multilingual and coding. Scores 91.2% on MMLU.",
+    "summary": "A highly capable moe model from DeepSeek, specializing in coding, cheap-volume. Scores 79.2% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.50 input"
+        "Excellent at coding",
+        "Cost effective at $0.140 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
+      "type": "mixture-of-experts",
+      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
     },
     "specs": {
-      "contextWindow": 262144,
+      "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.5,
-        "output": 2,
+        "input": 0.14,
+        "output": 0.28,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 91.2
+        "score": 79.2
       },
       {
         "name": "HumanEval",
-        "score": 94.1
+        "score": 90.2
       },
       {
-        "name": "MATH-500",
-        "score": 95.8
+        "name": "MATH",
+        "score": 71.3
       },
       {
-        "name": "GPQA Diamond",
-        "score": 73
+        "name": "GPQA",
+        "score": 47.5
       }
     ],
-    "benchmarkCaveat": "While Qwen 4 scores 91.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While DeepSeek Coder V2 scores 79.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "multilingual",
-      "coding"
+      "coding",
+      "cheap-volume"
     ],
     "howToUse": {
-      "docsUrl": "https://qwen.com/docs"
+      "docsUrl": "https://deepseek.com/docs"
     },
     "news": []
   },
@@ -1948,21 +1073,21 @@
     "id": "qwen-2-5-72b",
     "name": "Qwen 2.5 72B",
     "provider": "Alibaba",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-09-19",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Alibaba, specializing in open-source and multilingual. Scores 85.3% on MMLU.",
+    "summary": "A highly capable dense model from Alibaba, specializing in coding, math, general. Scores 85.3% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.30 input"
+        "Excellent at coding",
+        "Cost effective at $0.400 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -1973,8 +1098,8 @@
       "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.3,
-        "output": 0.8,
+        "input": 0.4,
+        "output": 0.4,
         "unit": "per 1M tokens"
       }
     },
@@ -1985,21 +1110,22 @@
       },
       {
         "name": "HumanEval",
-        "score": 86.8
+        "score": 86.6
       },
       {
-        "name": "MATH-500",
-        "score": 89.6
+        "name": "MATH",
+        "score": 76.8
       },
       {
-        "name": "GPQA Diamond",
-        "score": 68.2
+        "name": "GPQA",
+        "score": 51.2
       }
     ],
     "benchmarkCaveat": "While Qwen 2.5 72B scores 85.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "multilingual"
+      "coding",
+      "math",
+      "general"
     ],
     "howToUse": {
       "docsUrl": "https://qwen.com/docs"
@@ -2010,21 +1136,21 @@
     "id": "qwen-2-5-coder",
     "name": "Qwen 2.5 Coder 32B",
     "provider": "Alibaba",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-09-19",
     "openSource": true,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Alibaba, specializing in open-source and coding. Scores 75.1% on MMLU.",
+    "summary": "A highly capable dense model from Alibaba, specializing in coding, fast. Scores 75.1% on MMLU.",
     "inPractice": {
       "strengths": [
-        "Excellent at open-source",
-        "Cost effective at $0.15 input"
+        "Excellent at coding",
+        "Cost effective at $0.150 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -2050,18 +1176,18 @@
         "score": 90.1
       },
       {
-        "name": "MATH-500",
-        "score": 78.9
+        "name": "MATH",
+        "score": 67.6
       },
       {
-        "name": "GPQA Diamond",
-        "score": 60.1
+        "name": "GPQA",
+        "score": 45.1
       }
     ],
     "benchmarkCaveat": "While Qwen 2.5 Coder 32B scores 75.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
-      "open-source",
-      "coding"
+      "coding",
+      "fast"
     ],
     "howToUse": {
       "docsUrl": "https://qwen.com/docs"
@@ -2069,24 +1195,24 @@
     "news": []
   },
   {
-    "id": "command-r-plus-2",
-    "name": "Command R+ V2",
+    "id": "command-r-plus",
+    "name": "Command R+",
     "provider": "Cohere",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-04-04",
     "openSource": false,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Cohere, specializing in rag and enterprise and multilingual. Scores 88.1% on MMLU.",
+    "summary": "A highly capable dense model from Cohere, specializing in rag, enterprise, multilingual. Scores 82.3% on MMLU.",
     "inPractice": {
       "strengths": [
         "Excellent at rag",
-        "Cost effective at $1.50 input"
+        "Cost effective at $3.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -2094,33 +1220,33 @@
       "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
-      "contextWindow": 256000,
+      "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 1.5,
-        "output": 6,
+        "input": 3,
+        "output": 15,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 88.1
+        "score": 82.3
       },
       {
         "name": "HumanEval",
-        "score": 85.2
+        "score": 75.2
       },
       {
-        "name": "MATH-500",
-        "score": 92.5
+        "name": "MATH",
+        "score": 74.1
       },
       {
-        "name": "GPQA Diamond",
-        "score": 70.5
+        "name": "GPQA",
+        "score": 49.4
       }
     ],
-    "benchmarkCaveat": "While Command R+ V2 scores 88.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Command R+ scores 82.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
       "rag",
       "enterprise",
@@ -2132,24 +1258,24 @@
     "news": []
   },
   {
-    "id": "command-r-2",
-    "name": "Command R V2",
+    "id": "command-r",
+    "name": "Command R",
     "provider": "Cohere",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-03-11",
     "openSource": false,
     "modality": [
       "text",
       "code"
     ],
-    "summary": "A highly capable dense model from Cohere, specializing in rag and enterprise. Scores 82.1% on MMLU.",
+    "summary": "A highly capable dense model from Cohere, specializing in rag, enterprise. Scores 70.1% on MMLU.",
     "inPractice": {
       "strengths": [
         "Excellent at rag",
-        "Cost effective at $0.30 input"
+        "Cost effective at $0.500 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
@@ -2157,33 +1283,33 @@
       "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
-      "contextWindow": 256000,
+      "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
-        "input": 0.3,
-        "output": 1.2,
+        "input": 0.5,
+        "output": 1.5,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 82.1
+        "score": 70.1
       },
       {
         "name": "HumanEval",
-        "score": 79.5
+        "score": 65.5
       },
       {
-        "name": "MATH-500",
-        "score": 86.2
+        "name": "MATH",
+        "score": 63.1
       },
       {
-        "name": "GPQA Diamond",
-        "score": 65.7
+        "name": "GPQA",
+        "score": 42.1
       }
     ],
-    "benchmarkCaveat": "While Command R V2 scores 82.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Command R scores 70.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
       "rag",
       "enterprise"
@@ -2194,173 +1320,66 @@
     "news": []
   },
   {
-    "id": "grok-3",
-    "name": "Grok 3",
+    "id": "grok-2",
+    "name": "Grok 2",
     "provider": "xAI",
-    "releaseDate": "2025/2026",
+    "releaseDate": "2024-08-13",
     "openSource": false,
     "modality": [
       "text",
-      "code"
+      "image",
+      "video"
     ],
-    "summary": "A highly capable moe model from xAI, specializing in general and fast. Scores 90.5% on MMLU.",
+    "summary": "A highly capable dense model from xAI, specializing in general, multimodal. Scores 87.5% on MMLU.",
     "inPractice": {
       "strengths": [
         "Excellent at general",
-        "Cost effective at $2.00 input"
+        "Cost effective at $2.000 input"
       ],
       "weaknesses": [
         "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to vibes"
+        "Benchmark scores don't always map to real world vibes"
       ]
     },
     "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
+      "type": "dense",
+      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
     },
     "specs": {
       "contextWindow": 128000,
       "maxOutputTokens": 16384,
       "pricing": {
         "input": 2,
-        "output": 8,
+        "output": 10,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 90.5
+        "score": 87.5
       },
       {
         "name": "HumanEval",
-        "score": 91.2
+        "score": 88.4
       },
       {
-        "name": "MATH-500",
-        "score": 95
+        "name": "MATH",
+        "score": 78.8
       },
       {
-        "name": "GPQA Diamond",
-        "score": 72.4
+        "name": "GPQA",
+        "score": 52.5
       }
     ],
-    "benchmarkCaveat": "While Grok 3 scores 90.5% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "While Grok 2 scores 87.5% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
     "useCaseTags": [
       "general",
-      "fast"
+      "multimodal"
     ],
     "howToUse": {
       "docsUrl": "https://xai.com/docs"
     },
     "news": []
-  },
-  {
-    "id": "cohere-command-a-plus",
-    "name": "Cohere: Command A+",
-    "provider": "cohere",
-    "releaseDate": "2026-09",
-    "openSource": false,
-    "modality": [
-      "text"
-    ],
-    "summary": "This model is capable of processing a very large amount of information, with a context window of 192,000 tokens, and can generate very long responses, up to 64,000 tokens. Its pricing is based on tokens, costing 0.3 per 1 million tokens for input and 1.5 per 1 million tokens for output.",
-    "inPractice": {
-      "strengths": [
-        "Can process extremely large amounts of input information due to its 192,000 token context window.",
-        "Capable of generating very long responses, up to 64,000 tokens."
-      ],
-      "weaknesses": []
-    },
-    "architecture": {
-      "type": "unknown",
-      "explanation": "The provided evidence does not contain information about the model's architecture type, such as whether it is a dense model or a mixture-of-experts."
-    },
-    "specs": {
-      "contextWindow": 192000,
-      "maxOutputTokens": 64000,
-      "pricing": {
-        "input": 0.3,
-        "output": 1.5,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [],
-    "benchmarkCaveat": "No benchmark scores were provided in the evidence to evaluate the model's performance against specific tasks or other models.",
-    "useCaseTags": [
-      "writing",
-      "research",
-      "complex reasoning"
-    ],
-    "howToUse": {
-      "docsUrl": ""
-    },
-    "lastUpdated": "2026-09-23T19:41:16.617222+00:00",
-    "updateSource": "automated",
-    "logoUrl": "/logos/cohere.png",
-    "contentMeta": {
-      "generatedAt": "2026-09-23T19:41:16.617222+00:00",
-      "generatedBy": "gemini-2.5-flash",
-      "confidence": "high",
-      "evidenceUrls": [
-        "E1",
-        "E2",
-        "E3"
-      ]
-    }
-  },
-  {
-    "id": "openai-gpt-6-luna",
-    "name": "OpenAI: GPT-6 Luna",
-    "provider": "openai",
-    "releaseDate": "2026-09",
-    "openSource": false,
-    "modality": [
-      "text"
-    ],
-    "summary": "This model is designed to handle extremely long texts, featuring a context window of 1,050,000 tokens, which is the amount of text it can consider at one time. It can also generate very long outputs, up to 128,000 tokens. The model's pricing is set at 0.1 per 1 million input tokens and 0.5 per 1 million output tokens.",
-    "inPractice": {
-      "strengths": [
-        "The model can process a very large amount of information, up to 1,050,000 tokens, which means it can understand and work with extremely long documents or conversations.",
-        "It can generate very long responses, up to 128,000 tokens, making it suitable for creating extensive content."
-      ],
-      "weaknesses": []
-    },
-    "architecture": {
-      "type": "unknown",
-      "explanation": "The evidence does not provide information about the model's architecture."
-    },
-    "specs": {
-      "contextWindow": 1050000,
-      "maxOutputTokens": 128000,
-      "pricing": {
-        "input": 0.1,
-        "output": 0.5,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [],
-    "benchmarkCaveat": "No benchmark scores were provided in the evidence.",
-    "useCaseTags": [
-      "writing",
-      "research",
-      "cheap volume"
-    ],
-    "howToUse": {
-      "docsUrl": ""
-    },
-    "lastUpdated": "2026-09-23T19:41:16.617222+00:00",
-    "updateSource": "automated",
-    "logoUrl": "/logos/openai.png",
-    "contentMeta": {
-      "generatedAt": "2026-09-23T19:41:16.617222+00:00",
-      "generatedBy": "gemini-2.5-flash",
-      "confidence": "high",
-      "evidenceUrls": [
-        "E1",
-        "E2",
-        "E3"
-      ]
-    }
   }
 ]
