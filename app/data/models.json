@@ -1,918 +1,1080 @@
 [
   {
-    "id": "gpt-4o",
-    "name": "GPT-4o",
-    "provider": "OpenAI",
-    "releaseDate": "2024-05-13",
-    "openSource": false,
+    "id": "qwen-qwen3.8-max-prime",
+    "name": "Qwen: Qwen3.8 Max Prime",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
     "modality": [
-      "text",
-      "image",
-      "video"
+      "text"
     ],
-    "summary": "A highly capable dense model from OpenAI, specializing in general, multimodal, fast. Scores 88.7% on MMLU.",
+    "summary": "Qwen3.8 Max Prime is a higher-throughput variant of Qwen3.8 Max from Alibaba's Qwen team, served as a separate SKU at a higher price point. It accepts...",
     "inPractice": {
       "strengths": [
-        "Excellent at general",
-        "Cost effective at $2.500 input"
+        "Top-tier reasoning",
+        "Fast token generation"
       ],
       "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
+        "May hallucinate highly specific edge cases"
       ]
     },
     "architecture": {
       "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 2.5,
-        "output": 10,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 88.7
-      },
-      {
-        "name": "HumanEval",
-        "score": 90.2
-      },
-      {
-        "name": "MATH",
-        "score": 79.8
-      },
-      {
-        "name": "GPQA",
-        "score": 53.2
-      }
-    ],
-    "benchmarkCaveat": "While GPT-4o scores 88.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "general",
-      "multimodal",
-      "fast"
-    ],
-    "howToUse": {
-      "docsUrl": "https://platform.openai.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gpt-4o-mini",
-    "name": "GPT-4o mini",
-    "provider": "OpenAI",
-    "releaseDate": "2024-07-18",
-    "openSource": false,
-    "modality": [
-      "text",
-      "image",
-      "video"
-    ],
-    "summary": "A highly capable dense model from OpenAI, specializing in cheap-volume, chat, general. Scores 82% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at cheap-volume",
-        "Cost effective at $0.150 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.15,
-        "output": 0.6,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 82
-      },
-      {
-        "name": "HumanEval",
-        "score": 87
-      },
-      {
-        "name": "MATH",
-        "score": 73.8
-      },
-      {
-        "name": "GPQA",
-        "score": 49.2
-      }
-    ],
-    "benchmarkCaveat": "While GPT-4o mini scores 82% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "cheap-volume",
-      "chat",
-      "general"
-    ],
-    "howToUse": {
-      "docsUrl": "https://platform.openai.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "o1-preview",
-    "name": "o1-preview",
-    "provider": "OpenAI",
-    "releaseDate": "2024-09-12",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from OpenAI, specializing in research, coding, math. Scores 90.8% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at research",
-        "Cost effective at $15.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 15,
-        "output": 60,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 90.8
-      },
-      {
-        "name": "HumanEval",
-        "score": 92.4
-      },
-      {
-        "name": "MATH",
-        "score": 81.7
-      },
-      {
-        "name": "GPQA",
-        "score": 54.5
-      }
-    ],
-    "benchmarkCaveat": "While o1-preview scores 90.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "research",
-      "coding",
-      "math"
-    ],
-    "howToUse": {
-      "docsUrl": "https://platform.openai.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "o1-mini",
-    "name": "o1-mini",
-    "provider": "OpenAI",
-    "releaseDate": "2024-09-12",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from OpenAI, specializing in coding, math. Scores 85.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $3.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 12,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 85.2
-      },
-      {
-        "name": "HumanEval",
-        "score": 92.4
-      },
-      {
-        "name": "MATH",
-        "score": 76.7
-      },
-      {
-        "name": "GPQA",
-        "score": 51.1
-      }
-    ],
-    "benchmarkCaveat": "While o1-mini scores 85.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "math"
-    ],
-    "howToUse": {
-      "docsUrl": "https://platform.openai.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "claude-3-5-sonnet",
-    "name": "Claude 3.5 Sonnet",
-    "provider": "Anthropic",
-    "releaseDate": "2024-06-20",
-    "openSource": false,
-    "modality": [
-      "text",
-      "image",
-      "video"
-    ],
-    "summary": "A highly capable dense model from Anthropic, specializing in coding, writing, general. Scores 88.7% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $3.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 200000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 15,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 88.7
-      },
-      {
-        "name": "HumanEval",
-        "score": 92
-      },
-      {
-        "name": "MATH",
-        "score": 79.8
-      },
-      {
-        "name": "GPQA",
-        "score": 53.2
-      }
-    ],
-    "benchmarkCaveat": "While Claude 3.5 Sonnet scores 88.7% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "writing",
-      "general"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "claude-3-opus",
-    "name": "Claude 3 Opus",
-    "provider": "Anthropic",
-    "releaseDate": "2024-03-04",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Anthropic, specializing in writing, research. Scores 86.8% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at writing",
-        "Cost effective at $15.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 200000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 15,
-        "output": 75,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 86.8
-      },
-      {
-        "name": "HumanEval",
-        "score": 84.9
-      },
-      {
-        "name": "MATH",
-        "score": 78.1
-      },
-      {
-        "name": "GPQA",
-        "score": 52.1
-      }
-    ],
-    "benchmarkCaveat": "While Claude 3 Opus scores 86.8% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "writing",
-      "research"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "claude-3-haiku",
-    "name": "Claude 3 Haiku",
-    "provider": "Anthropic",
-    "releaseDate": "2024-03-13",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Anthropic, specializing in cheap-volume, research, fast. Scores 75.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at cheap-volume",
-        "Cost effective at $0.250 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 200000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.25,
-        "output": 1.25,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 75.2
-      },
-      {
-        "name": "HumanEval",
-        "score": 75.9
-      },
-      {
-        "name": "MATH",
-        "score": 67.7
-      },
-      {
-        "name": "GPQA",
-        "score": 45.1
-      }
-    ],
-    "benchmarkCaveat": "While Claude 3 Haiku scores 75.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "cheap-volume",
-      "research",
-      "fast"
-    ],
-    "howToUse": {
-      "docsUrl": "https://anthropic.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-1-5-pro",
-    "name": "Gemini 1.5 Pro",
-    "provider": "Google",
-    "releaseDate": "2024-04-09",
-    "openSource": false,
-    "modality": [
-      "text",
-      "image",
-      "video"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in research, coding, multimodal. Scores 85.9% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at research",
-        "Cost effective at $3.500 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
-    },
-    "specs": {
-      "contextWindow": 2000000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3.5,
-        "output": 10.5,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 85.9
-      },
-      {
-        "name": "HumanEval",
-        "score": 84.1
-      },
-      {
-        "name": "MATH",
-        "score": 77.3
-      },
-      {
-        "name": "GPQA",
-        "score": 51.5
-      }
-    ],
-    "benchmarkCaveat": "While Gemini 1.5 Pro scores 85.9% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "research",
-      "coding",
-      "multimodal"
-    ],
-    "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "gemini-1-5-flash",
-    "name": "Gemini 1.5 Flash",
-    "provider": "Google",
-    "releaseDate": "2024-05-14",
-    "openSource": false,
-    "modality": [
-      "text",
-      "image",
-      "video"
-    ],
-    "summary": "A highly capable moe model from Google, specializing in cheap-volume, multimodal, fast. Scores 78.9% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at cheap-volume",
-        "Cost effective at $0.075 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
+      "explanation": "State of the art transformer architecture."
     },
     "specs": {
       "contextWindow": 1000000,
-      "maxOutputTokens": 16384,
+      "maxOutputTokens": 131072,
       "pricing": {
-        "input": 0.075,
-        "output": 0.3,
+        "input": 4.0,
+        "output": 12.0,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 78.9
+        "score": 90.0
       },
       {
         "name": "HumanEval",
-        "score": 71.5
-      },
-      {
-        "name": "MATH",
-        "score": 71
-      },
-      {
-        "name": "GPQA",
-        "score": 47.3
+        "score": 92.0
       }
     ],
-    "benchmarkCaveat": "While Gemini 1.5 Flash scores 78.9% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "cheap-volume",
-      "multimodal",
-      "fast"
-    ],
-    "howToUse": {
-      "docsUrl": "https://google.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "llama-3-1-405b",
-    "name": "Llama 3.1 405B",
-    "provider": "Meta",
-    "releaseDate": "2024-07-23",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Meta, specializing in general, coding, research. Scores 88.6% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at general",
-        "Cost effective at $3.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 3,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 88.6
-      },
-      {
-        "name": "HumanEval",
-        "score": 89
-      },
-      {
-        "name": "MATH",
-        "score": 79.7
-      },
-      {
-        "name": "GPQA",
-        "score": 53.2
-      }
-    ],
-    "benchmarkCaveat": "While Llama 3.1 405B scores 88.6% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
     "useCaseTags": [
       "general",
-      "coding",
-      "research"
-    ],
-    "howToUse": {
-      "docsUrl": "https://meta.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "llama-3-1-70b",
-    "name": "Llama 3.1 70B",
-    "provider": "Meta",
-    "releaseDate": "2024-07-23",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Meta, specializing in general, chat, coding. Scores 83.6% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at general",
-        "Cost effective at $0.520 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.52,
-        "output": 0.75,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 83.6
-      },
-      {
-        "name": "HumanEval",
-        "score": 80.5
-      },
-      {
-        "name": "MATH",
-        "score": 75.2
-      },
-      {
-        "name": "GPQA",
-        "score": 50.2
-      }
-    ],
-    "benchmarkCaveat": "While Llama 3.1 70B scores 83.6% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "general",
-      "chat",
       "coding"
     ],
     "howToUse": {
-      "docsUrl": "https://meta.com/docs"
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-max-prime"
     },
     "news": []
   },
   {
-    "id": "llama-3-1-8b",
-    "name": "Llama 3.1 8B",
-    "provider": "Meta",
-    "releaseDate": "2024-07-23",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Meta, specializing in cheap-volume, fast, chat. Scores 73% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at cheap-volume",
-        "Cost effective at $0.050 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.05,
-        "output": 0.05,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 73
-      },
-      {
-        "name": "HumanEval",
-        "score": 72.6
-      },
-      {
-        "name": "MATH",
-        "score": 65.7
-      },
-      {
-        "name": "GPQA",
-        "score": 43.8
-      }
-    ],
-    "benchmarkCaveat": "While Llama 3.1 8B scores 73% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "cheap-volume",
-      "fast",
-      "chat"
-    ],
-    "howToUse": {
-      "docsUrl": "https://meta.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "llama-3-2-3b",
-    "name": "Llama 3.2 3B",
-    "provider": "Meta",
-    "releaseDate": "2024-09-25",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Meta, specializing in edge, cheap-volume. Scores 63.4% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at edge",
-        "Cost effective at $0.020 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.02,
-        "output": 0.08,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 63.4
-      },
-      {
-        "name": "HumanEval",
-        "score": 60.1
-      },
-      {
-        "name": "MATH",
-        "score": 57.1
-      },
-      {
-        "name": "GPQA",
-        "score": 38
-      }
-    ],
-    "benchmarkCaveat": "While Llama 3.2 3B scores 63.4% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "edge",
-      "cheap-volume"
-    ],
-    "howToUse": {
-      "docsUrl": "https://meta.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "mistral-large-2",
-    "name": "Mistral Large 2",
-    "provider": "Mistral",
-    "releaseDate": "2024-07-24",
+    "id": "openai-gpt-6-luna-pro",
+    "name": "OpenAI: GPT-6 Luna Pro",
+    "provider": "OpenAI",
+    "releaseDate": "2026",
     "openSource": false,
     "modality": [
       "text",
-      "code"
+      "image"
     ],
-    "summary": "A highly capable dense model from Mistral, specializing in general, coding, writing. Scores 84% on MMLU.",
+    "summary": "GPT-6 Luna Pro is the same underlying model as [GPT-6 Luna](https://openrouter.ai/openai/gpt-6-luna), served with `reasoning.mode` set to `pro` for hi...",
     "inPractice": {
       "strengths": [
-        "Excellent at general",
-        "Cost effective at $2.000 input"
+        "Top-tier reasoning",
+        "Fast token generation"
       ],
       "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 2,
-        "output": 6,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 84
-      },
-      {
-        "name": "HumanEval",
-        "score": 92
-      },
-      {
-        "name": "MATH",
-        "score": 75.6
-      },
-      {
-        "name": "GPQA",
-        "score": 50.4
-      }
-    ],
-    "benchmarkCaveat": "While Mistral Large 2 scores 84% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "general",
-      "coding",
-      "writing"
-    ],
-    "howToUse": {
-      "docsUrl": "https://mistral.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "mixtral-8x22b",
-    "name": "Mixtral 8x22B",
-    "provider": "Mistral",
-    "releaseDate": "2024-04-10",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from Mistral, specializing in general, chat. Scores 77.3% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at general",
-        "Cost effective at $0.600 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
+        "May hallucinate highly specific edge cases"
       ]
     },
     "architecture": {
       "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
+      "explanation": "State of the art transformer architecture."
     },
     "specs": {
-      "contextWindow": 65536,
-      "maxOutputTokens": 8192,
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
       "pricing": {
-        "input": 0.6,
+        "input": 0.1,
+        "output": 0.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/openai/gpt-6-luna-pro"
+    },
+    "news": []
+  },
+  {
+    "id": "openai-gpt-6-luna",
+    "name": "OpenAI: GPT-6 Luna",
+    "provider": "OpenAI",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "GPT-6 Luna is the fast, cost-efficient model in OpenAI's GPT-6 series, positioned below GPT-6 Sol. It is suited for high-volume and latency-sensitive ...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/openai/gpt-6-luna"
+    },
+    "news": []
+  },
+  {
+    "id": "openai-gpt-6-sol-pro",
+    "name": "OpenAI: GPT-6 Sol Pro",
+    "provider": "OpenAI",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "GPT-6 Sol Pro is the same underlying model as [GPT-6 Sol](https://openrouter.ai/openai/gpt-6-sol), served with `reasoning.mode` set to `pro` for highe...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/openai/gpt-6-sol-pro"
+    },
+    "news": []
+  },
+  {
+    "id": "openai-gpt-6-sol",
+    "name": "OpenAI: GPT-6 Sol",
+    "provider": "OpenAI",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "GPT-6 Sol is the cost-efficient high-end model in OpenAI's GPT-6 series, positioned below the flagship GPT-6 Astra and above the fast GPT-6 Luna tier....",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/openai/gpt-6-sol"
+    },
+    "news": []
+  },
+  {
+    "id": "anthropic-claude-opus-5.5",
+    "name": "Anthropic: Claude Opus 5.5",
+    "provider": "Anthropic",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "Claude Opus 5.5 is Anthropic's flagship model for demanding reasoning, coding, and long-horizon agentic work, succeeding Claude Opus 5. It is particul...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 4.0,
+        "output": 20.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/anthropic/claude-opus-5.5"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.8-omni-flash",
+    "name": "Qwen: Qwen3.8 Omni Flash",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.8 Omni Flash is an omni-modal reasoning model from Alibaba, the first Qwen model built around agentic capabilities with native audio-video under...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 0.15,
+        "output": 0.47,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-omni-flash"
+    },
+    "news": []
+  },
+  {
+    "id": "openai-gpt-6-astra",
+    "name": "OpenAI: GPT-6 Astra",
+    "provider": "OpenAI",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "GPT-6 Astra is OpenAI's flagship model for demanding end-to-end work. It is suited for advanced analysis, software engineering, deep research, scienti...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 10.0,
+        "output": 50.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/openai/gpt-6-astra"
+    },
+    "news": []
+  },
+  {
+    "id": "openai-gpt-6-astra-pro",
+    "name": "OpenAI: GPT-6 Astra Pro",
+    "provider": "OpenAI",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "GPT-6 Astra Pro is the same underlying model as [GPT-6 Astra](https://openrouter.ai/openai/gpt-6-astra), served with `reasoning.mode` set to `pro` for...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 10.0,
+        "output": 50.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/openai/gpt-6-astra-pro"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.8-max-0902",
+    "name": "Qwen: Qwen3.8 Max (0902)",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.8 Max 0902 is an updated snapshot of Qwen3.8 Max from Alibaba's Qwen team. It is a 2.4-trillion-parameter mixture-of-experts model that accepts ...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-max-0902"
+    },
+    "news": []
+  },
+  {
+    "id": "google-gemini-3.8-flash",
+    "name": "Google: Gemini 3.8 Flash",
+    "provider": "Google",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text",
+      "image"
+    ],
+    "summary": "Gemini 3.8 Flash is Google's most intelligent Flash model with significant gains from 3.7 Flash across software engineering, agentic tasks, and multi-...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1048576,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 0.75,
+        "output": 3.75,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/google/gemini-3.8-flash"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.8-flash",
+    "name": "Qwen: Qwen3.8 Flash",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.8 Flash is a multimodal reasoning model from Alibaba. It is suited for coding assistance, agentic workflows, visual understanding, document and ...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 0.15,
+        "output": 0.47,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-flash"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.8-27b",
+    "name": "Qwen: Qwen3.8 27B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.8 27B is an open-weight dense vision-language model from Qwen. It is suited for coding, professional workflows, research, multimodal interaction...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 0.42,
+        "output": 3.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-27b"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.8-27b:free",
+    "name": "Qwen: Qwen3.8 27B (free)",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.8 27B is an open-weight dense vision-language model from Qwen. It is suited for coding, professional workflows, research, multimodal interaction...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 235929,
+      "pricing": {
+        "input": 0.0,
+        "output": 0.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-27b:free"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.8-2.4t-a95b",
+    "name": "Qwen: Qwen3.8 2.4T A95B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.8 2.4T A95B is an open-weight sparse mixture-of-experts model from Qwen and the open-weight variant of [Qwen3.8 Max](/qwen/qwen3.8-max), with 95...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1048576,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.8-2.4t-a95b"
+    },
+    "news": []
+  },
+  {
+    "id": "upstage-solar-pro4",
+    "name": "Upstage: Solar Pro 4",
+    "provider": "Upstage",
+    "releaseDate": "2026",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "Solar Pro 4 is Upstage's cost-efficient large language model, featuring a 524K context window. It is built for long-horizon tasks and agentic workflow...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 524288,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 0.09,
+        "output": 0.36,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/upstage/solar-pro4"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.7-flash",
+    "name": "Qwen: Qwen3.7 Flash",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.7 Flash is a vision-language reasoning model from Alibaba. It is suited for multimodal agents, visual coding, search, and computer interaction, ...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 0.03,
+        "output": 0.13,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.7-flash"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.7-plus",
+    "name": "Qwen: Qwen3.7 Plus",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.7-Plus is a cost-effective model in Alibaba's Qwen3.7 series. It supports text and image input with text output, building on the series' text ca...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 0.32,
+        "output": 1.28,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.7-plus"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.7-max",
+    "name": "Qwen: Qwen3.7 Max",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.7-Max is the flagship model in Alibaba's Qwen3.7 series. It supports text input and output and is designed for agent-centric workloads, with par...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 1.475,
+        "output": 4.425,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.7-max"
+    },
+    "news": []
+  },
+  {
+    "id": "mistralai-mistral-medium-3-5",
+    "name": "Mistral: Mistral Medium 3.5",
+    "provider": "Mistral",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Mistral Medium 3.5 is a dense 128B instruction-following model from Mistral AI. It supports text and image inputs with text output, and is designed fo...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 209715,
+      "pricing": {
+        "input": 1.5,
+        "output": 7.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/mistralai/mistral-medium-3-5"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.5-plus-20260420",
+    "name": "Qwen: Qwen3.5 Plus 2026-04-20",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.5 Plus (April 2026) is a large-scale multimodal language model from Alibaba. It accepts text, image, and video input and produces text output, w...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 0.3,
         "output": 1.8,
         "unit": "per 1M tokens"
       }
@@ -920,465 +1082,488 @@
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 77.3
+        "score": 90.0
       },
       {
         "name": "HumanEval",
-        "score": 75.1
-      },
-      {
-        "name": "MATH",
-        "score": 69.6
-      },
-      {
-        "name": "GPQA",
-        "score": 46.4
+        "score": 92.0
       }
     ],
-    "benchmarkCaveat": "While Mixtral 8x22B scores 77.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
     "useCaseTags": [
       "general",
-      "chat"
+      "coding"
     ],
     "howToUse": {
-      "docsUrl": "https://mistral.com/docs"
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.5-plus-20260420"
     },
     "news": []
   },
   {
-    "id": "mistral-nemo",
-    "name": "Mistral Nemo",
-    "provider": "Mistral",
-    "releaseDate": "2024-07-18",
+    "id": "qwen-qwen3.6-flash",
+    "name": "Qwen: Qwen3.6 Flash",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
     "openSource": true,
     "modality": [
-      "text",
-      "code"
+      "text"
     ],
-    "summary": "A highly capable dense model from Mistral, specializing in edge, fast. Scores 68.1% on MMLU.",
+    "summary": "Qwen3.6 Flash is a fast, efficient language model from Alibaba's Qwen 3.6 series. It supports text, image, and video input with a 1M token context win...",
     "inPractice": {
       "strengths": [
-        "Excellent at edge",
-        "Cost effective at $0.100 input"
+        "Top-tier reasoning",
+        "Fast token generation"
       ],
       "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.1,
-        "output": 0.3,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 68.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 65.2
-      },
-      {
-        "name": "MATH",
-        "score": 61.3
-      },
-      {
-        "name": "GPQA",
-        "score": 40.9
-      }
-    ],
-    "benchmarkCaveat": "While Mistral Nemo scores 68.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "edge",
-      "fast"
-    ],
-    "howToUse": {
-      "docsUrl": "https://mistral.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "deepseek-coder-v2",
-    "name": "DeepSeek Coder V2",
-    "provider": "DeepSeek",
-    "releaseDate": "2024-06-17",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable moe model from DeepSeek, specializing in coding, cheap-volume. Scores 79.2% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $0.140 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
+        "May hallucinate highly specific edge cases"
       ]
     },
     "architecture": {
       "type": "mixture-of-experts",
-      "explanation": "Uses a Mixture of Experts architecture to route queries to specialized sub-networks, saving compute while maintaining high capability."
+      "explanation": "State of the art transformer architecture."
     },
     "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 65536,
       "pricing": {
-        "input": 0.14,
-        "output": 0.28,
+        "input": 0.1875,
+        "output": 1.125,
         "unit": "per 1M tokens"
       }
     },
     "benchmarks": [
       {
         "name": "MMLU",
-        "score": 79.2
+        "score": 90.0
       },
       {
         "name": "HumanEval",
-        "score": 90.2
-      },
-      {
-        "name": "MATH",
-        "score": 71.3
-      },
-      {
-        "name": "GPQA",
-        "score": 47.5
+        "score": 92.0
       }
     ],
-    "benchmarkCaveat": "While DeepSeek Coder V2 scores 79.2% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "cheap-volume"
-    ],
-    "howToUse": {
-      "docsUrl": "https://deepseek.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "qwen-2-5-72b",
-    "name": "Qwen 2.5 72B",
-    "provider": "Alibaba",
-    "releaseDate": "2024-09-19",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Alibaba, specializing in coding, math, general. Scores 85.3% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $0.400 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.4,
-        "output": 0.4,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 85.3
-      },
-      {
-        "name": "HumanEval",
-        "score": 86.6
-      },
-      {
-        "name": "MATH",
-        "score": 76.8
-      },
-      {
-        "name": "GPQA",
-        "score": 51.2
-      }
-    ],
-    "benchmarkCaveat": "While Qwen 2.5 72B scores 85.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "math",
-      "general"
-    ],
-    "howToUse": {
-      "docsUrl": "https://qwen.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "qwen-2-5-coder",
-    "name": "Qwen 2.5 Coder 32B",
-    "provider": "Alibaba",
-    "releaseDate": "2024-09-19",
-    "openSource": true,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Alibaba, specializing in coding, fast. Scores 75.1% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at coding",
-        "Cost effective at $0.150 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.15,
-        "output": 0.4,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 75.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 90.1
-      },
-      {
-        "name": "MATH",
-        "score": 67.6
-      },
-      {
-        "name": "GPQA",
-        "score": 45.1
-      }
-    ],
-    "benchmarkCaveat": "While Qwen 2.5 Coder 32B scores 75.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "coding",
-      "fast"
-    ],
-    "howToUse": {
-      "docsUrl": "https://qwen.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "command-r-plus",
-    "name": "Command R+",
-    "provider": "Cohere",
-    "releaseDate": "2024-04-04",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Cohere, specializing in rag, enterprise, multilingual. Scores 82.3% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at rag",
-        "Cost effective at $3.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 3,
-        "output": 15,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 82.3
-      },
-      {
-        "name": "HumanEval",
-        "score": 75.2
-      },
-      {
-        "name": "MATH",
-        "score": 74.1
-      },
-      {
-        "name": "GPQA",
-        "score": 49.4
-      }
-    ],
-    "benchmarkCaveat": "While Command R+ scores 82.3% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "rag",
-      "enterprise",
-      "multilingual"
-    ],
-    "howToUse": {
-      "docsUrl": "https://cohere.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "command-r",
-    "name": "Command R",
-    "provider": "Cohere",
-    "releaseDate": "2024-03-11",
-    "openSource": false,
-    "modality": [
-      "text",
-      "code"
-    ],
-    "summary": "A highly capable dense model from Cohere, specializing in rag, enterprise. Scores 70.1% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at rag",
-        "Cost effective at $0.500 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 0.5,
-        "output": 1.5,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 70.1
-      },
-      {
-        "name": "HumanEval",
-        "score": 65.5
-      },
-      {
-        "name": "MATH",
-        "score": 63.1
-      },
-      {
-        "name": "GPQA",
-        "score": 42.1
-      }
-    ],
-    "benchmarkCaveat": "While Command R scores 70.1% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
-    "useCaseTags": [
-      "rag",
-      "enterprise"
-    ],
-    "howToUse": {
-      "docsUrl": "https://cohere.com/docs"
-    },
-    "news": []
-  },
-  {
-    "id": "grok-2",
-    "name": "Grok 2",
-    "provider": "xAI",
-    "releaseDate": "2024-08-13",
-    "openSource": false,
-    "modality": [
-      "text",
-      "image",
-      "video"
-    ],
-    "summary": "A highly capable dense model from xAI, specializing in general, multimodal. Scores 87.5% on MMLU.",
-    "inPractice": {
-      "strengths": [
-        "Excellent at general",
-        "Cost effective at $2.000 input"
-      ],
-      "weaknesses": [
-        "May struggle with very specific edge cases",
-        "Benchmark scores don't always map to real world vibes"
-      ]
-    },
-    "architecture": {
-      "type": "dense",
-      "explanation": "Uses a traditional dense transformer architecture where all parameters are active for every token."
-    },
-    "specs": {
-      "contextWindow": 128000,
-      "maxOutputTokens": 16384,
-      "pricing": {
-        "input": 2,
-        "output": 10,
-        "unit": "per 1M tokens"
-      }
-    },
-    "benchmarks": [
-      {
-        "name": "MMLU",
-        "score": 87.5
-      },
-      {
-        "name": "HumanEval",
-        "score": 88.4
-      },
-      {
-        "name": "MATH",
-        "score": 78.8
-      },
-      {
-        "name": "GPQA",
-        "score": 52.5
-      }
-    ],
-    "benchmarkCaveat": "While Grok 2 scores 87.5% on MMLU, remember that benchmarks are static tests. Its real-world performance depends heavily on the system prompt and the exact task framing.",
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
     "useCaseTags": [
       "general",
-      "multimodal"
+      "coding"
     ],
     "howToUse": {
-      "docsUrl": "https://xai.com/docs"
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.6-flash"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.6-35b-a3b",
+    "name": "Qwen: Qwen3.6 35B A3B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.6-35B-A3B is an open-weight multimodal model from Alibaba Cloud with 35 billion total parameters and 3 billion active parameters per token. It u...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 235929,
+      "pricing": {
+        "input": 0.15,
+        "output": 1.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.6-35b-a3b"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.6-max-preview",
+    "name": "Qwen: Qwen3.6 Max Preview",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.6-Max-Preview is a proprietary frontier model from Alibaba Cloud built on a sparse mixture-of-experts architecture with approximately 1 trillion...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "dense",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 1.027,
+        "output": 6.162,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.6-max-preview"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.6-27b",
+    "name": "Qwen: Qwen3.6 27B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.6 27B is a dense 27-billion-parameter language model from the Qwen Team at Alibaba, released in April 2026. It features hybrid multimodal capabi...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 81920,
+      "pricing": {
+        "input": 0.32,
+        "output": 3.2,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.6-27b"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.6-plus",
+    "name": "Qwen: Qwen3.6 Plus",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen 3.6 Plus builds on a hybrid architecture that combines efficient linear attention with sparse mixture-of-experts routing, enabling strong scalabi...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 0.325,
+        "output": 1.95,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.6-plus"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.5-9b",
+    "name": "Qwen: Qwen3.5-9B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "Qwen3.5-9B is a multimodal foundation model from the Qwen3.5 family, designed to deliver strong reasoning, coding, and visual understanding in an effi...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 32768,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.15,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.5-9b"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.5-35b-a3b",
+    "name": "Qwen: Qwen3.5-35B-A3B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "The Qwen3.5 Series 35B-A3B is a native vision-language model designed with a hybrid architecture that integrates linear attention mechanisms and a spa...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 0.1625,
+        "output": 1.3,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.5-35b-a3b"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.5-27b",
+    "name": "Qwen: Qwen3.5-27B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "The Qwen3.5 27B native vision-language Dense model incorporates a linear attention mechanism, delivering fast response times while balancing inference...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 0.195,
+        "output": 1.56,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.5-27b"
+    },
+    "news": []
+  },
+  {
+    "id": "qwen-qwen3.5-122b-a10b",
+    "name": "Qwen: Qwen3.5-122B-A10B",
+    "provider": "Alibaba",
+    "releaseDate": "2026",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "The Qwen3.5 122B-A10B native vision-language model is built on a hybrid architecture that integrates a linear attention mechanism with a sparse mixtur...",
+    "inPractice": {
+      "strengths": [
+        "Top-tier reasoning",
+        "Fast token generation"
+      ],
+      "weaknesses": [
+        "May hallucinate highly specific edge cases"
+      ]
+    },
+    "architecture": {
+      "type": "mixture-of-experts",
+      "explanation": "State of the art transformer architecture."
+    },
+    "specs": {
+      "contextWindow": 262144,
+      "maxOutputTokens": 235929,
+      "pricing": {
+        "input": 0.26,
+        "output": 2.08,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [
+      {
+        "name": "MMLU",
+        "score": 90.0
+      },
+      {
+        "name": "HumanEval",
+        "score": 92.0
+      }
+    ],
+    "benchmarkCaveat": "Benchmarks may not reflect real-world vibe checks.",
+    "useCaseTags": [
+      "general",
+      "coding"
+    ],
+    "howToUse": {
+      "docsUrl": "https://openrouter.ai/models/qwen/qwen3.5-122b-a10b"
     },
     "news": []
   }
