@@ -20,7 +20,7 @@ class DraftInPractice(BaseModel):
     weaknesses: List[str]
 
 class DraftArchitecture(BaseModel):
-    type: Literal["dense", "mixture-of-experts", "unknown"]
+    archType: Literal["dense", "mixture-of-experts", "unknown"]
     explanation: str
 
 class ExtractedBenchmark(BaseModel):
@@ -159,7 +159,10 @@ def main():
             # Apply to model
             model["summary"] = draft.summary
             model["inPractice"] = draft.inPractice.model_dump()
-            model["architecture"] = draft.architecture.model_dump()
+            model["architecture"] = {
+                "type": draft.architecture.archType,
+                "explanation": draft.architecture.explanation
+            }
             model["benchmarkCaveat"] = draft.benchmarkCaveat
             
             # Ensure useCaseTags are valid
