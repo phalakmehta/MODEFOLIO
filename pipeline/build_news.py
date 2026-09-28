@@ -65,8 +65,20 @@ def main():
         sys.exit(0)
         
     print("Fetching candidates from HN and RSS...")
+    # Prioritize major companies/brands to ensure we actually find news
+    priority_terms = ["openai", "anthropic", "google", "meta", "llama", "gemini", "claude", "qwen", "mistral", "deepseek"]
+    hn_queries = []
+    for pt in priority_terms:
+        if any(pt in t.lower() for t in search_terms):
+            hn_queries.append(pt)
+            
+    for t in search_terms:
+        if len(hn_queries) >= 10: break
+        if t.lower() not in hn_queries:
+            hn_queries.append(t)
+            
     # Get candidates
-    hn_candidates = search_hn(list(search_terms)[:10], start_timestamp) # HN limits queries, use top 10
+    hn_candidates = search_hn(hn_queries, start_timestamp) # HN limits queries, use top 10
     rss_candidates = fetch_rss_feeds(RSS_FEEDS, start_timestamp)
     
     all_candidates = hn_candidates + rss_candidates
