@@ -2,7 +2,7 @@
   "cohere-command-a-plus": {
     "scores": {
       "coding": 0,
-      "writing": 9,
+      "writing": 8,
       "research": 9,
       "agentic": 0,
       "longContext": 10,
@@ -12,23 +12,45 @@
   },
   "openai-gpt-6-luna-pro": {
     "scores": {
-      "coding": 5,
-      "writing": 5,
-      "research": 10,
-      "agentic": 9,
+      "coding": 0,
+      "writing": 0,
+      "research": 0,
+      "agentic": 0,
       "longContext": 10,
-      "cheapVolume": 10
+      "cheapVolume": 0
     },
     "curated": false
   },
   "openai-gpt-6-luna": {
     "scores": {
       "coding": 0,
-      "writing": 9,
+      "writing": 8,
       "research": 9,
+      "agentic": 8,
+      "longContext": 10,
+      "cheapVolume": 6
+    },
+    "curated": false
+  },
+  "qwen-qwen3.8-max-prime": {
+    "scores": {
+      "coding": 0,
+      "writing": 6,
+      "research": 8,
       "agentic": 0,
       "longContext": 10,
-      "cheapVolume": 10
+      "cheapVolume": 7
+    },
+    "curated": false
+  },
+  "openai-gpt-6-sol-pro": {
+    "scores": {
+      "coding": 0,
+      "writing": 0,
+      "research": 7,
+      "agentic": 0,
+      "longContext": 10,
+      "cheapVolume": 0
     },
     "curated": false
   }
