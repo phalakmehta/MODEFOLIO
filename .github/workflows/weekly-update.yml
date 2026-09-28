@@ -1,7 +1,7 @@
 name: Weekly update
 on:
   schedule:
-    - cron: "0 3 * * 1"      # Mondays 03:00 UTC
+    - cron: "0 12 * * 1"     # Mondays 12:00 UTC (17:30 IST)
   workflow_dispatch: {}
 permissions:
   contents: write
