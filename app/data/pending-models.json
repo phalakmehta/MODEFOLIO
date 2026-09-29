@@ -358,5 +358,221 @@
     },
     "lastUpdated": "2026-09-28",
     "updateSource": "automated-pending-review"
+  },
+  {
+    "id": "anthropic-claude-sonnet-5.5",
+    "name": "Anthropic: Claude Sonnet 5.5",
+    "provider": "anthropic",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-09-28",
+    "updateSource": "automated-pending-review"
+  },
+  {
+    "id": "qwen-qwen3.8-max-prime",
+    "name": "Qwen: Qwen3.8 Max Prime",
+    "provider": "qwen",
+    "releaseDate": "2026-09",
+    "openSource": true,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 131072,
+      "pricing": {
+        "input": 4.0,
+        "output": 12.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-09-28",
+    "updateSource": "automated-pending-review"
+  },
+  {
+    "id": "cohere-command-a-plus",
+    "name": "Cohere: Command A+",
+    "provider": "cohere",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 192000,
+      "maxOutputTokens": 64000,
+      "pricing": {
+        "input": 0.3,
+        "output": 1.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-09-28",
+    "updateSource": "automated-pending-review"
+  },
+  {
+    "id": "openai-gpt-6-luna-pro",
+    "name": "OpenAI: GPT-6 Luna Pro",
+    "provider": "openai",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-09-28",
+    "updateSource": "automated-pending-review"
+  },
+  {
+    "id": "openai-gpt-6-luna",
+    "name": "OpenAI: GPT-6 Luna",
+    "provider": "openai",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-09-28",
+    "updateSource": "automated-pending-review"
+  },
+  {
+    "id": "openai-gpt-6-sol-pro",
+    "name": "OpenAI: GPT-6 Sol Pro",
+    "provider": "openai",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-09-28",
+    "updateSource": "automated-pending-review"
   }
 ]
