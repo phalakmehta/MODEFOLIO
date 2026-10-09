@@ -36,10 +36,28 @@ sys.path.insert(0, str(Path(__file__).parent))
 from config import USE_CASE_TAGS
 from curated import CURATED
 from curated_more import CURATED_MORE, LEGACY
-from storage import save_json
+from storage import load_json, save_json
 from sources.openrouter import fetch_openrouter_models
 
 LIVE = {**CURATED, **CURATED_MORE}
+
+OUT_DIR = Path(__file__).parent / "out"
+
+# If more than this share of curated models is missing from the API response,
+# the response is broken (an outage or a truncated page), not a mass delisting.
+# Writing it would retire half the directory overnight.
+MAX_MISSING_SHARE = 0.25
+
+# The changelog feeds the "What changed" page. Keep it bounded.
+CHANGELOG_LIMIT = 1000
+
+# Fields whose changes are recorded in changelog.json, and the entry type for each.
+WATCHED_FIELDS = [
+    ("specs.pricing.input", "price-change"),
+    ("specs.pricing.output", "price-change"),
+    ("specs.contextWindow", "context-change"),
+    ("specs.maxOutputTokens", "max-output-change"),
+]
 
 VENDOR_CAVEAT = (
     "These scores are self-reported by the vendor and measured under their own "
@@ -181,6 +199,114 @@ def make_legacy_entry(model_id: str, entry: dict, today: str) -> dict:
     }
 
 
+def retire_missing(entry: dict, previous_by_id: dict, today: str):
+    """
+    A curated model OpenRouter no longer lists. Rather than let its page 404,
+    keep the last entry we published and mark it retired. If OpenRouter lists it
+    again, the next build restores it as live automatically.
+    """
+    prev = previous_by_id.get(entry["id"])
+    if not prev:
+        return None
+    if prev.get("status") == "legacy":
+        # Retired on an earlier run; keep the original removal date.
+        return prev
+    retired = dict(prev)
+    retired["status"] = "legacy"
+    # The detail page appends its own full stop.
+    retired["retiredNote"] = f"Removed from OpenRouter on {today}"
+    retired["updateSource"] = "openrouter-removed"
+    retired["howToUse"] = {
+        k: v for k, v in (prev.get("howToUse") or {}).items() if k != "openRouterUrl"
+    }
+    return retired
+
+
+def get_path(d: dict, path: str):
+    for key in path.split("."):
+        if not isinstance(d, dict):
+            return None
+        d = d.get(key)
+    return d
+
+
+def diff_models(previous: list, current: list, today: str) -> list:
+    """Changelog entries describing how `current` differs from `previous`."""
+    # With nothing to compare against (a fresh checkout), every model would read
+    # as newly added. That is noise, not news.
+    if not previous:
+        return []
+
+    prev = {m["id"]: m for m in previous}
+    entries = []
+    for m in current:
+        base = {"date": today, "modelId": m["id"], "source": "openrouter", "status": "applied"}
+        old = prev.get(m["id"])
+        if old is None:
+            entries.append({**base, "type": "model-added"})
+            continue
+
+        was_live, is_live = old.get("status", "live") == "live", m["status"] == "live"
+        if was_live and not is_live:
+            entries.append({**base, "type": "model-retired"})
+            continue
+        if is_live and not was_live:
+            entries.append({**base, "type": "model-restored"})
+            continue
+        if not is_live:
+            continue
+
+        for path, kind in WATCHED_FIELDS:
+            o, n = get_path(old, path), get_path(m, path)
+            if o == n:
+                continue
+            if isinstance(o, (int, float)) and isinstance(n, (int, float)) and abs(o - n) < 1e-9:
+                continue
+            entries.append({**base, "type": kind, "field": path, "old": o, "new": n})
+    return entries
+
+
+def describe_change(e: dict) -> str:
+    kind = e["type"]
+    if kind == "model-added":
+        return "added to the directory"
+    if kind == "model-retired":
+        return "no longer listed on OpenRouter, marked retired"
+    if kind == "model-restored":
+        return "listed on OpenRouter again, restored"
+    label = {
+        "specs.pricing.input": "input price",
+        "specs.pricing.output": "output price",
+        "specs.contextWindow": "context window",
+        "specs.maxOutputTokens": "max output",
+    }.get(e.get("field"), e.get("field"))
+    return f"{label} {e.get('old')} → {e.get('new')}"
+
+
+def write_report(models: list, changes: list, retired: list, dropped: list, dry_run: bool):
+    """The run summary and weekly commit message are assembled from pipeline/out/*.md."""
+    live = sum(1 for m in models if m["status"] == "live")
+    lines = ["## 0. Model Rebuild", ""]
+    lines.append(f"{len(models)} models ({live} live, {len(models) - live} retired)."
+                 + (" Dry run, nothing written." if dry_run else ""))
+    lines.append("")
+    if retired:
+        lines.append("⚠️ **No longer on OpenRouter, now shown as retired:** "
+                     + ", ".join(f"`{i}`" for i in retired)
+                     + ". Move them to `LEGACY` in curated_more.py, or delete them, if this is permanent.")
+    if dropped:
+        lines.append("⚠️ **Curated but never published, and not on OpenRouter:** "
+                     + ", ".join(f"`{i}`" for i in dropped) + ". Check their OpenRouter ids.")
+    if changes:
+        lines.append("**Changes since last build:**")
+        lines += [f"- `{e['modelId']}`: {describe_change(e)}" for e in changes]
+    elif not (retired or dropped):
+        lines.append("No spec or price changes since the last build.")
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    (OUT_DIR / "0-build.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -198,6 +324,9 @@ def main():
 
     or_map = {m["id"]: m for m in or_models}
     today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+
+    previous = load_json("models.json", default=[])
+    previous_by_id = {m["id"]: m for m in previous}
 
     models, sources, wizard_scores = [], {}, {}
     missing, bad_tags = [], []
@@ -218,6 +347,24 @@ def main():
             "aliases": build_aliases(entry["name"], or_id),
         }
         wizard_scores[entry["id"]] = {"scores": entry["scores"], "curated": True}
+
+    if len(missing) > MAX_MISSING_SHARE * len(LIVE):
+        print(
+            f"FATAL: {len(missing)} of {len(LIVE)} curated models are missing from the "
+            f"OpenRouter response. That looks like a broken API response, not real "
+            f"delistings, so nothing was written."
+        )
+        sys.exit(1)
+
+    # Missing models keep their page as retired (no Wizard score, no source entry).
+    retired, dropped = [], []
+    for or_id in missing:
+        kept = retire_missing(LIVE[or_id], previous_by_id, today)
+        if kept:
+            models.append(kept)
+            retired.append(kept["id"])
+        else:
+            dropped.append(LIVE[or_id]["id"])
 
     for model_id, entry in LEGACY.items():
         models.append(make_legacy_entry(model_id, entry, today))
@@ -241,7 +388,7 @@ def main():
         print(f"\nWARNING: {len(missing)} curated models are no longer on OpenRouter.")
         for or_id in missing:
             print(f"  - {or_id}")
-        print("Either move them to LEGACY in curated_more.py or drop them.")
+        print("They are shown as retired. Move them to LEGACY in curated_more.py, or drop them.")
 
     ids = [m["id"] for m in models]
     dupes = {i for i in ids if ids.count(i) > 1}
@@ -252,6 +399,11 @@ def main():
     live_count = sum(1 for m in models if m["status"] == "live")
     print(f"\nBuilt {len(models)} models ({live_count} live, {len(models) - live_count} legacy)")
 
+    changes = diff_models(previous, models, today)
+    for e in changes:
+        print(f"  change: {e['modelId']}: {describe_change(e)}")
+    write_report(models, changes, retired, dropped, args.dry_run)
+
     if args.dry_run:
         print("Dry run — nothing written.")
         return
@@ -259,7 +411,10 @@ def main():
     save_json("models.json", models)
     save_json("model-sources.json", sources)
     save_json("wizard-scores.json", wizard_scores)
-    print("Wrote models.json, model-sources.json, wizard-scores.json")
+    if changes:
+        changelog = load_json("changelog.json", default=[])
+        save_json("changelog.json", (changelog + changes)[-CHANGELOG_LIMIT:])
+    print(f"Wrote models.json, model-sources.json, wizard-scores.json ({len(changes)} changes logged)")
 
 
 if __name__ == "__main__":

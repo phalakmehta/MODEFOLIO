@@ -42,20 +42,29 @@ jobs:
 
       # Refresh every spec from the live OpenRouter API and regenerate
       # model-sources.json and wizard-scores.json. This is the authoritative
-      # rebuild: no price or context window is ever carried over by hand.
+      # rebuild: no price or context window is ever carried over by hand. It also
+      # logs every price/spec change to changelog.json (the "What changed" page),
+      # since it is the only step that sees both the old and the new values.
       - name: 1. Rebuild models from curated content + live specs
         run: python pipeline/build_models.py
 
-      # Detect models that have appeared on OpenRouter but are not yet curated,
-      # and record spec drift in the changelog.
+      # Detect models that have appeared on OpenRouter but are not yet curated.
       - name: 2. Detect new models
         run: python pipeline/update_models.py
 
-      # A failure here is a real failure. It used to exit 0 on every error path,
-      # which is why a broken digest looked like a successful run.
+      # A news failure (Gemini overloaded, too few stories) must not cost the
+      # week's price refresh, so the job carries on and still pushes the model
+      # data. The final step then fails the run, so the failure is not missed.
       - name: 3. Build news digest
+        id: news
         if: ${{ !inputs.skip_news }}
+        continue-on-error: true
         run: python pipeline/build_news.py
+
+      - name: Note news failure in the summary
+        if: ${{ steps.news.outcome == 'failure' }}
+        run: |
+          printf '## 2. Weekly News Digest\n\n⚠️ The news digest failed this week (see the "Build news digest" step log). Model data was still refreshed; last week'"'"'s digest stays up.\n' > pipeline/out/2-news.md
 
       # Drafts only. Each draft is attached to its pending-models.json entry and
       # printed as a curated_more.py snippet in the summary below. Nothing is
@@ -122,3 +131,11 @@ jobs:
           for f in pipeline/out/*.md; do
             [ -e "$f" ] && cat "$f" >> "$GITHUB_STEP_SUMMARY"
           done
+
+      # Runs after the push, so the model refresh is already on main. Failing here
+      # marks the run red and triggers GitHub's failure email.
+      - name: Fail the run if the news digest failed
+        if: ${{ steps.news.outcome == 'failure' }}
+        run: |
+          echo "::error::The news digest failed. Model data was pushed; the digest was not updated."
+          exit 1
