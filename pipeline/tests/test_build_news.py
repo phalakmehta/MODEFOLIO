@@ -73,3 +73,14 @@ def test_build_news_drops_hallucinated_urls(mock_save, mock_load, mock_generate,
         
     # Verify the hallucinated URL caused it to fail instead of saving bad data
     mock_save.assert_not_called()
+
+
+def test_clean_model_ids_drops_unknown_and_retired():
+    allowed = {"gpt-6-sol", "claude-opus-5-5"}
+    assert build_news.clean_model_ids(["gpt-6-sol", "gpt-4o", "gpt-6-sol"], allowed) == ["gpt-6-sol"]
+
+
+def test_clean_model_ids_treats_whole_lineup_as_company_news():
+    allowed = {f"m{i}" for i in range(10)}
+    assert build_news.clean_model_ids([f"m{i}" for i in range(4)], allowed) == []
+    assert build_news.clean_model_ids(["m1", "m2", "m3"], allowed) == ["m1", "m2", "m3"]

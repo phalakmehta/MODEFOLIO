@@ -1,74 +1,110 @@
-import pytest
-from unittest.mock import patch, MagicMock
+import ast
 import sys
 import os
+from unittest.mock import patch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import generate_content
-from schemas import AIModel
+from generate_content import (
+    DraftContent, DraftInPractice, DraftArchitecture, WizardScores,
+    VerificationResponse, ExtractedBenchmark,
+)
 
-@pytest.fixture
-def mock_pending_models():
-    return [
-        {
-            "id": "test-pending-model",
-            "name": "Test Model",
-            "provider": "TestProvider",
-            "specs": {}
-        }
-    ]
+PENDING = {
+    "id": "acme-widget-1.5",
+    "openrouterId": "acme/widget-1.5",
+    "name": "Widget 1.5",
+    "provider": "Acme",
+    "specs": {},
+}
 
-@patch("generate_content.build_evidence_pack")
-@patch("generate_content.generate_json")
-@patch("generate_content.load_json")
-@patch("generate_content.save_json")
-def test_generate_content_promotes_model(mock_save, mock_load, mock_generate, mock_build):
-    mock_build.return_value = "[E1] Test Evidence"
-    
-    def mock_load_side_effect(filename, default=None):
-        if filename == "pending-models.json":
-            return [
-                {
-                    "id": "test-pending-model",
-                    "name": "Test Model",
-                    "provider": "TestProvider",
-                    "specs": {}
-                }
-            ]
-        if filename == "models.json":
-            return []
-        return default
-        
-    mock_load.side_effect = mock_load_side_effect
-    
-    # First call is generation, second is verification
-    mock_draft = MagicMock()
-    mock_draft.summary = "Test summary"
-    mock_draft.inPractice = MagicMock()
-    mock_draft.inPractice.model_dump.return_value = {"strengths": [], "weaknesses": []}
-    mock_draft.architecture = MagicMock()
-    mock_draft.architecture.model_dump.return_value = {"type": "unknown", "explanation": ""}
-    mock_draft.benchmarkCaveat = "Test caveat"
-    mock_draft.useCaseTags = ["coding"]
-    mock_draft.confidence = "high"
-    mock_draft.extractedBenchmarks = []
-    
-    mock_wizard = MagicMock()
-    mock_wizard.model_dump.return_value = {"coding": 10, "writing": 5, "research": 5, "agentic": 5, "longContext": 5, "cheapVolume": 5}
-    mock_draft.wizardScores = mock_wizard
-    
-    mock_verify = MagicMock()
-    mock_verify.flagged = False
-    
-    mock_generate.side_effect = [mock_draft, mock_verify]
-    
-    generate_content.main()
-    
-    # Verify save_json was called, models.json should now have 1 item, pending should have 0
-    saved_calls = {call.args[0]: call.args[1] for call in mock_save.mock_calls}
-    
-    assert len(saved_calls["models.json"]) == 1
-    assert saved_calls["models.json"][0]["id"] == "test-pending-model"
-    assert len(saved_calls["pending-models.json"]) == 0
-    assert saved_calls["wizard-scores.json"]["test-pending-model"]["scores"]["coding"] == 10
+
+def make_draft():
+    return DraftContent(
+        summary="A small model.",
+        inPractice=DraftInPractice(strengths=["Fast"], weaknesses=["Shallow"]),
+        architecture=DraftArchitecture(archType="dense", explanation=""),
+        benchmarkCaveat="",
+        claims=[],
+        confidence="high",
+        insufficientEvidence=[],
+        useCaseTags=["coding", "not-a-real-tag"],
+        extractedBenchmarks=[ExtractedBenchmark(name="MMLU", score=80.0)],
+        wizardScores=WizardScores(coding=6, writing=5, research=5, agentic=4, longContext=5, cheapVolume=8),
+    )
+
+
+def run(pending, sources=None, generate_side_effect=None, tmp_path=None):
+    files = {"pending-models.json": pending, "model-sources.json": sources or {}}
+    with patch.object(generate_content, "OUT_DIR", tmp_path), \
+         patch("generate_content.build_evidence_pack", return_value="[E1] evidence"), \
+         patch("generate_content.generate_json", side_effect=generate_side_effect or []) as gen, \
+         patch("generate_content.load_json", side_effect=lambda f, default=None: files.get(f, default)), \
+         patch("generate_content.save_json") as save:
+        try:
+            generate_content.main()
+        except SystemExit:
+            pass
+    saved = {c.args[0]: c.args[1] for c in save.mock_calls}
+    return saved, gen, (tmp_path / "3-content.md").read_text(encoding="utf-8")
+
+
+def test_drafts_never_publish(tmp_path):
+    saved, _, report = run(
+        [dict(PENDING)],
+        generate_side_effect=[make_draft(), VerificationResponse(unsupportedSentences=[], flagged=False)],
+        tmp_path=tmp_path,
+    )
+    # build_models.py owns these; writing them here would be wiped next week.
+    assert "models.json" not in saved
+    assert "wizard-scores.json" not in saved
+
+    [entry] = saved["pending-models.json"]
+    assert entry["draft"]["confidence"] == "high"
+    assert entry["draft"]["useCaseTags"] == ["coding"]
+    assert entry["draft"]["wizardScores"]["cheapVolume"] == 8
+    assert "acme/widget-1.5" in report
+
+
+def test_snippet_is_valid_python(tmp_path):
+    _, _, report = run(
+        [dict(PENDING)],
+        generate_side_effect=[make_draft(), VerificationResponse(unsupportedSentences=[], flagged=False)],
+        tmp_path=tmp_path,
+    )
+    snippet = report.split("```python\n")[1].split("```")[0]
+    # Wrapped the way curated_more.py holds entries.
+    tree = ast.parse("X = {\n" + snippet + "\n}")
+    call = tree.body[0].value.values[0]
+    kwargs = {k.arg for k in call.keywords}
+    assert {"id", "name", "provider", "summary", "tags", "scores"} <= kwargs
+    # Extracted scores have no named source, so they must not become benchmarks.
+    assert "benchmarks" not in kwargs
+    assert "unverified benchmark" in snippet
+
+
+def test_flagged_draft_is_low_confidence(tmp_path):
+    saved, _, report = run(
+        [dict(PENDING)],
+        generate_side_effect=[make_draft(), VerificationResponse(unsupportedSentences=["A small model."], flagged=True)],
+        tmp_path=tmp_path,
+    )
+    draft = saved["pending-models.json"][0]["draft"]
+    assert draft["confidence"] == "low"
+    assert draft["flagged"] is True
+    assert "VERIFIER FLAGGED" in report
+
+
+def test_already_drafted_is_not_redrafted(tmp_path):
+    entry = dict(PENDING, draft={"confidence": "high"})
+    saved, gen, report = run([entry], tmp_path=tmp_path)
+    gen.assert_not_called()
+    assert "awaiting review" in report
+
+
+def test_curated_models_are_pruned_from_pending(tmp_path):
+    sources = {"widget-1-5": {"openrouterId": "acme/widget-1.5", "aliases": []}}
+    saved, gen, _ = run([dict(PENDING)], sources=sources, tmp_path=tmp_path)
+    gen.assert_not_called()
+    assert saved["pending-models.json"] == []
