@@ -1,7 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { Model, getModelById, formatPrice } from '@/lib/data';
+import { useQueryParams } from '@/lib/useQueryParams';
+import CostCalculator from '@/components/CostCalculator';
+import ShareButton from '@/components/ShareButton';
 
 interface WizardOption {
   value: string;
@@ -76,13 +80,89 @@ interface Recommendation {
   };
 }
 
+const STEP_KEYS = STEPS.map((s) => s.key);
+
+/** A complete, valid set of answers from the URL, or null. */
+function parseAnswers(params: URLSearchParams): Answers | null {
+  const answers: Answers = {};
+  for (const step of STEPS) {
+    const value = params.get(step.key);
+    if (!value || !step.options.some((o) => o.value === value)) return null;
+    answers[step.key] = value;
+  }
+  return answers;
+}
+
+// Map frontend answers to the API's format.
+const TASK_MAP: Record<string, string> = {
+  coding: 'coding',
+  writing: 'writing',
+  research: 'research',
+  data: 'cheap-volume',
+  chatbot: 'chat',
+  general: 'other',
+};
+
+const BUDGET_MAP: Record<string, string> = {
+  unlimited: 'high',
+  moderate: 'medium',
+  cheap: 'low',
+};
+
+const toPayload = (answers: Answers) => ({
+  task: TASK_MAP[answers.task] || 'other',
+  budget: BUDGET_MAP[answers.budget] || 'medium',
+  longContext: answers.context === 'long',
+  agentic: answers.complexity === 'complex',
+});
+
+const CLEARED = Object.fromEntries(STEP_KEYS.map((k) => [k, null]));
+
 export default function WizardClient() {
+  // Submitted answers live in the URL (?task=&budget=&context=&complexity=), so
+  // a results page can be bookmarked or shared and reproduces itself on load.
+  const [params, setParams] = useQueryParams();
+  const submitted = useMemo(() => parseAnswers(params), [params]);
+  const submittedKey = submitted ? STEP_KEYS.map((k) => submitted[k]).join('|') : '';
+
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
-  const [showResults, setShowResults] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState<Recommendation[]>([]);
-  const [apiMessage, setApiMessage] = useState<string | null>(null);
+  const [fetched, setFetched] = useState<{
+    key: string;
+    results: Recommendation[];
+    message: string | null;
+  } | null>(null);
+
+  const showResults = submitted !== null;
+  const current = fetched?.key === submittedKey ? fetched : null;
+  const loading = showResults && !current;
+  const results = current?.results ?? [];
+  const apiMessage = current?.message ?? null;
+
+  useEffect(() => {
+    if (!submitted) return;
+    let cancelled = false;
+    fetch('/api/wizard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(toPayload(submitted)),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled) {
+          setFetched({ key: submittedKey, results: data.recommendations || [], message: data.message || null });
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching wizard results:', err);
+        if (!cancelled) {
+          setFetched({ key: submittedKey, results: [], message: 'Failed to fetch recommendations. Please try again.' });
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [submitted, submittedKey]);
 
   const step = STEPS[currentStep];
   const selectedValue = answers[step?.key];
@@ -91,63 +171,21 @@ export default function WizardClient() {
     setAnswers((prev) => ({ ...prev, [step.key]: value }));
   };
 
-  const submitWizard = async () => {
-    setLoading(true);
-    setShowResults(true);
-
-    // Map frontend answers to API format
-    const taskMap: Record<string, string> = {
-      coding: 'coding',
-      writing: 'writing',
-      research: 'research',
-      data: 'cheap-volume',
-      chatbot: 'chat',
-      general: 'other'
-    };
-    
-    const budgetMap: Record<string, string> = {
-      unlimited: 'high',
-      moderate: 'medium',
-      cheap: 'low'
-    };
-
-    const payload = {
-      task: taskMap[answers.task] || 'other',
-      budget: budgetMap[answers.budget] || 'medium',
-      longContext: answers.context === 'long',
-      agentic: answers.complexity === 'complex'
-    };
-
-    try {
-      const res = await fetch('/api/wizard', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      
-      const data = await res.json();
-      setResults(data.recommendations || []);
-      setApiMessage(data.message || null);
-    } catch (err) {
-      console.error("Error fetching wizard results:", err);
-      setApiMessage("Failed to fetch recommendations. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const next = () => {
     if (currentStep < STEPS.length - 1) {
       setCurrentStep((prev) => prev + 1);
     } else {
-      submitWizard();
+      setParams(answers);
     }
   };
 
   const back = () => {
     if (showResults) {
-      setShowResults(false);
-      setLoading(false);
+      // Arriving from a shared link leaves the draft empty; start from the
+      // answers that produced these results so they can be tweaked.
+      setAnswers(submitted ?? {});
+      setCurrentStep(STEPS.length - 1);
+      setParams(CLEARED);
     } else if (currentStep > 0) {
       setCurrentStep((prev) => prev - 1);
     }
@@ -156,10 +194,12 @@ export default function WizardClient() {
   const restart = () => {
     setCurrentStep(0);
     setAnswers({});
-    setShowResults(false);
-    setResults([]);
-    setApiMessage(null);
+    setParams(CLEARED);
   };
+
+  const recommendedModels = results
+    .map((r) => getModelById(r.modelId))
+    .filter((m): m is Model => Boolean(m));
 
   return (
     <div className="page-container">
@@ -250,7 +290,7 @@ export default function WizardClient() {
                 <div style={{ marginBottom: 'var(--space-2)' }}>
                   <span className="model-card-provider">{result.modelData.provider}</span>
                   <span className="price-badge" style={{ marginLeft: 'var(--space-2)' }}>
-                    ${result.modelData.pricing.input.toFixed(2)} / 1M input
+                    {formatPrice(result.modelData.pricing.input)} / 1M input
                   </span>
                 </div>
                 <div className="result-reasoning">
@@ -271,10 +311,15 @@ export default function WizardClient() {
               </Link>
             ))}
 
+            {recommendedModels.length > 1 && (
+              <CostCalculator models={recommendedModels} title="What would these cost you?" />
+            )}
+
             <div className="wizard-nav">
               <button className="btn btn--ghost" onClick={back}>
                 ← Back
               </button>
+              <ShareButton label="Share these results" />
               <button className="btn" onClick={restart}>
                 Start over
               </button>

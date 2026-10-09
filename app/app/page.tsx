@@ -4,7 +4,9 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import Fuse from 'fuse.js';
 import { models, liveModels, tags, providers, blendedPrice, displayName } from '@/lib/data';
 import ModelCard from '@/components/ModelCard';
+import ShareButton from '@/components/ShareButton';
 import { useTranslation } from '@/app/TranslationContext';
+import { useQueryParams, listParam } from '@/lib/useQueryParams';
 
 type SortKey = 'newest' | 'cheapest' | 'context' | 'name';
 
@@ -15,17 +17,27 @@ const SORTS: { key: SortKey; label: string }[] = [
   { key: 'name', label: 'A–Z' },
 ];
 
+// Anything in the URL is user input; ignore values that do not exist.
+const TAG_NAMES = new Set(tags.map((t) => t.tag));
+const PROVIDER_NAMES = new Set(providers.map(([name]) => name));
+const isSortKey = (v: string | null): v is SortKey => SORTS.some((s) => s.key === v);
+
 export default function HomePage() {
   const { plainEnglish } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  const [search, setSearch] = useState('');
-  const [showOpenOnly, setShowOpenOnly] = useState(false);
-  const [includeLegacy, setIncludeLegacy] = useState(false);
-  const [activeTags, setActiveTags] = useState<string[]>([]);
-  const [activeProvider, setActiveProvider] = useState<string>('');
-  const [sort, setSort] = useState<SortKey>('newest');
+  // Filters live in the URL (?q=&tags=&provider=&sort=&open=1&retired=1), so a
+  // filtered view can be bookmarked or shared.
+  const [params, setParams] = useQueryParams();
+  const search = params.get('q') ?? '';
+  const showOpenOnly = params.get('open') === '1';
+  const includeLegacy = params.get('retired') === '1';
+  const activeTags = useMemo(() => listParam(params, 'tags').filter((t) => TAG_NAMES.has(t)), [params]);
+  const providerParam = params.get('provider') ?? '';
+  const activeProvider = PROVIDER_NAMES.has(providerParam) ? providerParam : '';
+  const sortParam = params.get('sort');
+  const sort: SortKey = isSortKey(sortParam) ? sortParam : 'newest';
 
   const pool = includeLegacy ? models : liveModels;
 
@@ -61,15 +73,9 @@ export default function HomePage() {
   }, [search, showOpenOnly, activeProvider, activeTags, sort, fuse, pool]);
 
   const toggleTag = (tag: string) =>
-    setActiveTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
+    setParams({ tags: activeTags.includes(tag) ? activeTags.filter((t) => t !== tag) : [...activeTags, tag] });
 
-  const clearAll = () => {
-    setSearch('');
-    setShowOpenOnly(false);
-    setActiveTags([]);
-    setActiveProvider('');
-    setIncludeLegacy(false);
-  };
+  const clearAll = () => setParams({ q: null, open: null, tags: null, provider: null, retired: null });
 
   const hasFilters = Boolean(search || showOpenOnly || activeTags.length || activeProvider || includeLegacy);
 
@@ -249,7 +255,7 @@ export default function HomePage() {
               type="text"
               placeholder={`Search ${pool.length} models...`}
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => setParams({ q: e.target.value })}
               aria-label="Search models"
               style={{
                 padding: '10px 16px',
@@ -264,7 +270,7 @@ export default function HomePage() {
             />
             <select
               value={activeProvider}
-              onChange={(e) => setActiveProvider(e.target.value)}
+              onChange={(e) => setParams({ provider: e.target.value })}
               aria-label="Filter by provider"
               style={{
                 padding: '10px 12px',
@@ -283,7 +289,7 @@ export default function HomePage() {
             </select>
             <select
               value={sort}
-              onChange={(e) => setSort(e.target.value as SortKey)}
+              onChange={(e) => setParams({ sort: e.target.value === 'newest' ? null : e.target.value })}
               aria-label="Sort models"
               disabled={Boolean(search)}
               title={search ? 'Results are ordered by search relevance' : undefined}
@@ -321,7 +327,7 @@ export default function HomePage() {
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', alignItems: 'center' }}>
             <button
               className="btn"
-              onClick={() => setShowOpenOnly(!showOpenOnly)}
+              onClick={() => setParams({ open: !showOpenOnly })}
               style={filterButton(showOpenOnly)}
               aria-pressed={showOpenOnly}
               title="Models whose weights you can download and run yourself"
@@ -330,7 +336,7 @@ export default function HomePage() {
             </button>
             <button
               className="btn"
-              onClick={() => setIncludeLegacy(!includeLegacy)}
+              onClick={() => setParams({ retired: !includeLegacy })}
               style={filterButton(includeLegacy)}
               aria-pressed={includeLegacy}
               title="Models that were real and widely used but can no longer be called"
@@ -342,6 +348,7 @@ export default function HomePage() {
                 Clear all
               </button>
             )}
+            {(hasFilters || sort !== 'newest') && <ShareButton label="Share this view" />}
             <span className="mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>
               {filtered.length} of {pool.length} shown
               {plainEnglish ? ' · plain English on' : ''}
