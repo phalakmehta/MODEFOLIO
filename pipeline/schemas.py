@@ -28,9 +28,13 @@ class Architecture(BaseModel):
 class Benchmark(BaseModel):
     name: str
     score: float
+    # Every published score must say where it came from. A number we cannot
+    # attribute is a number we do not show.
+    source: str
 
 class HowToUse(BaseModel):
     docsUrl: str
+    openRouterUrl: Optional[str] = None
     apiExample: Optional[str] = None
 
 class ModelNewsItem(BaseModel):
@@ -42,6 +46,10 @@ class AIModel(BaseModel):
     id: str
     name: str
     provider: str
+    # "live"   = currently callable, specs refreshed from OpenRouter
+    # "legacy" = real but delisted; specs frozen, excluded from the Wizard
+    status: Literal["live", "legacy"] = "live"
+    retiredNote: Optional[str] = None
     releaseDate: str
     openSource: bool
     modality: List[str]

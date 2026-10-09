@@ -52,12 +52,38 @@ def main():
     changelog = load_json("changelog.json", default=[])
 
     pending_ids = {m["id"] for m in pending_models}
-    
+
+    # This used to fail silently. With no model-sources.json every model below
+    # hits `continue`, the sync reports success, and nothing is ever updated.
+    # That is a broken pipeline, so say so and exit non-zero.
+    if not sources:
+        print(
+            "FATAL: app/data/model-sources.json is missing or empty.\n"
+            "       Without it every model is skipped and this step silently does\n"
+            "       nothing. Regenerate it with: python pipeline/build_models.py"
+        )
+        sys.exit(1)
+
+    syncable = [m for m in models if m.get("status", "live") == "live"]
+    if not syncable:
+        print("FATAL: no live models to sync.")
+        sys.exit(1)
+
+    missing_sources = [
+        m["id"] for m in syncable
+        if not sources.get(m["id"], {}).get("openrouterId")
+    ]
+    if missing_sources:
+        print(
+            f"WARNING: {len(missing_sources)} live models have no OpenRouter id and "
+            f"will not be synced: {', '.join(missing_sources[:10])}"
+        )
+
     changed = False
     markdown_lines = ["## 1. Model Sync", ""]
 
     # 1. Update existing models
-    for model in models:
+    for model in syncable:
         model_id = model["id"]
         source_info = sources.get(model_id)
         if not source_info or not source_info.get("openrouterId"):
@@ -192,10 +218,15 @@ def main():
         
         stub = {
             "id": internal_id,
+            "openrouterId": or_id,
             "name": or_model.get("name", internal_id),
             "provider": provider,
             "releaseDate": datetime.datetime.fromtimestamp(created, datetime.timezone.utc).strftime("%Y-%m"),
-            "openSource": provider in ["meta-llama", "qwen", "mistralai"],
+            # Do NOT infer this from the provider. Qwen's Max/Plus tiers and
+            # Mistral's Medium tier are API-only, and guessing here is what
+            # previously marked a dozen closed models as open source. Default to
+            # False and let a human set it in curated.py.
+            "openSource": False,
             "modality": ["text"],
             "summary": "",
             "inPractice": {"strengths": [], "weaknesses": []},
@@ -210,7 +241,7 @@ def main():
                 }
             },
             "benchmarks": [],
-            "benchmarkCaveat": "",
+            "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
             "useCaseTags": [],
             "howToUse": {"docsUrl": ""},
             "lastUpdated": today,

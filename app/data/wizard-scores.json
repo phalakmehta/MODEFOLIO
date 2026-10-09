@@ -1,57 +1,684 @@
 {
-  "cohere-command-a-plus": {
+  "claude-opus-5-5": {
     "scores": {
-      "coding": 0,
+      "coding": 10,
+      "writing": 9,
+      "research": 10,
+      "agentic": 10,
+      "longContext": 9,
+      "cheapVolume": 2
+    },
+    "curated": true
+  },
+  "claude-sonnet-5-5": {
+    "scores": {
+      "coding": 9,
+      "writing": 9,
+      "research": 8,
+      "agentic": 9,
+      "longContext": 9,
+      "cheapVolume": 4
+    },
+    "curated": true
+  },
+  "claude-haiku-5-5": {
+    "scores": {
+      "coding": 6,
+      "writing": 7,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 8,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "claude-fable-5-1": {
+    "scores": {
+      "coding": 6,
+      "writing": 10,
+      "research": 8,
+      "agentic": 5,
+      "longContext": 9,
+      "cheapVolume": 1
+    },
+    "curated": true
+  },
+  "claude-opus-5": {
+    "scores": {
+      "coding": 9,
       "writing": 8,
       "research": 9,
-      "agentic": 0,
-      "longContext": 10,
-      "cheapVolume": 0
+      "agentic": 9,
+      "longContext": 9,
+      "cheapVolume": 2
     },
-    "curated": false
+    "curated": true
   },
-  "openai-gpt-6-luna-pro": {
+  "claude-sonnet-5": {
     "scores": {
-      "coding": 0,
-      "writing": 0,
-      "research": 0,
-      "agentic": 0,
-      "longContext": 10,
-      "cheapVolume": 0
+      "coding": 8,
+      "writing": 8,
+      "research": 8,
+      "agentic": 8,
+      "longContext": 9,
+      "cheapVolume": 4
     },
-    "curated": false
+    "curated": true
   },
-  "openai-gpt-6-luna": {
+  "gpt-6-1-sol": {
     "scores": {
-      "coding": 0,
+      "coding": 9,
+      "writing": 8,
+      "research": 9,
+      "agentic": 9,
+      "longContext": 10,
+      "cheapVolume": 4
+    },
+    "curated": true
+  },
+  "gpt-6-astra": {
+    "scores": {
+      "coding": 10,
+      "writing": 9,
+      "research": 10,
+      "agentic": 9,
+      "longContext": 10,
+      "cheapVolume": 1
+    },
+    "curated": true
+  },
+  "gpt-6-sol": {
+    "scores": {
+      "coding": 9,
+      "writing": 8,
+      "research": 8,
+      "agentic": 8,
+      "longContext": 10,
+      "cheapVolume": 4
+    },
+    "curated": true
+  },
+  "gpt-6-luna": {
+    "scores": {
+      "coding": 5,
+      "writing": 7,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 10,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "gpt-5-4": {
+    "scores": {
+      "coding": 8,
+      "writing": 8,
+      "research": 8,
+      "agentic": 7,
+      "longContext": 9,
+      "cheapVolume": 3
+    },
+    "curated": true
+  },
+  "gpt-5-3-codex": {
+    "scores": {
+      "coding": 9,
+      "writing": 4,
+      "research": 5,
+      "agentic": 9,
+      "longContext": 7,
+      "cheapVolume": 3
+    },
+    "curated": true
+  },
+  "gpt-5": {
+    "scores": {
+      "coding": 8,
+      "writing": 8,
+      "research": 8,
+      "agentic": 7,
+      "longContext": 7,
+      "cheapVolume": 5
+    },
+    "curated": true
+  },
+  "gpt-5-mini": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 7,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "gpt-oss-120b": {
+    "scores": {
+      "coding": 7,
+      "writing": 6,
+      "research": 7,
+      "agentic": 6,
+      "longContext": 4,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "o3": {
+    "scores": {
+      "coding": 8,
+      "writing": 6,
+      "research": 8,
+      "agentic": 6,
+      "longContext": 6,
+      "cheapVolume": 5
+    },
+    "curated": true
+  },
+  "gpt-4o": {
+    "scores": {
+      "coding": 6,
+      "writing": 7,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 4,
+      "cheapVolume": 5
+    },
+    "curated": true
+  },
+  "gpt-4o-mini": {
+    "scores": {
+      "coding": 4,
+      "writing": 5,
+      "research": 4,
+      "agentic": 3,
+      "longContext": 4,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "gemini-3-8-flash": {
+    "scores": {
+      "coding": 7,
+      "writing": 7,
+      "research": 8,
+      "agentic": 7,
+      "longContext": 10,
+      "cheapVolume": 7
+    },
+    "curated": true
+  },
+  "gemini-3-1-pro-preview": {
+    "scores": {
+      "coding": 8,
       "writing": 8,
       "research": 9,
       "agentic": 8,
       "longContext": 10,
+      "cheapVolume": 3
+    },
+    "curated": true
+  },
+  "gemini-3-5-flash-lite": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 9,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "gemini-2-5-pro": {
+    "scores": {
+      "coding": 7,
+      "writing": 7,
+      "research": 8,
+      "agentic": 6,
+      "longContext": 9,
+      "cheapVolume": 5
+    },
+    "curated": true
+  },
+  "gemini-2-5-flash": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 9,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "gemini-2-5-flash-lite": {
+    "scores": {
+      "coding": 4,
+      "writing": 5,
+      "research": 5,
+      "agentic": 3,
+      "longContext": 9,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "gemma-4-31b": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 5,
+      "agentic": 4,
+      "longContext": 6,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "gemma-4-26b-a4b": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 5,
+      "agentic": 4,
+      "longContext": 6,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "gemma-3-27b": {
+    "scores": {
+      "coding": 4,
+      "writing": 5,
+      "research": 4,
+      "agentic": 3,
+      "longContext": 5,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "grok-4-7": {
+    "scores": {
+      "coding": 7,
+      "writing": 7,
+      "research": 8,
+      "agentic": 7,
+      "longContext": 8,
+      "cheapVolume": 4
+    },
+    "curated": true
+  },
+  "grok-4-5": {
+    "scores": {
+      "coding": 6,
+      "writing": 7,
+      "research": 7,
+      "agentic": 6,
+      "longContext": 8,
+      "cheapVolume": 4
+    },
+    "curated": true
+  },
+  "llama-4-maverick": {
+    "scores": {
+      "coding": 7,
+      "writing": 7,
+      "research": 7,
+      "agentic": 6,
+      "longContext": 7,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "llama-4-scout": {
+    "scores": {
+      "coding": 6,
+      "writing": 6,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 7,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "llama-3-3-70b": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 5,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "llama-3-2-3b": {
+    "scores": {
+      "coding": 2,
+      "writing": 3,
+      "research": 2,
+      "agentic": 1,
+      "longContext": 4,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "meta-muse-spark-1-3": {
+    "scores": {
+      "coding": 6,
+      "writing": 7,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 7,
       "cheapVolume": 6
     },
-    "curated": false
+    "curated": true
   },
-  "qwen-qwen3.8-max-prime": {
+  "meta-muse-glimmer-30b": {
     "scores": {
-      "coding": 0,
+      "coding": 4,
+      "writing": 5,
+      "research": 4,
+      "agentic": 3,
+      "longContext": 5,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "deepseek-v4-pro": {
+    "scores": {
+      "coding": 9,
       "writing": 6,
       "research": 8,
-      "agentic": 0,
-      "longContext": 10,
+      "agentic": 8,
+      "longContext": 7,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "deepseek-v4-1-flash": {
+    "scores": {
+      "coding": 7,
+      "writing": 5,
+      "research": 6,
+      "agentic": 6,
+      "longContext": 6,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "deepseek-v3-2": {
+    "scores": {
+      "coding": 7,
+      "writing": 5,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 6,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "deepseek-r1": {
+    "scores": {
+      "coding": 6,
+      "writing": 4,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 3,
       "cheapVolume": 7
     },
-    "curated": false
+    "curated": true
   },
-  "openai-gpt-6-sol-pro": {
+  "qwen3-8-max-prime": {
     "scores": {
-      "coding": 0,
-      "writing": 0,
-      "research": 7,
-      "agentic": 0,
-      "longContext": 10,
-      "cheapVolume": 0
+      "coding": 8,
+      "writing": 7,
+      "research": 8,
+      "agentic": 7,
+      "longContext": 9,
+      "cheapVolume": 5
     },
-    "curated": false
+    "curated": true
+  },
+  "qwen3-8-flash": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 9,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "qwen3-8-omni-flash": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 9,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "qwen3-8-27b": {
+    "scores": {
+      "coding": 6,
+      "writing": 6,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 8,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "qwen3-7-flash": {
+    "scores": {
+      "coding": 4,
+      "writing": 5,
+      "research": 5,
+      "agentic": 3,
+      "longContext": 8,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "mistral-large-4": {
+    "scores": {
+      "coding": 7,
+      "writing": 8,
+      "research": 7,
+      "agentic": 7,
+      "longContext": 7,
+      "cheapVolume": 5
+    },
+    "curated": true
+  },
+  "mistral-medium-3-5": {
+    "scores": {
+      "coding": 6,
+      "writing": 7,
+      "research": 6,
+      "agentic": 6,
+      "longContext": 6,
+      "cheapVolume": 6
+    },
+    "curated": true
+  },
+  "mistral-small-4": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 5,
+      "agentic": 4,
+      "longContext": 5,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "devstral-2": {
+    "scores": {
+      "coding": 7,
+      "writing": 3,
+      "research": 4,
+      "agentic": 6,
+      "longContext": 5,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "command-a-plus": {
+    "scores": {
+      "coding": 5,
+      "writing": 8,
+      "research": 9,
+      "agentic": 6,
+      "longContext": 8,
+      "cheapVolume": 7
+    },
+    "curated": true
+  },
+  "command-a": {
+    "scores": {
+      "coding": 4,
+      "writing": 7,
+      "research": 8,
+      "agentic": 5,
+      "longContext": 7,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "glm-5-3-prime": {
+    "scores": {
+      "coding": 8,
+      "writing": 6,
+      "research": 7,
+      "agentic": 8,
+      "longContext": 9,
+      "cheapVolume": 6
+    },
+    "curated": true
+  },
+  "glm-5-3-flash": {
+    "scores": {
+      "coding": 6,
+      "writing": 6,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 9,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "kimi-k3": {
+    "scores": {
+      "coding": 7,
+      "writing": 7,
+      "research": 8,
+      "agentic": 6,
+      "longContext": 10,
+      "cheapVolume": 6
+    },
+    "curated": true
+  },
+  "kimi-k2-7-code": {
+    "scores": {
+      "coding": 8,
+      "writing": 4,
+      "research": 5,
+      "agentic": 7,
+      "longContext": 8,
+      "cheapVolume": 7
+    },
+    "curated": true
+  },
+  "minimax-m3": {
+    "scores": {
+      "coding": 6,
+      "writing": 6,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 9,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "nova-2-lite": {
+    "scores": {
+      "coding": 5,
+      "writing": 5,
+      "research": 5,
+      "agentic": 4,
+      "longContext": 8,
+      "cheapVolume": 8
+    },
+    "curated": true
+  },
+  "nova-premier": {
+    "scores": {
+      "coding": 6,
+      "writing": 6,
+      "research": 7,
+      "agentic": 5,
+      "longContext": 8,
+      "cheapVolume": 3
+    },
+    "curated": true
+  },
+  "nemotron-3-5-lightning": {
+    "scores": {
+      "coding": 5,
+      "writing": 5,
+      "research": 5,
+      "agentic": 4,
+      "longContext": 6,
+      "cheapVolume": 10
+    },
+    "curated": true
+  },
+  "sonar-pro-search": {
+    "scores": {
+      "coding": 2,
+      "writing": 4,
+      "research": 9,
+      "agentic": 3,
+      "longContext": 6,
+      "cheapVolume": 3
+    },
+    "curated": true
+  },
+  "solar-pro-4": {
+    "scores": {
+      "coding": 5,
+      "writing": 6,
+      "research": 6,
+      "agentic": 4,
+      "longContext": 8,
+      "cheapVolume": 9
+    },
+    "curated": true
+  },
+  "seed-2-1-turbo": {
+    "scores": {
+      "coding": 6,
+      "writing": 6,
+      "research": 6,
+      "agentic": 5,
+      "longContext": 7,
+      "cheapVolume": 7
+    },
+    "curated": true
+  },
+  "granite-4-2-8b": {
+    "scores": {
+      "coding": 4,
+      "writing": 4,
+      "research": 4,
+      "agentic": 3,
+      "longContext": 5,
+      "cheapVolume": 10
+    },
+    "curated": true
   }
 }

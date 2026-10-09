@@ -1,16 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import models from '@/data/models.json';
 import Link from 'next/link';
-
-type Model = typeof models[0];
-
-function formatNumber(n: number): string {
-  if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M`;
-  if (n >= 1000) return `${(n / 1000).toFixed(0)}K`;
-  return n.toString();
-}
+import { models, Model, displayName, formatTokens, formatPrice } from '@/lib/data';
 
 interface ModelSelectorProps {
   index: number;
@@ -27,7 +19,7 @@ function ModelSelector({ index, selected, onSelect, usedIds }: ModelSelectorProp
     return models
       .filter((m) => !usedIds.includes(m.id))
       .filter((m) =>
-        !query || m.name.toLowerCase().includes(query.toLowerCase()) ||
+        !query || displayName(m.name).toLowerCase().includes(query.toLowerCase()) ||
         m.provider.toLowerCase().includes(query.toLowerCase())
       );
   }, [query, usedIds]);
@@ -47,7 +39,7 @@ function ModelSelector({ index, selected, onSelect, usedIds }: ModelSelectorProp
           <div>
             <span className="model-card-provider" style={{ fontSize: '10px' }}>{selected.provider}</span>
             <br />
-            <span style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-base)' }}>{selected.name}</span>
+            <span style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-base)' }}>{displayName(selected.name)}</span>
           </div>
           <button
             className="btn btn--ghost"
@@ -81,7 +73,10 @@ function ModelSelector({ index, selected, onSelect, usedIds }: ModelSelectorProp
               onMouseDown={() => { onSelect(m); setOpen(false); setQuery(''); }}
             >
               <span className="provider" style={{ marginRight: '8px' }}>{m.provider}</span>
-              {m.name}
+              {displayName(m.name)}
+              {m.status === 'legacy' && (
+                <span className="badge" style={{ marginLeft: '8px', fontSize: '10px' }}>retired</span>
+              )}
             </div>
           ))}
         </div>
@@ -93,7 +88,11 @@ function ModelSelector({ index, selected, onSelect, usedIds }: ModelSelectorProp
 interface CompareRow {
   label: string;
   values: (string | number)[];
-  highlight?: boolean;
+  /** Raw comparable numbers. Never derive these from `values` -- the formatted
+   *  strings are lossy: "1.0M" parses as 1.0 and loses to "400K" -> 400. */
+  raw?: (number | null)[];
+  /** 'high' = bigger is better, 'low' = cheaper is better. */
+  better?: 'high' | 'low';
   isMono?: boolean;
 }
 
@@ -113,39 +112,73 @@ export default function CompareClient() {
 
   const rows: CompareRow[] = activeModels.length >= 2 ? [
     {
+      label: 'Status',
+      values: activeModels.map((m) => (m.status === 'legacy' ? 'Retired - cannot be called' : 'Available')),
+    },
+    {
       label: 'Provider',
       values: activeModels.map((m) => m.provider),
     },
     {
-      label: 'Context Window',
-      values: activeModels.map((m) => formatNumber(m.specs.contextWindow)),
+      label: 'Released',
+      values: activeModels.map((m) => m.releaseDate || '-'),
       isMono: true,
-      highlight: true,
+    },
+    {
+      label: 'Context Window',
+      values: activeModels.map((m) => formatTokens(m.specs.contextWindow) + ' tokens'),
+      raw: activeModels.map((m) => m.specs.contextWindow),
+      better: 'high',
+      isMono: true,
     },
     {
       label: 'Max Output',
-      values: activeModels.map((m) => formatNumber(m.specs.maxOutputTokens)),
+      values: activeModels.map((m) =>
+        m.specs.maxOutputTokens ? formatTokens(m.specs.maxOutputTokens) + ' tokens' : 'Not published',
+      ),
+      raw: activeModels.map((m) => m.specs.maxOutputTokens),
+      better: 'high',
       isMono: true,
     },
     {
       label: 'Input Price / 1M tokens',
-      values: activeModels.map((m) => `$${m.specs.pricing.input.toFixed(2)}`),
+      values: activeModels.map((m) => formatPrice(m.specs.pricing.input)),
+      raw: activeModels.map((m) => m.specs.pricing.input),
+      better: 'low',
       isMono: true,
-      highlight: true,
     },
     {
       label: 'Output Price / 1M tokens',
-      values: activeModels.map((m) => `$${m.specs.pricing.output.toFixed(2)}`),
+      values: activeModels.map((m) => formatPrice(m.specs.pricing.output)),
+      raw: activeModels.map((m) => m.specs.pricing.output),
+      better: 'low',
       isMono: true,
-      highlight: true,
+    },
+    {
+      label: 'Cost of 1,000 typical requests',
+      values: activeModels.map((m) => {
+        const cost = ((8000 / 1e6) * m.specs.pricing.input + (2000 / 1e6) * m.specs.pricing.output) * 1000;
+        return cost < 1 ? 'under $1' : '$' + cost.toFixed(0);
+      }),
+      raw: activeModels.map(
+        (m) => (8000 / 1e6) * m.specs.pricing.input + (2000 / 1e6) * m.specs.pricing.output,
+      ),
+      better: 'low',
+      isMono: true,
     },
     {
       label: 'Architecture',
-      values: activeModels.map((m) => m.architecture.type === 'mixture-of-experts' ? 'MoE' : 'Dense'),
+      values: activeModels.map((m) =>
+        m.architecture.type === 'mixture-of-experts'
+          ? 'Mixture of Experts'
+          : m.architecture.type === 'dense'
+            ? 'Dense'
+            : 'Undisclosed',
+      ),
     },
     {
-      label: 'Open Source',
-      values: activeModels.map((m) => m.openSource ? 'Yes' : 'No'),
+      label: 'Open Weights',
+      values: activeModels.map((m) => (m.openSource ? 'Yes - self-hostable' : 'No - API only')),
     },
     {
       label: 'Modality',
@@ -187,7 +220,7 @@ export default function CompareClient() {
               {activeModels.map((m) => (
                 <th key={m.id} className="compare-header-model">
                   <Link href={`/models/${m.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                    {m.name}
+                    {displayName(m.name)}
                   </Link>
                 </th>
               ))}
@@ -195,7 +228,7 @@ export default function CompareClient() {
           </thead>
           <tbody>
             {rows.map((row, i) => {
-              const bestIdx = row.highlight ? findBest(row) : -1;
+              const bestIdx = row.better ? findBest(row) : -1;
               return (
                 <tr key={i}>
                   <td>{row.label}</td>
@@ -232,36 +265,36 @@ function getBenchmarkRows(activeModels: Model[]): CompareRow[] {
   activeModels.forEach((m) => m.benchmarks.forEach((b) => allBenchmarks.add(b.name)));
 
   return Array.from(allBenchmarks).map((name) => ({
-    label: name,
+    // The score used to be rendered with a '%' appended, which is not the unit
+    // every benchmark reports in. Show the number as published, and say plainly
+    // that the vendor is the one reporting it.
+    label: name + ' (vendor-reported)',
     values: activeModels.map((m) => {
       const b = m.benchmarks.find((bench) => bench.name === name);
-      return b ? `${b.score}%` : '—';
+      return b ? String(b.score) : '-';
     }),
+    raw: activeModels.map((m) => m.benchmarks.find((bench) => bench.name === name)?.score ?? null),
+    better: 'high' as const,
     isMono: true,
-    highlight: true,
   }));
 }
 
 function findBest(row: CompareRow): number {
-  const isPricing = row.label.toLowerCase().includes('price');
-  const nums = row.values.map((v) => {
-    const n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
-    return isNaN(n) ? null : n;
-  });
+  if (!row.raw || !row.better) return -1;
 
   let bestIdx = -1;
   let bestVal: number | null = null;
 
-  nums.forEach((n, i) => {
-    if (n === null) return;
-    if (bestVal === null) {
-      bestVal = n;
-      bestIdx = i;
-    } else if (isPricing ? n < bestVal : n > bestVal) {
+  row.raw.forEach((n, i) => {
+    if (n === null || n === undefined) return;
+    if (bestVal === null || (row.better === 'low' ? n < bestVal : n > bestVal)) {
       bestVal = n;
       bestIdx = i;
     }
   });
 
+  // Highlighting every cell says nothing, so skip it when they all tie.
+  const best = bestVal;
+  if (bestIdx !== -1 && row.raw.every((n) => n === best)) return -1;
   return bestIdx;
 }

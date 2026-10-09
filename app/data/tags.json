@@ -1,0 +1,54 @@
+[
+  {
+    "tag": "coding",
+    "description": "Writing, reviewing and debugging code"
+  },
+  {
+    "tag": "writing",
+    "description": "Articles, emails, copy and long-form prose"
+  },
+  {
+    "tag": "research",
+    "description": "Reading documents and answering questions from them"
+  },
+  {
+    "tag": "agentic",
+    "description": "Running multi-step tasks and calling tools on its own"
+  },
+  {
+    "tag": "complex reasoning",
+    "description": "Hard problems that need careful step-by-step thinking"
+  },
+  {
+    "tag": "cheap volume",
+    "description": "Cheap enough to run over thousands of items"
+  },
+  {
+    "tag": "chat",
+    "description": "Fast enough to sit behind a live conversation"
+  },
+  {
+    "tag": "long context",
+    "description": "Reads very large documents or whole codebases at once"
+  },
+  {
+    "tag": "multimodal",
+    "description": "Takes more than just text as input"
+  },
+  {
+    "tag": "open weights",
+    "description": "You can download it and run it on your own hardware"
+  },
+  {
+    "tag": "vision",
+    "description": "Can look at images"
+  },
+  {
+    "tag": "math",
+    "description": "Arithmetic, proofs and quantitative work"
+  },
+  {
+    "tag": "multilingual",
+    "description": "Strong in languages other than English"
+  }
+]
