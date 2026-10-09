@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
 import { recommend, WizardAnswers } from '@/lib/wizard/recommend';
-import modelsData from '@/data/models.json';
+import { liveModels, getModelById, displayName } from '@/lib/data';
 
-// Compress models so we don't blow up the Gemini context window/latency
+// Compress models so we don't blow up the Gemini context window/latency.
+// Only live models: recommending something that has been delisted is worse than
+// recommending nothing at all.
 const getMinifiedModels = () => {
-  return modelsData.map((m: any) => ({
+  return liveModels.map((m) => ({
     id: m.id,
     name: m.name,
     provider: m.provider,
@@ -13,7 +15,10 @@ const getMinifiedModels = () => {
     weaknesses: m.inPractice?.weaknesses?.slice(0, 2) || [],
     strengths: m.inPractice?.strengths?.slice(0, 2) || [],
     tags: m.useCaseTags || [],
-    mmlu: m.benchmarks?.find((b: any) => b.name.toLowerCase().includes('mmlu'))?.score || 'N/A'
+    openWeights: m.openSource,
+    // Explicitly 'none published' rather than 'N/A', so the model cannot read an
+    // absent score as a low one.
+    mmlu: m.benchmarks.find((b) => b.name.toLowerCase().includes('mmlu'))?.score ?? 'none published'
   }));
 };
 
@@ -27,6 +32,11 @@ Rules for recommendation:
 - If "longContext" is true, the model MUST have at least 100,000 contextWindow.
 - Think about the tradeoff between quality, speed, and cost.
 - CRITICAL: You must remain 100% objective and vendor-neutral. Do NOT show any bias towards Google or Gemini models. Evaluate OpenAI, Anthropic, Meta, and all other providers fairly based purely on their specs, benchmarks, and suitability for the task.
+- modelId MUST be copied exactly from the provided list. Never invent an id.
+- Use ONLY the facts in the provided list. Do not cite benchmark scores, release
+  dates or prices from your own memory, and never state a score for a model whose
+  mmlu field says "none published".
+- Write for someone with no technical background. Explain any jargon in the same sentence.
 
 Return exactly this JSON schema:
 {
@@ -81,34 +91,37 @@ export async function POST(request: Request) {
           
           if (parsed.recommendations && Array.isArray(parsed.recommendations) && parsed.recommendations.length > 0) {
             // Map back to get the full modelData
-            const finalRecs = parsed.recommendations.map((rec: any, index: number) => {
-              const fullModel = modelsData.find((m: any) => m.id === rec.modelId);
-              if (!fullModel) return null;
+            type RawRec = { modelId?: string; reason?: string; tradeoff?: string };
+            const finalRecs = parsed.recommendations.map((rec: RawRec, index: number) => {
+              // Drop anything hallucinated or retired rather than rendering it.
+              const fullModel = rec.modelId ? getModelById(rec.modelId) : undefined;
+              if (!fullModel || fullModel.status !== 'live') return null;
               
-              let benchmarkNote = null;
-              if ((answers.agentic || answers.task === "coding") && fullModel.benchmarkCaveat) {
-                benchmarkNote = fullModel.benchmarkCaveat;
-              }
-
               return {
                 modelId: rec.modelId,
                 rank: index + 1,
-                matchScore: (100 - (index * 5)) / 10, // Generates 10, 9.5, 9.0 for UI visual consistency
+                matchScore: (100 - (index * 5)) / 10, // 10, 9.5, 9.0 for UI consistency
                 reason: rec.reason,
                 tradeoff: rec.tradeoff || fullModel.inPractice?.weaknesses?.[0] || "May have limitations.",
-                benchmarkNote,
+                benchmarkNote: fullModel.benchmarks.length === 0 ? fullModel.benchmarkCaveat : null,
                 modelData: {
-                  name: fullModel.name,
+                  name: displayName(fullModel.name),
                   provider: fullModel.provider,
                   summary: fullModel.summary,
-                  pricing: fullModel.specs.pricing
+                  pricing: fullModel.specs.pricing,
+                  contextWindow: fullModel.specs.contextWindow,
+                  openSource: fullModel.openSource
                 }
               };
             }).filter(Boolean);
             
-            if (finalRecs.length > 0) {
+            if (finalRecs.length === 3) {
               return NextResponse.json({ recommendations: finalRecs, message: null });
             }
+            console.warn(
+              `LLM returned ${finalRecs.length} usable recommendations of ${parsed.recommendations.length}; ` +
+              `falling back to heuristics.`
+            );
           }
         }
       } catch (e) {

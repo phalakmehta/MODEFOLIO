@@ -1,4 +1,4 @@
-import models from '@/data/models.json';
+import { models, getModelById, displayName } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import ModelDetailClient from './ModelDetailClient';
 
@@ -10,17 +10,18 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { id } = await params;
-  const model = models.find((m) => m.id === id);
+  const model = getModelById(id);
   if (!model) return {};
+  const retired = model.status === 'legacy' ? ' (no longer available)' : '';
   return {
-    title: `${model.name} — Modelfolio`,
+    title: `${displayName(model.name)}${retired} — Modelfolio`,
     description: model.summary,
   };
 }
 
 export default async function ModelDetailPage({ params }: { params: Promise<Params> }) {
   const { id } = await params;
-  const model = models.find((m) => m.id === id);
+  const model = getModelById(id);
   if (!model) notFound();
   return <ModelDetailClient model={model} />;
 }

@@ -1,131 +1,126 @@
-import modelsData from '@/data/models.json';
 import wizardScores from '@/data/wizard-scores.json';
+import { liveModels, Model, blendedPrice, displayName } from '@/lib/data';
 
-// Note: Ensure types match the schema
 export type WizardAnswers = {
-  task: "coding" | "writing" | "research" | "cheap-volume" | "chat" | "other";
-  budget: "low" | "medium" | "high";
+  task: 'coding' | 'writing' | 'research' | 'cheap-volume' | 'chat' | 'other';
+  budget: 'low' | 'medium' | 'high';
   longContext: boolean;
   agentic: boolean;
 };
 
+type Scores = {
+  coding: number;
+  writing: number;
+  research: number;
+  agentic: number;
+  longContext: number;
+  cheapVolume: number;
+};
+
+const SCORES = wizardScores as Record<string, { scores: Scores; curated: boolean }>;
+
+/**
+ * Maps a questionnaire answer onto a score key. "chat" leans on writing because
+ * conversational quality tracks prose quality more closely than anything else we
+ * score; "other" leans on research as the most general-purpose axis.
+ */
+const TASK_KEY: Record<WizardAnswers['task'], keyof Scores> = {
+  coding: 'coding',
+  writing: 'writing',
+  research: 'research',
+  'cheap-volume': 'cheapVolume',
+  chat: 'writing',
+  other: 'research',
+};
+
 export function recommend(answers: WizardAnswers) {
-  let candidates = modelsData as any[];
-  
-  // 1. Soft Context Filter (loosened to 100k)
+  // Only live models. Recommending something that has been delisted is worse than
+  // recommending nothing, and the directory deliberately still lists legacy models.
+  let candidates: Model[] = liveModels.filter((m) => SCORES[m.id]);
+
   if (answers.longContext) {
-    candidates = candidates.filter(m => m.specs.contextWindow >= 100000);
+    candidates = candidates.filter((m) => m.specs.contextWindow >= 200_000);
   }
 
-  // 2. Category weights scoring
-  const scored = candidates.map(model => {
-    const scores = (wizardScores as Record<string, any>)[model.id]?.scores || {
-      coding: 5, writing: 5, research: 5, agentic: 5, longContext: 5, cheapVolume: 5
-    };
-    
+  const taskKey = TASK_KEY[answers.task] ?? 'research';
+
+  const scored = candidates.map((model) => {
+    const scores = SCORES[model.id].scores;
+    const price = blendedPrice(model);
+
+    let weighted = 0;
     let totalWeight = 0;
-    let weightedScore = 0;
 
-    // Primary task logic
-    let taskKey: string = answers.task;
-    if (taskKey === "cheap-volume") taskKey = "cheapVolume";
-    if (taskKey === "chat") taskKey = "writing"; 
-    if (taskKey === "other") taskKey = "research"; 
-    
-    weightedScore += (scores[taskKey] || 5) * 1.5; 
-    totalWeight += 1.5;
+    const add = (score: number, weight: number) => {
+      weighted += score * weight;
+      totalWeight += weight;
+    };
 
-    // Agentic logic
-    if (answers.agentic) {
-      weightedScore += (scores.agentic || 5) * 1.2;
-      totalWeight += 1.2;
+    add(scores[taskKey], 2.0);
+    if (answers.agentic) add(scores.agentic, 1.5);
+    if (answers.longContext) add(scores.longContext, 1.0);
+
+    // Budget shapes how much cheapness counts, and applies a soft penalty rather
+    // than a hard filter, so a slightly-over-budget but far better model can still
+    // surface.
+    if (answers.budget === 'low') {
+      add(scores.cheapVolume, 2.0);
+      if (price > 1.0) weighted -= Math.min((price - 1.0) * 0.8, 6);
+    } else if (answers.budget === 'medium') {
+      add(scores.cheapVolume, 0.75);
+      if (price > 6.0) weighted -= Math.min((price - 6.0) * 0.3, 4);
+    } else {
+      // Quality first. Nudge away from the very cheapest models, which are cheap
+      // because they are small, but never let that dominate the task score.
+      if (price < 0.5) weighted -= 1.0;
     }
 
-    // Long Context logic
-    if (answers.longContext) {
-      weightedScore += (scores.longContext || 5) * 0.8;
-      totalWeight += 0.8;
-    }
-
-    // Blended price: 80% input, 20% output
-    const blendedPrice = (model.specs.pricing.input * 0.8) + (model.specs.pricing.output * 0.2);
-
-    // Budget weighting (Soft Penalties instead of hard deletes)
-    if (answers.budget === "low") {
-      weightedScore += (scores.cheapVolume || 5) * 1.5;
-      totalWeight += 1.5;
-      // Penalize expensive models
-      if (blendedPrice > 1.5) {
-        weightedScore -= (blendedPrice - 1.5) * 0.5; 
-      }
-    } else if (answers.budget === "medium") {
-      weightedScore += (scores.cheapVolume || 5) * 0.5;
-      totalWeight += 0.5;
-      if (blendedPrice > 5.0) {
-        weightedScore -= (blendedPrice - 5.0) * 0.2;
-      }
-    } else if (answers.budget === "high") {
-      // Reward premium expensive models natively
-      if (blendedPrice < 0.5) {
-        weightedScore -= 0.5;
-      }
-      // Add benchmark boosts for high budget flagships
-      const mmlu = model.benchmarks?.find((b: any) => b.name.toLowerCase().includes('mmlu'))?.score;
-      if (mmlu && mmlu > 80) {
-        weightedScore += (mmlu - 80) * 0.1; 
-      }
-    }
-
-    if (weightedScore < 0) weightedScore = 0;
-    if (totalWeight === 0) totalWeight = 1;
-    let matchScore = Number((weightedScore / totalWeight).toFixed(1));
-    if (matchScore > 10) matchScore = 10;
-
-    return { model, matchScore, blendedPrice };
+    const matchScore = Math.max(0, Math.min(10, weighted / (totalWeight || 1)));
+    return { model, matchScore: Number(matchScore.toFixed(1)), price };
   });
 
-  // 3. Sort by matchScore desc; tie-break by lower blended price
-  scored.sort((a, b) => {
-    if (b.matchScore !== a.matchScore) {
-      return b.matchScore - a.matchScore;
-    }
-    return a.blendedPrice - b.blendedPrice;
-  });
+  scored.sort((a, b) => b.matchScore - a.matchScore || a.price - b.price);
 
-  // 4. Return top 3
   const top3 = scored.slice(0, 3).map((item, index) => {
-    const { model, matchScore } = item;
-    
-    let benchmarkNote = null;
-    if ((answers.agentic || answers.task === "coding") && model.benchmarkCaveat) {
-      benchmarkNote = model.benchmarkCaveat;
-    }
+    const { model, matchScore, price } = item;
+    const scores = SCORES[model.id].scores;
+
+    // Name the reason it actually won, rather than restating the score.
+    const drivers: string[] = [];
+    if (scores[taskKey] >= 8) drivers.push(`it is one of the strongest here for ${answers.task.replace('-', ' ')}`);
+    if (answers.agentic && scores.agentic >= 8) drivers.push('it holds a plan together across many steps');
+    if (answers.longContext && scores.longContext >= 8) drivers.push('it handles very large inputs well');
+    if (answers.budget === 'low' && scores.cheapVolume >= 8) drivers.push('it is cheap enough to run at volume');
+    if (drivers.length === 0) drivers.push('it is the best balance of capability and price for these answers');
 
     return {
       modelId: model.id,
       rank: index + 1,
       matchScore,
-      reason: `With a heuristic score of ${matchScore}/10 for your criteria, ${model.name} is a solid match. ${model.summary}`,
-      tradeoff: model.inPractice?.weaknesses?.[0] || "May have specific limitations.",
-      benchmarkNote,
+      reason: `${displayName(model.name)} scores ${matchScore}/10 for what you described because ${drivers.join(', and ')}. ${model.summary}`,
+      tradeoff: model.inPractice.weaknesses[0] ?? 'Every model has trade-offs; test it on your own work.',
+      benchmarkNote: model.benchmarks.length === 0 ? model.benchmarkCaveat : null,
       modelData: {
-        name: model.name,
+        name: displayName(model.name),
         provider: model.provider,
         summary: model.summary,
-        pricing: model.specs.pricing
-      }
+        pricing: model.specs.pricing,
+        blendedPrice: Number(price.toFixed(3)),
+        contextWindow: model.specs.contextWindow,
+        openSource: model.openSource,
+      },
     };
   });
 
   if (top3.length === 0) {
     return {
       recommendations: [],
-      message: "No models matched your criteria perfectly. Try loosening your context requirements."
+      message:
+        answers.longContext
+          ? 'No model here has a context window that large. Try answering "medium" to the length question.'
+          : 'No models matched those answers. Try loosening one of them.',
     };
   }
 
-  return {
-    recommendations: top3,
-    message: null
-  };
+  return { recommendations: top3, message: null };
 }
