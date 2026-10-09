@@ -145,5 +145,115 @@
     "type": "new-model-detected",
     "source": "openrouter",
     "status": "needs-review"
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "mistral-large-4",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "context-change",
+    "field": "specs.contextWindow",
+    "old": 524288,
+    "new": 1048576
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.0356,
+    "new": 0.3
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 1.0,
+    "new": 1.2
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "nemotron-3-5-lightning",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.049,
+    "new": 0.0469
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "nemotron-3-5-lightning",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.14,
+    "new": 0.134
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.62,
+    "new": 0.5
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 12.3,
+    "new": 12.0
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.29232,
+    "new": 0.95526
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.58464,
+    "new": 1.91052
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "llama-3-3-70b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.1,
+    "new": 0.22
+  },
+  {
+    "date": "2026-10-09",
+    "modelId": "llama-3-3-70b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.32,
+    "new": 0.5
   }
 ]
