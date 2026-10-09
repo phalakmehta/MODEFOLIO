@@ -1,12 +1,23 @@
 name: Weekly update
+
 on:
   schedule:
     - cron: "0 12 * * 1"     # Mondays 12:00 UTC (17:30 IST)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      skip_news:
+        description: "Skip the news digest (useful if the LLM quota is exhausted)"
+        type: boolean
+        default: false
+
+# Needed to push the refreshed data straight back to main.
 permissions:
   contents: write
-  pull-requests: write
-concurrency: weekly-update
+
+concurrency:
+  group: weekly-update
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -14,32 +25,100 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_MODEL: gemini-2.5-flash
       GEMINI_CONTENT_MODEL: gemini-2.5-flash
+      PYTHONIOENCODING: utf-8
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - run: pip install -r pipeline/requirements.txt
-      - run: mkdir -p pipeline/out
-      - name: 1. Sync models
-        run: python pipeline/update_models.py
-      - name: 2. Build news digest
-        if: ${{ !cancelled() }}
-        run: python pipeline/build_news.py
-      - name: 3. Generate content
-        if: ${{ !cancelled() }}
-        run: python pipeline/generate_content.py
-      - name: Validate data
-        id: validate
-        if: ${{ !cancelled() }}
-        run: python pipeline/validate_data.py
-      - name: Assemble PR body
-        if: ${{ !cancelled() }}
-        run: cat pipeline/out/*.md > pipeline/out/pr-body.md
-      - uses: peter-evans/create-pull-request@v7
-        if: ${{ !cancelled() && steps.validate.outcome == 'success' }}
         with:
-          branch: automation/weekly-update
-          title: "Weekly update: models, news, content"
-          body-path: pipeline/out/pr-body.md
-          commit-message: "chore(data): weekly update"
-          labels: automated,data
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+
+      - run: pip install -r pipeline/requirements.txt
+
+      - run: mkdir -p pipeline/out
+
+      # Refresh every spec from the live OpenRouter API and regenerate
+      # model-sources.json and wizard-scores.json. This is the authoritative
+      # rebuild: no price or context window is ever carried over by hand.
+      - name: 1. Rebuild models from curated content + live specs
+        run: python pipeline/build_models.py
+
+      # Detect models that have appeared on OpenRouter but are not yet curated,
+      # and record spec drift in the changelog.
+      - name: 2. Detect new models
+        run: python pipeline/update_models.py
+
+      # A failure here is a real failure. It used to exit 0 on every error path,
+      # which is why a broken digest looked like a successful run.
+      - name: 3. Build news digest
+        if: ${{ !inputs.skip_news }}
+        run: python pipeline/build_news.py
+
+      # Drafts only. Each draft is attached to its pending-models.json entry and
+      # printed as a curated_more.py snippet in the summary below. Nothing is
+      # published until a human pastes it into curated_more.py.
+      - name: 4. Draft content for newly detected models
+        run: python pipeline/generate_content.py
+
+      # The gate. Because this workflow pushes directly to main, nothing gets
+      # published unless the data is valid.
+      - name: Validate data
+        run: python pipeline/validate_data.py
+
+      # Catch anything that would break the live site before it is pushed.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install frontend deps
+        run: cd app && npm ci
+
+      - name: Build the site
+        run: cd app && npm run build
+
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add app/data
+
+          if git diff --cached --quiet; then
+            echo "No data changes this week."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          git diff --cached --stat
+
+          {
+            echo "chore(data): weekly update"
+            echo
+            cat pipeline/out/*.md 2>/dev/null || true
+          } > "$RUNNER_TEMP/commit-message.txt"
+
+          git commit --file="$RUNNER_TEMP/commit-message.txt"
+
+          # Someone may have pushed while the pipeline was running. Rebase rather
+          # than force, so a human commit is never discarded.
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
+
+      - name: Summary
+        if: ${{ always() }}
+        run: |
+          if [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+            echo "### Data updated and pushed to main" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### No data changes this week" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          for f in pipeline/out/*.md; do
+            [ -e "$f" ] && cat "$f" >> "$GITHUB_STEP_SUMMARY"
+          done

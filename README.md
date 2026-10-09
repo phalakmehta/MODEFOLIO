@@ -13,7 +13,7 @@ Modelfolio cuts through the hype to tell you exactly what each model rules at, a
 - **The Directory**: A stunning, visual breakdown of the top frontier and open-source models (OpenAI, Anthropic, Google, Meta, Mistral, and more).
 - **The Wizard Engine**: Don't know what you need? Answer 4 simple questions (like "What's your budget?" and "What are you doing?"), and our dual-engine (AI-powered + Math Heuristics) Wizard will recommend the exact Top 3 models for your specific use case.
 - **The BS Translator**: A toggle switch that instantly translates dense, nerdy AI jargon (like *Mixture-of-Experts* and *Context Windows*) into plain, everyday English. 
-- **Automated AI News**: An automated Python data pipeline that scrapes the web, summarizes the latest model drops using Gemini 1.5 Pro, and pushes a weekly news digest straight to the site.
+- **Automated AI News**: An automated Python data pipeline that scrapes the web, summarizes the week's model news with Gemini 2.5 Flash, and pushes a weekly news digest straight to the site.
 
 ---
 
@@ -23,15 +23,20 @@ Modelfolio is built with two distinct parts: a beautiful frontend, and a ruthles
 
 ### 1. The Frontend (Next.js)
 The frontend is a fully responsive, dark-mode Next.js web application heavily inspired by premium data-journalism sites like *The Pudding*. 
-- Built with **React** & **Next.js 14 (App Router)**
+- Built with **React 19** & **Next.js 16 (App Router)**
 - Styled completely with **Vanilla CSS** (No Tailwind) to allow for complete, hyper-custom visual control.
 
 ### 2. The Data Pipeline (Python)
-The models aren't hardcoded. Modelfolio is powered by an automated Python scraping engine located in the `pipeline/` directory. 
-- Every week, a **GitHub Action** wakes up the pipeline.
-- It crawls developer documentation and AI news feeds.
-- It passes the raw data to **Gemini 1.5 Pro**, which structure-formats it into strict JSON schemas.
-- It updates the database in `app/data/` and automatically commits the new data directly to the repository!
+The data lives in `app/data/` and is produced by the Python pipeline in `pipeline/`. It splits the work in two, so that nothing on the site is guessed:
+- **Humans write the judgement.** `pipeline/curated.py` and `pipeline/curated_more.py` hold each model's plain-English summary, strengths, weaknesses, use-case tags and Wizard scores. A benchmark score appears only when it names a public source.
+- **The OpenRouter API supplies every number.** `pipeline/build_models.py` joins the curated entries with live OpenRouter data (context window, max output, prices, release date). It is the only thing that writes `models.json`, along with `model-sources.json` and `wizard-scores.json`.
+
+Every Monday a **GitHub Action** (`.github/workflows/weekly-update.yml`) runs:
+1. `build_models.py`: rebuilds the directory with live specs.
+2. `update_models.py`: detects new models on OpenRouter and adds them to `pending-models.json`.
+3. `build_news.py`: gathers the week's stories and has **Gemini 2.5 Flash** write the digest.
+4. `generate_content.py`: drafts copy for the pending models. Drafts are **never published automatically**. Each one shows up as a ready-to-paste `curated_more.py` snippet in the run summary, for a human to review.
+5. `validate_data.py` and `npm run build`: the gate. Only if both pass does the Action push the data to `main`.
 
 ---
 
@@ -74,20 +79,22 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your computer.
 
 If you want to manually trigger the pipeline to hunt for new AI models and news:
 
-1. Navigate to the `pipeline/` folder:
+1. From the repo root, install the Python requirements:
    ```bash
-   cd MODEFOLIO/pipeline
+   pip install -r pipeline/requirements.txt
    ```
-2. Install the Python requirements:
+2. Run the steps you need, from the repo root (on Windows, set `PYTHONIOENCODING=utf-8` first):
    ```bash
-   pip install -r requirements.txt
+   python pipeline/build_models.py [--dry-run]   # rebuild models.json from curated content + live OpenRouter specs
+   python pipeline/update_models.py --dry-run    # report spec drift and new models without writing anything
+   python pipeline/build_news.py                 # weekly digest (needs GEMINI_API_KEY in the environment)
+   python pipeline/validate_data.py              # check every data file before committing
+   python -m pytest pipeline/tests -q
    ```
-3. Run the pipeline (make sure your `.env` has a valid `GEMINI_API_KEY`):
-   ```bash
-   python build_news.py
-   python backfill_models.py
-   ```
-   The pipeline will automatically update the `.json` files inside the Next.js `app/data/` folder.
+   The pipeline updates the `.json` files inside the Next.js `app/data/` folder.
+
+### Adding a model
+Add an entry to `pipeline/curated_more.py`, keyed by its OpenRouter id (the run summary's draft snippets are a starting point), then run `python pipeline/build_models.py` and `python pipeline/validate_data.py`. Never type specs or prices in by hand. They come from OpenRouter.
 
 ---
 
