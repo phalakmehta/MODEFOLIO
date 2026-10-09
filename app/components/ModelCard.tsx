@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useTranslation } from '@/app/TranslationContext';
 import { Model, displayName, formatTokens, formatPrice, providerColor } from '@/lib/data';
+import { recentPriceChange } from '@/lib/changes';
 
 interface ModelCardProps {
   model: Model;
@@ -22,6 +23,7 @@ export default function ModelCard({ model, view = 'grid' }: ModelCardProps) {
   // In plain-English mode this used to be `translate('pricing', input).split(' ')[0]`,
   // which collapsed "Very Expensive" and "Very Cheap" to the same word.
   const badge = plainEnglish ? shortLabel('pricing', input) : priceTier(input);
+  const priceMove = recentPriceChange(model);
 
   return (
     <Link
@@ -62,6 +64,14 @@ export default function ModelCard({ model, view = 'grid' }: ModelCardProps) {
           </div>
 
           <div className="model-card-meta">
+            {priceMove !== null && (
+              <span
+                className={`change-badge change-badge--${priceMove < 0 ? 'good' : 'bad'}`}
+                title="Change in the typical price over the last 30 days"
+              >
+                {priceMove < 0 ? '▼' : '▲'} {Math.round(Math.abs(priceMove))}% price
+              </span>
+            )}
             {model.status === 'legacy' && (
               <span
                 className="badge"

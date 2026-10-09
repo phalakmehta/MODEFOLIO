@@ -515,3 +515,52 @@ a:hover { color: var(--text-tertiary); }
   .model-card-wrapper.list-view { flex-direction: column; text-align: center; }
   .model-card-wrapper.list-view .model-card-visual { width: 100%; aspect-ratio: 16/9; height: auto; }
 }
+
+/* --- Status colours: price moves. Distinct from the provider hues above, and
+       always paired with an arrow and a word, never colour alone. --- */
+:root {
+  --good: #7EF0A8;
+  --bad: #FF8A8A;
+}
+
+/* --- Cost calculator --- */
+.cost-calc { border-top: 4px solid var(--text-primary); padding-top: var(--space-5); margin: var(--space-8) 0; }
+.cost-calc-title { font-family: var(--font-serif); font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+.cost-calc-controls { display: flex; flex-direction: column; gap: var(--space-2); }
+.cost-calc-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.cost-calc-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); text-transform: uppercase; width: 72px; }
+.cost-calc-input { width: 110px; padding: 4px 8px; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-primary); font-family: var(--font-mono); font-size: var(--text-xs); }
+.cost-calc-hint { color: var(--text-secondary); font-size: var(--text-sm); margin: var(--space-3) 0 var(--space-4); }
+.cost-calc-bars { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.cost-calc-bars li { display: grid; grid-template-columns: minmax(120px, 220px) 1fr auto; gap: var(--space-3); align-items: center; }
+.cost-calc-name { color: var(--text-primary); text-decoration: none; font-family: var(--font-mono); font-size: var(--text-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cost-calc-name:hover { text-decoration: underline; }
+.cost-calc-retired { color: var(--text-tertiary); }
+.cost-calc-track { height: 10px; }
+.cost-calc-bar { height: 100%; background: var(--text-primary); border-radius: 0 4px 4px 0; transition: width 0.25s ease; }
+.cost-calc-value { font-family: var(--font-mono); font-weight: 700; font-size: var(--text-sm); text-align: right; min-width: 90px; }
+.cost-calc-unit { color: var(--text-tertiary); font-weight: 400; }
+.cost-calc-single { margin: var(--space-2) 0; }
+.cost-calc-big { font-family: var(--font-mono); font-size: var(--text-3xl); font-weight: 700; }
+.cost-calc-sub { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); margin-top: var(--space-1); }
+.cost-calc-note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); margin-top: var(--space-4); }
+
+@media (max-width: 600px) {
+  .cost-calc-bars li { grid-template-columns: 1fr auto; }
+  .cost-calc-track { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* --- Price-change badge and changes list --- */
+.change-badge { font-family: var(--font-mono); font-size: 11px; font-weight: 700; padding: 2px 6px; border: 1px solid currentColor; white-space: nowrap; }
+.change-badge--good { color: var(--good); }
+.change-badge--bad { color: var(--bad); }
+.change-list { list-style: none; padding: 0; margin: 0; border-top: 4px solid var(--text-primary); }
+.change-list li { display: flex; gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.change-date { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); min-width: 90px; }
+.change-icon { font-family: var(--font-mono); font-weight: 700; width: 1.2em; text-align: center; }
+.change-icon--good { color: var(--good); }
+.change-icon--bad { color: var(--bad); }
+.change-model { font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); text-decoration: none; }
+.change-model:hover { text-decoration: underline; }
+.change-text { color: var(--text-secondary); }
+.share-btn { font-size: var(--text-xs); padding: 4px 10px; }

@@ -4,7 +4,10 @@ import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import SpecsTable from '@/components/SpecsTable';
 import { useTranslation } from '@/app/TranslationContext';
+import CostCalculator from '@/components/CostCalculator';
+import ChangeList from '@/components/ChangeList';
 import { Model, displayName, formatTokens, formatPrice, providerColor } from '@/lib/data';
+import { changesFor } from '@/lib/changes';
 
 /** 8K in, 2K out — a realistic single request, not a round million. */
 function costExample(pricing: { input: number; output: number }) {
@@ -15,6 +18,7 @@ export default function ModelDetailClient({ model }: { model: Model }) {
   const { plainEnglish, translate, shortLabel } = useTranslation();
   const cost = costExample(model.specs.pricing);
   const { contextWindow, maxOutputTokens, pricing } = model.specs;
+  const history = changesFor(model.id);
 
   const specsRows = [
     {
@@ -220,6 +224,9 @@ export default function ModelDetailClient({ model }: { model: Model }) {
           </div>
         </ScrollReveal>
 
+        {/* A retired model cannot be called, so there is no bill to estimate. */}
+        {model.status === 'live' && <CostCalculator models={[model]} />}
+
         {/* Benchmarks were in the props interface but never rendered. When there
             are no sourced scores we say so, rather than quietly showing nothing. */}
         <ScrollReveal>
@@ -298,6 +305,17 @@ export default function ModelDetailClient({ model }: { model: Model }) {
                   </a>
                 ))}
               </div>
+            </div>
+          </ScrollReveal>
+        )}
+
+        {history.length > 0 && (
+          <ScrollReveal>
+            <div style={{ marginTop: 'var(--space-10)' }}>
+              <h2 className="pudding-section-title" style={{ color: 'var(--text-primary)', marginBottom: 'var(--space-4)' }}>
+                What Changed
+              </h2>
+              <ChangeList changes={history} showModel={false} />
             </div>
           </ScrollReveal>
         )}

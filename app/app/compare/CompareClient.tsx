@@ -2,7 +2,12 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { models, Model, displayName, formatTokens, formatPrice } from '@/lib/data';
+import { models, Model, getModelById, displayName, formatTokens, formatPrice } from '@/lib/data';
+import { useQueryParams, listParam } from '@/lib/useQueryParams';
+import CostCalculator from '@/components/CostCalculator';
+import ShareButton from '@/components/ShareButton';
+
+const SLOTS = 3;
 
 interface ModelSelectorProps {
   index: number;
@@ -97,17 +102,25 @@ interface CompareRow {
 }
 
 export default function CompareClient() {
-  const [selected, setSelected] = useState<(Model | null)[]>([null, null, null]);
+  // The selection lives in the URL (?models=a,b,c). That makes a comparison
+  // shareable, and it is what the detail page's "Compare it" link relies on.
+  const [params, setParams] = useQueryParams();
+  const selected = useMemo(() => {
+    const picked: Model[] = [];
+    for (const id of listParam(params, 'models')) {
+      const m = getModelById(id);
+      if (m && !picked.some((p) => p.id === m.id)) picked.push(m);
+    }
+    return [...picked.slice(0, SLOTS), ...Array<null>(SLOTS).fill(null)].slice(0, SLOTS);
+  }, [params]);
 
   const activeModels = selected.filter(Boolean) as Model[];
   const usedIds = activeModels.map((m) => m.id);
 
   const setModel = (index: number, model: Model | null) => {
-    setSelected((prev) => {
-      const next = [...prev];
-      next[index] = model;
-      return next;
-    });
+    const next = [...selected];
+    next[index] = model;
+    setParams({ models: next.filter((m): m is Model => m !== null).map((m) => m.id) });
   };
 
   const rows: CompareRow[] = activeModels.length >= 2 ? [
@@ -213,6 +226,13 @@ export default function CompareClient() {
       </div>
 
       {activeModels.length >= 2 && (
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 'var(--space-3)' }}>
+          <ShareButton label="Share this comparison" />
+        </div>
+      )}
+
+      {activeModels.length >= 2 && (
+        <div className="compare-table-wrapper">
         <table className="compare-table">
           <thead>
             <tr>
@@ -249,11 +269,18 @@ export default function CompareClient() {
             })}
           </tbody>
         </table>
+        </div>
       )}
+
+      {activeModels.length >= 2 && <CostCalculator models={activeModels} />}
 
       {activeModels.length < 2 && (
         <div style={{ textAlign: 'center', padding: 'var(--space-9) 0', color: 'var(--text-tertiary)' }}>
-          <p style={{ fontSize: 'var(--text-lg)' }}>Select at least 2 models to compare</p>
+          <p style={{ fontSize: 'var(--text-lg)' }}>
+            {activeModels.length === 1
+              ? `Pick one more model to compare with ${displayName(activeModels[0].name)}`
+              : 'Select at least 2 models to compare'}
+          </p>
         </div>
       )}
     </div>
