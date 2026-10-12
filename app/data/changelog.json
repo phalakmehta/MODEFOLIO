@@ -255,5 +255,223 @@
     "field": "specs.pricing.output",
     "old": 0.32,
     "new": 0.5
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.3,
+    "new": 0.15
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 1.2,
+    "new": 0.6
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 943718,
+    "new": 393216
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "qwen3-8-27b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.425,
+    "new": 0.04
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "qwen3-8-27b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 2.55,
+    "new": 2.3
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "qwen3-8-27b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 131072,
+    "new": 235929
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "nemotron-3-5-lightning",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.0469,
+    "new": 0.07
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "nemotron-3-5-lightning",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.134,
+    "new": 0.2
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "nemotron-3-5-lightning",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 131072,
+    "new": 235929
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.5,
+    "new": 0.73
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 12.0,
+    "new": 10.0
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.95526,
+    "new": 0.41238
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 1.91052,
+    "new": 0.82476
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "gemma-4-26b-a4b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.09,
+    "new": 0.0765
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "gemma-4-26b-a4b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.3,
+    "new": 0.255
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "deepseek-v3-2",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.42,
+    "new": 0.8
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "llama-4-scout",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.1,
+    "new": 0.18
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "llama-4-scout",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.3,
+    "new": 0.59
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "llama-4-scout",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 16384,
+    "new": 117964
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "google-gemini-nano-banana-2.1",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "openai-gpt-6.1-sol-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "openai-gpt-6-luna-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-10-12",
+    "modelId": "openai-gpt-6-sol-pro",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
   }
 ]

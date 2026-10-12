@@ -1,1 +1,274 @@
-[]
+[
+  {
+    "id": "google-gemini-nano-banana-2.1",
+    "openrouterId": "google/gemini-nano-banana-2.1",
+    "name": "Google: Nano Banana 2.1",
+    "provider": "google",
+    "releaseDate": "2026-10",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 65536,
+      "maxOutputTokens": 58982,
+      "pricing": {
+        "input": 1.5,
+        "output": 7.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-10-12",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-10-12T20:41:29.025220+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "inPractice.weaknesses",
+        "extractedBenchmarks",
+        "benchmarkCaveat"
+      ],
+      "summary": "The model is characterized by a substantial context window of 65,536 tokens, allowing it to process large amounts of information. It can also generate very long outputs, up to 58,982 tokens. The pricing for using the model is 1.5 per 1 million tokens for input and 7.5 per 1 million tokens for output.",
+      "strengths": [
+        "The model has a very large context window, which means it can process extensive amounts of information at once.",
+        "It supports generating very long outputs, making it suitable for tasks requiring detailed or extended text."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "writing",
+        "research"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 7,
+        "research": 8,
+        "agentic": 0,
+        "longContext": 9,
+        "cheapVolume": 0
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "openai-gpt-6.1-sol-pro",
+    "openrouterId": "openai/gpt-6.1-sol-pro",
+    "name": "OpenAI: GPT-6.1 Sol Pro",
+    "provider": "openai",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-10-12",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-10-12T20:41:29.025220+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [],
+      "summary": "This model is designed to handle very large amounts of text, capable of processing an input of up to 1,050,000 tokens, which are like individual words or pieces of words. It can also generate very long responses, up to 128,000 tokens. When it comes to cost, processing input text is priced at $2.0 for every 1 million tokens, while generating output text costs $10.0 for every 1 million tokens.",
+      "strengths": [
+        "The model can process extremely long inputs, with a context window of 1,050,000 tokens, allowing it to understand and work with extensive documents or conversations.",
+        "It can generate very long outputs, up to 128,000 tokens, which is useful for detailed reports, summaries, or creative writing."
+      ],
+      "weaknesses": [
+        "Generating output tokens is significantly more expensive than processing input tokens, costing $10.0 per 1 million output tokens compared to $2.0 per 1 million input tokens."
+      ],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 5
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "openai-gpt-6-luna-pro",
+    "openrouterId": "openai/gpt-6-luna-pro",
+    "name": "OpenAI: GPT-6 Luna Pro",
+    "provider": "openai",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-10-12",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-10-12T20:41:29.025220+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "architecture.explanation",
+        "inPractice.weaknesses"
+      ],
+      "summary": "This model is designed to handle exceptionally large amounts of text, featuring a very extensive context window for processing information and a substantial capacity for generating long responses. Its pricing structure is set up for high-volume usage.",
+      "strengths": [
+        "The model has an exceptionally large context window of 1,050,000 tokens, allowing it to process vast amounts of information.",
+        "It can generate very long outputs, with a maximum capacity of 128,000 tokens.",
+        "The pricing model is structured per 1 million tokens, suggesting suitability for high-volume applications."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "cheap volume"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 9
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "openai-gpt-6-sol-pro",
+    "openrouterId": "openai/gpt-6-sol-pro",
+    "name": "OpenAI: GPT-6 Sol Pro",
+    "provider": "openai",
+    "releaseDate": "2026-09",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-10-12",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-10-12T20:41:29.025220+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "inPractice.weaknesses"
+      ],
+      "summary": "This model is designed to handle extremely large amounts of information, featuring a context window that can process up to 1,050,000 tokens at once and the capability to generate very long responses, up to 128,000 tokens. Its pricing structure is based on the volume of tokens processed.",
+      "strengths": [
+        "Can process a very large amount of information at once due to its 1,050,000 token context window.",
+        "Capable of generating very long responses, up to 128,000 tokens."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "cheap volume"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 0
+      },
+      "extractedBenchmarks": []
+    }
+  }
+]
