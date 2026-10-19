@@ -289,13 +289,6 @@
       "deepseek-v3.2"
     ]
   },
-  "deepseek-r1": {
-    "openrouterId": "deepseek/deepseek-r1",
-    "aliases": [
-      "DeepSeek R1",
-      "deepseek-r1"
-    ]
-  },
   "qwen3-8-max-prime": {
     "openrouterId": "qwen/qwen3.8-max-prime",
     "aliases": [

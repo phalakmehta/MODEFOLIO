@@ -417,17 +417,6 @@
     },
     "curated": true
   },
-  "deepseek-r1": {
-    "scores": {
-      "coding": 6,
-      "writing": 4,
-      "research": 6,
-      "agentic": 4,
-      "longContext": 3,
-      "cheapVolume": 7
-    },
-    "curated": true
-  },
   "qwen3-8-max-prime": {
     "scores": {
       "coding": 8,

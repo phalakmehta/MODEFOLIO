@@ -270,5 +270,147 @@
       },
       "extractedBenchmarks": []
     }
+  },
+  {
+    "id": "deepseek-deepseek-v4.1-flash-1017",
+    "openrouterId": "deepseek/deepseek-v4.1-flash-1017",
+    "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+    "provider": "deepseek",
+    "releaseDate": "2026-10",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1048576,
+      "maxOutputTokens": 393216,
+      "pricing": {
+        "input": 0.15,
+        "output": 0.6,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-10-19",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-10-19T18:05:51.124152+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "architecture.explanation",
+        "benchmarkCaveat",
+        "useCaseTags",
+        "extractedBenchmarks",
+        "wizardScores",
+        "inPractice.weaknesses"
+      ],
+      "summary": "This model is designed to handle very large amounts of information, with a context window of 1,048,576 tokens, which means it can consider a vast amount of text at once. It can also produce exceptionally long responses, with a maximum output of 393,216 tokens. The cost for using the model is 0.15 per 1 million tokens for input and 0.6 per 1 million tokens for output.",
+      "strengths": [
+        "The model can process a very large amount of information at once, with a context window of 1,048,576 tokens, allowing it to understand and work with extensive documents or conversations.",
+        "It can generate exceptionally long outputs, up to 393,216 tokens."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 0,
+        "cheapVolume": 0
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "google-gemini-4-argon",
+    "openrouterId": "google/gemini-4-argon",
+    "name": "Google: Gemini 4 Argon",
+    "provider": "google",
+    "releaseDate": "2026-10",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1048576,
+      "maxOutputTokens": 943718,
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-10-19",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-10-19T18:05:51.124152+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "inPractice.weaknesses",
+        "extractedBenchmarks",
+        "wizardScores.coding",
+        "wizardScores.writing",
+        "wizardScores.research",
+        "wizardScores.agentic",
+        "wizardScores.longContext",
+        "wizardScores.cheapVolume"
+      ],
+      "summary": "This AI model can process a very large amount of text at once, known as its context window, and can also generate very long responses. It has a specific pricing structure for both input and output text.",
+      "strengths": [
+        "The model can handle extremely long inputs, with a context window of 1,048,576 tokens, which is the amount of text it can consider at one time.",
+        "It can produce very extensive outputs, with a maximum output length of 943,718 tokens."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 0,
+        "cheapVolume": 0
+      },
+      "extractedBenchmarks": []
+    }
   }
 ]
