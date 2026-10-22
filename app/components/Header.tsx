@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BsToggle from './BsToggle';
 
 const NAV_ITEMS = [
@@ -17,6 +17,13 @@ const NAV_ITEMS = [
 export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // The overlay is position: fixed, so without this the page underneath still
+  // scrolls while the menu is open.
+  useEffect(() => {
+    document.body.classList.toggle('nav-open', mobileOpen);
+    return () => document.body.classList.remove('nav-open');
+  }, [mobileOpen]);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -47,7 +54,8 @@ export default function Header() {
         <button
           className="mobile-nav-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle navigation"
+          aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'}
+          aria-expanded={mobileOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {mobileOpen ? (

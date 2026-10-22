@@ -47,13 +47,6 @@ export default function CostCalculator({
   const max = Math.max(...rows.map((r) => r.month), 0);
   const single = rows.length === 1;
 
-  const chip = (active: boolean): React.CSSProperties => ({
-    background: active ? 'var(--text-primary)' : 'transparent',
-    color: active ? 'var(--bg-primary)' : 'inherit',
-    fontSize: 'var(--text-xs)',
-    padding: '4px 10px',
-  });
-
   return (
     <section className="cost-calc" aria-label="Monthly cost calculator">
       <h2 className="cost-calc-title">{title}</h2>
@@ -64,8 +57,7 @@ export default function CostCalculator({
           {USAGE.map((u) => (
             <button
               key={u.key}
-              className="btn"
-              style={chip(u.key === usageKey)}
+              className="btn btn--chip"
               aria-pressed={u.key === usageKey}
               onClick={() => setUsageKey(u.key)}
             >
@@ -79,8 +71,7 @@ export default function CostCalculator({
           {VOLUMES.map((v) => (
             <button
               key={v}
-              className="btn"
-              style={chip(v === perDay)}
+              className="btn btn--chip"
               aria-pressed={v === perDay}
               onClick={() => setPerDay(v)}
             >

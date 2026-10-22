@@ -3,8 +3,6 @@
    Quirky, dark, heavy typography
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Leckerli+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;600;800&display=swap');
-
 /* --- Design Tokens --- */
 :root {
   /* True dark background matching screenshot */
@@ -36,10 +34,9 @@
   --color-qwen: #D85A94;       /* Magenta */
   --color-cohere: #45B3C4;     /* Cyan */
   
-  --font-serif: 'Shrikhand', cursive;
-  --font-logo: 'Leckerli One', cursive;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Space Mono', monospace;
+  /* next/font sets --font-display / --font-sans / --font-mono on <html>.
+     Display is reserved for type above ~2.5rem; everything smaller is sans,
+     and mono is numbers only so prices and token counts stay aligned. */
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -75,16 +72,33 @@
 /* --- Reset --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-body { font-family: var(--font-sans); color: var(--text-primary); background: var(--bg-primary); min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+body { font-family: var(--font-sans); color: var(--text-primary); background: var(--bg-primary); min-height: 100vh; line-height: 1.6; }
+/* The mobile nav is a fixed full-screen overlay; without this the page keeps
+   scrolling behind it. */
+body.nav-open { overflow: hidden; }
 ::selection { background: var(--text-primary); color: var(--bg-primary); }
 
 /* --- Typography --- */
-h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: 400; line-height: 1.1; letter-spacing: 0.02em; }
-p { margin-bottom: var(--space-4); color: var(--text-secondary); font-size: 1.125rem; font-family: var(--font-mono); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; }
+p { margin-bottom: var(--space-4); color: var(--text-secondary); font-size: 1.0625rem; font-family: var(--font-sans); line-height: 1.65; max-width: 68ch; }
 a { color: var(--text-primary); text-decoration: none; transition: color 0.2s var(--ease-out); }
 a:hover { color: var(--text-tertiary); }
 
 .mono { font-family: var(--font-mono); font-size: 0.85em; }
+
+/* Display face: big, rare, and always paired with sans beneath it. */
+.site-logo,
+.essay-title,
+.hero h1,
+.model-detail-name,
+.glossary-letter,
+.pudding-section-title,
+.result-model-name,
+.wizard-question {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
 
 /* --- Layout --- */
 .page-container { max-width: var(--max-page); margin: 0 auto; padding: 0 var(--space-5); }
@@ -101,20 +115,20 @@ a:hover { color: var(--text-tertiary); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: var(--max-page); margin: 0 auto; padding: 0 var(--space-5); }
 
 .site-logo { 
-  font-family: var(--font-logo); 
-  font-size: 3.5rem; 
-  color: var(--text-primary); 
-  text-decoration: none; 
-  transform: rotate(-3deg);
-  text-shadow: 2px 2px 0px rgba(0,0,0,1), 4px 4px 0px rgba(255,255,255,0.2);
+  font-family: var(--font-display); 
+  font-size: 2.25rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.03em;
 }
 
 .site-nav { display: flex; align-items: center; gap: var(--space-3); list-style: none; }
 
 /* Pill shaped nav links */
-.site-nav a { 
-  font-family: var(--font-serif); 
-  font-size: var(--text-lg); 
+.site-nav a {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-sm); 
   color: var(--bg-primary); 
   background: var(--text-primary);
   padding: 4px 16px;
@@ -263,15 +277,19 @@ a:hover { color: var(--text-tertiary); }
   padding: 2px 6px; border: 1px solid var(--border);
   border-radius: 4px; color: var(--text-primary); text-transform: uppercase;
 }
+/* Open weights is the one badge worth picking out of the row. */
+.badge--open { border-color: var(--text-secondary); color: var(--text-primary); }
 
 /* The chunky title below the block */
-.model-card-title { 
-  font-size: var(--text-4xl); 
-  font-family: var(--font-serif); 
-  color: var(--text-primary); 
-  line-height: 1;
+.model-card-title {
+  font-size: var(--text-xl);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1.2;
   transition: color 0.2s;
-  text-align: center;
+  text-align: left;
 }
 
 /* List view override */
@@ -318,11 +336,45 @@ a:hover { color: var(--text-tertiary); }
 .scrolly-chart { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; }
 
 /* =============================================
-   NARRATIVE HOMEPAGE
+   HOMEPAGE (directory first)
    ============================================= */
-.essay-header { padding: var(--space-11) 0 var(--space-8); text-align: left; max-width: 900px; }
-.essay-title { font-size: var(--text-6xl); margin-bottom: var(--space-5); }
-.essay-deck { font-size: var(--text-xl); color: var(--text-secondary); line-height: 1.5; font-family: var(--font-mono); }
+.home-hero { padding: var(--space-8) 0 var(--space-6); max-width: 900px; }
+.home-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-5xl);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+.home-deck { font-size: var(--text-lg); color: var(--text-secondary); max-width: 62ch; margin-bottom: var(--space-4); }
+.home-why {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+}
+.home-why:hover { color: var(--text-primary); border-bottom-color: var(--text-primary); }
+.home-directory { margin-top: var(--space-7); padding-bottom: var(--space-9); }
+
+/* =============================================
+   ESSAY (/why)
+   ============================================= */
+.essay-header { padding: var(--space-8) 0; text-align: left; max-width: 900px; }
+.essay-title { font-size: var(--text-6xl); margin: var(--space-4) 0 var(--space-5); }
+.essay-deck { font-size: var(--text-xl); color: var(--text-secondary); line-height: 1.5; max-width: 60ch; }
+.back-link { display: inline-block; color: var(--text-tertiary); }
+.back-link:hover { color: var(--text-primary); }
+.essay-outro { max-width: var(--max-content); margin: 0 auto var(--space-10); text-align: center; }
+.essay-outro h2 { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+.essay-outro p { margin: 0 auto var(--space-5); }
+
+/* The in/out comparison on /why: two bars on the same scale, so the gap
+   between what a model reads and what it writes is visible rather than stated. */
+.ratio-bar { width: 100%; height: 28px; background: var(--bg-primary); border: 1px solid var(--border); }
+.ratio-bar-fill { height: 100%; background: var(--text-primary); }
+.ratio-bar-fill--small { background: var(--bad); min-width: 3px; }
 
 /* =============================================
    MISC UTILS
@@ -333,9 +385,39 @@ a:hover { color: var(--text-tertiary); }
 .btn { display: inline-flex; padding: 10px 20px; font-weight: 700; font-family: var(--font-mono); border: 2px solid var(--text-primary); background: transparent; color: var(--text-primary); cursor: pointer; transition: 0.2s; text-transform: uppercase; }
 .btn:hover { background: var(--text-primary); color: var(--bg-primary); }
 
+/* Small filter chip. Was duplicated as an inline style helper in the directory
+   and the cost calculator, which put it out of reach of the mobile overrides. */
+/* Display-size headings hold model names like "GPT-5.3-Codex". With the old
+   overflow-x: hidden gone from body, an unbreakable one would scroll the page. */
+.model-detail-name, .model-card-title, .result-model-name, .glossary-term, .essay-title {
+  overflow-wrap: break-word;
+}
+
+.btn--chip { font-size: var(--text-xs); padding: 4px 10px; }
+.btn--ghost { border-color: var(--border); color: var(--text-secondary); }
+.btn--ghost:hover { border-color: var(--text-primary); background: transparent; color: var(--text-primary); }
+/* Square so the glyph sits centred, and wide enough to hit. */
+.slot-clear { width: 32px; height: 32px; padding: 0; align-items: center; justify-content: center; line-height: 1; }
+.btn--chip[aria-pressed="true"] { background: var(--text-primary); color: var(--bg-primary); }
+
+/* Form controls. Anything under 16px makes iOS Safari zoom the viewport on
+   focus, which is most of why the directory felt broken on a phone. */
+.field {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  outline: none;
+}
+.field:focus-visible { border-color: var(--text-primary); }
+.field--search { flex: 1 1 220px; min-width: 0; }
+.field:disabled { opacity: 0.5; cursor: not-allowed; }
+
 .quick-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
 .quick-stat-box { background: var(--bg-secondary); padding: var(--space-4); text-align: center; border-radius: 4px; border: 1px solid var(--border); }
-.quick-stat-val { font-size: var(--text-3xl); font-weight: 700; color: var(--text-primary); margin-bottom: 2px; font-family: var(--font-serif); }
+.quick-stat-val { font-size: var(--text-2xl); font-weight: 700; color: var(--text-primary); margin-bottom: 2px; font-family: var(--font-mono); }
 .quick-stat-lbl { font-size: 12px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; font-family: var(--font-mono); }
 
 @media (max-width: 900px) {
@@ -347,9 +429,16 @@ a:hover { color: var(--text-tertiary); }
   .model-grid { grid-template-columns: 1fr 1fr; }
 }
 
+@media (min-width: 769px) and (max-width: 900px) {
+  .model-grid { gap: var(--space-4); }
+  .model-card-title { font-size: var(--text-2xl); }
+  .model-detail-name { font-size: 4.5rem; }
+  .compare-header-model { font-size: var(--text-xl); }
+}
+
 /* Architecture box detail page */
 .architecture-box { background: var(--bg-secondary); color: var(--text-primary); padding: var(--space-6); border-radius: 12px; border: 1px solid var(--border); }
-.architecture-type { font-size: var(--text-3xl); font-family: var(--font-serif); margin-bottom: var(--space-3); }
+.architecture-type { font-size: var(--text-3xl); font-family: var(--font-sans); margin-bottom: var(--space-3); }
 .architecture-explanation { color: var(--text-secondary); font-family: var(--font-mono); }
 
 .model-detail-header { margin: var(--space-7) 0; }
@@ -377,7 +466,7 @@ a:hover { color: var(--text-tertiary); }
 .model-selector-option .provider { font-family: var(--font-mono); font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; }
 
 .compare-table { width: 100%; border-collapse: collapse; margin-bottom: var(--space-10); font-size: var(--text-sm); font-family: var(--font-mono); }
-.compare-header-model { width: 25%; padding: var(--space-4); text-align: left; vertical-align: bottom; font-family: var(--font-serif); font-size: var(--text-3xl); border-bottom: 2px solid var(--text-primary); }
+.compare-header-model { width: 25%; padding: var(--space-4); text-align: left; vertical-align: bottom; font-family: var(--font-sans); font-size: var(--text-3xl); border-bottom: 2px solid var(--text-primary); }
 .compare-table th:first-child { width: 25%; }
 .compare-table td { padding: var(--space-4); border-bottom: 1px solid var(--border); vertical-align: top; }
 .compare-table td:first-child { font-weight: 700; color: var(--text-secondary); }
@@ -397,7 +486,7 @@ a:hover { color: var(--text-tertiary); }
 .wizard-option.selected { border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-primary); }
 .wizard-option-radio { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; margin-top: 2px; }
 .wizard-option.selected .wizard-option-radio { border-color: var(--bg-primary); background: var(--text-primary); box-shadow: inset 0 0 0 4px var(--bg-primary); }
-.wizard-option-label { font-weight: 700; font-size: var(--text-xl); font-family: var(--font-serif); margin-bottom: 2px; }
+.wizard-option-label { font-weight: 700; font-size: var(--text-xl); font-family: var(--font-sans); margin-bottom: 2px; }
 .wizard-option-desc { font-size: var(--text-sm); line-height: 1.4; font-family: var(--font-mono); }
 .wizard-option.selected .wizard-option-desc { color: var(--bg-primary); opacity: 0.8; }
 .wizard-nav { display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--border); padding-top: var(--space-5); }
@@ -406,16 +495,16 @@ a:hover { color: var(--text-tertiary); }
 .result-card { border: 2px solid var(--border); background: var(--bg-secondary); padding: var(--space-5); margin-bottom: var(--space-4); transition: 0.2s; color: var(--text-primary); text-decoration: none; display: block; }
 .result-card:hover { border-color: var(--text-primary); transform: translateY(-4px); box-shadow: 8px 8px 0 var(--text-primary); }
 .result-rank { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--text-primary); text-transform: uppercase; margin-bottom: var(--space-2); }
-.result-model-name { font-size: var(--text-5xl); font-family: var(--font-serif); margin-bottom: var(--space-2); }
+.result-model-name { font-size: var(--text-5xl); font-family: var(--font-sans); margin-bottom: var(--space-2); }
 .result-reasoning { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.5; padding-top: var(--space-4); border-top: 1px solid var(--border); font-family: var(--font-mono); }
 
 /* Glossary Page */
 .glossary-nav { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-8); padding: var(--space-4); background: var(--bg-secondary); }
 .glossary-nav a { font-family: var(--font-mono); font-weight: 700; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); border: 2px solid var(--border); color: var(--text-primary); }
 .glossary-nav a:hover { background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary); }
-.glossary-letter { font-family: var(--font-serif); font-size: var(--text-6xl); color: var(--text-primary); border-bottom: 2px solid var(--text-primary); padding-bottom: var(--space-2); margin: var(--space-8) 0 var(--space-6); }
+.glossary-letter { font-family: var(--font-sans); font-size: var(--text-6xl); color: var(--text-primary); border-bottom: 2px solid var(--text-primary); padding-bottom: var(--space-2); margin: var(--space-8) 0 var(--space-6); }
 .glossary-entry { margin-bottom: var(--space-7); padding-bottom: var(--space-6); border-bottom: 1px solid var(--border); }
-.glossary-term { font-size: var(--text-4xl); margin-bottom: var(--space-3); font-family: var(--font-serif); }
+.glossary-term { font-size: var(--text-4xl); margin-bottom: var(--space-3); font-family: var(--font-sans); }
 .glossary-definition { font-size: var(--text-lg); line-height: 1.5; color: var(--text-primary); margin-bottom: var(--space-3); font-family: var(--font-mono); }
 .glossary-consequence { font-size: var(--text-base); color: var(--text-primary); background: var(--bg-secondary); padding: var(--space-4); border-left: 4px solid var(--text-primary); font-family: var(--font-mono); }
 .small-caps { font-family: var(--font-mono); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); }
@@ -431,7 +520,50 @@ a:hover { color: var(--text-tertiary); }
 
 /* Model Detail Blocks */
 .pudding-block { padding: var(--space-7); border-radius: 0px; box-shadow: 15px 15px 0px rgba(255,255,255,0.1); }
-.pudding-section-title { font-family: var(--font-serif); font-size: var(--text-5xl); margin-bottom: var(--space-4); line-height: 1; }
+.pudding-section-title { font-family: var(--font-sans); font-size: var(--text-5xl); margin-bottom: var(--space-4); line-height: 1; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-10);
+  padding: var(--space-7) 0 var(--space-8);
+}
+.footer-inner {
+  max-width: var(--max-page);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+.footer-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  max-width: 52ch;
+  margin: 0;
+}
+.footer-links {
+  display: flex;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  padding: var(--space-2) 0;
+}
+.footer-links a:hover { color: var(--text-primary); }
 
 /* Responsive Utility Classes */
 .responsive-grid-2 {
@@ -475,7 +607,8 @@ a:hover { color: var(--text-tertiary); }
   
   .site-nav {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100vh;
+    /* dvh, not vh: 100vh on mobile Safari runs under the URL bar. */
+    top: 0; left: 0; width: 100%; height: 100dvh;
     background: var(--bg-primary);
     flex-direction: column;
     justify-content: center;
@@ -491,14 +624,32 @@ a:hover { color: var(--text-tertiary); }
     pointer-events: auto;
   }
   
-  .site-nav a { font-size: var(--text-3xl); padding: 8px 24px; border-width: 4px; }
-  .site-logo { font-size: 2.5rem; z-index: 1000; }
+  .site-nav { overflow-y: auto; padding: var(--space-9) var(--space-5); }
+  .site-nav a { font-size: var(--text-2xl); padding: 10px 24px; border-width: 3px; }
+  .site-logo { font-size: 2rem; z-index: 1000; }
   .header-inner { position: relative; }
+  /* 100px of header for a 2rem logo was a lot of a phone screen. */
+  .site-header { height: auto; min-height: 64px; padding-top: var(--space-3); padding-bottom: var(--space-3); }
+  .mobile-nav-toggle { padding: var(--space-2); margin: calc(var(--space-2) * -1); }
+
+  /* Long model ids and urls were the other source of sideways scroll. */
+  .model-card-summary, .change-text, .glossary-definition { overflow-wrap: anywhere; }
   
   /* Grids */
-  .model-grid { grid-template-columns: 1fr; }
-  .quick-stats-grid { grid-template-columns: 1fr; }
+  .model-grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .quick-stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
   .responsive-grid-2 { grid-template-columns: 1fr; }
+
+  /* Tap targets. 44px is the floor; the chips were landing at about 24px. */
+  .btn { padding: 12px 18px; }
+  .btn--chip, .share-btn { min-height: 44px; padding: 10px 16px; font-size: var(--text-sm); }
+  .slot-clear { width: 44px; height: 44px; }
+
+  /* 16px stops iOS Safari zooming the viewport on focus. */
+  .field, .model-selector-input, .cost-calc-input, input, select, textarea { font-size: 16px; }
+  .field, .model-selector-input { width: 100%; }
+  .cost-calc-input { width: 100%; max-width: 160px; }
+  .cost-calc-label { width: auto; }
   
   /* Compare Page */
   .model-selector { grid-template-columns: 1fr; }
@@ -525,7 +676,7 @@ a:hover { color: var(--text-tertiary); }
 
 /* --- Cost calculator --- */
 .cost-calc { border-top: 4px solid var(--text-primary); padding-top: var(--space-5); margin: var(--space-8) 0; }
-.cost-calc-title { font-family: var(--font-serif); font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+.cost-calc-title { font-family: var(--font-sans); font-size: var(--text-2xl); margin-bottom: var(--space-4); }
 .cost-calc-controls { display: flex; flex-direction: column; gap: var(--space-2); }
 .cost-calc-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .cost-calc-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); text-transform: uppercase; width: 72px; }
