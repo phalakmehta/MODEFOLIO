@@ -9,6 +9,7 @@ export default function Footer() {
         </p>
         <ul className="footer-links">
           <li><a href="https://github.com/phalakmehta/MODEFOLIO" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><Link href="/why">Why</Link></li>
           <li><Link href="/changes">What changed</Link></li>
           <li><Link href="/glossary">Glossary</Link></li>
         </ul>

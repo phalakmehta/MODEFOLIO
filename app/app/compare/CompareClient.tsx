@@ -44,12 +44,12 @@ function ModelSelector({ index, selected, onSelect, usedIds }: ModelSelectorProp
           <div>
             <span className="model-card-provider" style={{ fontSize: '10px' }}>{selected.provider}</span>
             <br />
-            <span style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-base)' }}>{displayName(selected.name)}</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)' }}>{displayName(selected.name)}</span>
           </div>
           <button
-            className="btn btn--ghost"
+            className="btn btn--ghost slot-clear"
             onClick={() => { onSelect(null); setQuery(''); }}
-            style={{ padding: 'var(--space-1) var(--space-2)', fontSize: 'var(--text-xs)' }}
+            aria-label="Clear this slot"
           >
             ✕
           </button>

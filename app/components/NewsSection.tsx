@@ -129,7 +129,7 @@ export default function NewsSection() {
                     borderLeft: '3px solid var(--accent)',
                     paddingLeft: 'var(--space-4)',
                     marginBottom: 'var(--space-4)',
-                    fontFamily: 'var(--font-serif)',
+                    fontFamily: 'var(--font-sans)',
                     fontSize: 'var(--text-lg)',
                   }}
                 >

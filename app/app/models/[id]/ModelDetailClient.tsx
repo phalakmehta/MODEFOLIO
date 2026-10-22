@@ -162,7 +162,7 @@ export default function ModelDetailClient({ model }: { model: Model }) {
                 <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', textTransform: 'uppercase', marginBottom: 'var(--space-3)' }}>
                   What it rules at
                 </h3>
-                <ul style={{ listStyle: 'none', padding: 0, fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)' }}>
+                <ul style={{ listStyle: 'none', padding: 0, fontFamily: 'var(--font-sans)', fontSize: 'var(--text-xl)' }}>
                   {model.inPractice.strengths.map((s, i) => (
                     <li key={i} style={{ marginBottom: '8px' }}>+ {s}</li>
                   ))}
@@ -172,7 +172,7 @@ export default function ModelDetailClient({ model }: { model: Model }) {
                 <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '14px', textTransform: 'uppercase', marginBottom: 'var(--space-3)' }}>
                   Where it fails
                 </h3>
-                <ul style={{ listStyle: 'none', padding: 0, fontFamily: 'var(--font-serif)', fontSize: 'var(--text-xl)', opacity: 0.8 }}>
+                <ul style={{ listStyle: 'none', padding: 0, fontFamily: 'var(--font-sans)', fontSize: 'var(--text-xl)', opacity: 0.8 }}>
                   {model.inPractice.weaknesses.map((w, i) => (
                     <li key={i} style={{ marginBottom: '8px' }}>- {w}</li>
                   ))}
@@ -299,7 +299,7 @@ export default function ModelDetailClient({ model }: { model: Model }) {
                     <span className="mono" style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>
                       {item.date}
                     </span>
-                    <div style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-lg)', marginTop: '4px' }}>
+                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-lg)', marginTop: '4px' }}>
                       {item.headline}
                     </div>
                   </a>
