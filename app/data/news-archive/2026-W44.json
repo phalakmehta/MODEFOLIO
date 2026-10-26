@@ -1,0 +1,63 @@
+{
+  "weekOf": "2026-10-19",
+  "generatedAt": "2026-10-26T18:01:41.524383+00:00",
+  "model": "gemini-2.5-flash",
+  "items": [
+    {
+      "headline": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months",
+      "summary": "Major AI companies OpenAI and Anthropic have significantly reduced the cost of using their large language models (LLMs), with price cuts reaching up to 80% in recent months.",
+      "whyItMatters": "This makes powerful AI models much more affordable for individuals and businesses, potentially leading to wider adoption and new applications. For users choosing models, cost is a major factor.",
+      "modelIds": [],
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://minimaxir.com/2026/10/cheap-llms/",
+      "publishedAt": "2026-10-25T21:11:31Z"
+    },
+    {
+      "headline": "Mistral AI releases new advanced model, Mistral Large 4",
+      "summary": "Mistral AI has released a new version of its advanced large language model, called Mistral Large 4.",
+      "whyItMatters": "This is a new, powerful AI model entering the market, offering users another option with potentially improved capabilities for various tasks.",
+      "modelIds": [
+        "mistral-large-4"
+      ],
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://mistral.ai/news/mistral-large-4/",
+      "publishedAt": "2026-10-21T19:20:55Z"
+    },
+    {
+      "headline": "Alibaba hikes DeepSeek V4 Flash output prices by 230%",
+      "summary": "Alibaba has significantly increased the cost of using its DeepSeek V4 Flash AI model, raising output prices by 230%.",
+      "whyItMatters": "This substantial price increase could make the DeepSeek V4 Flash model less attractive for users and businesses, potentially causing them to look for more cost-effective alternatives.",
+      "modelIds": [
+        "deepseek-v4-1-flash"
+      ],
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://www.stork.ai/newsletter/2026-10-20-alibaba-quietly-tripled-deepseek-prices#lead",
+      "publishedAt": "2026-10-21T05:17:15Z"
+    },
+    {
+      "headline": "Grok's AI model chooses Republicans, while OpenAI's picks Democrats",
+      "summary": "A comparison of AI models from Grok and OpenAI revealed that when forced to choose a political party, Grok's model tended to favor Republicans, while OpenAI's models leaned towards Democrats. This highlights potential biases in how these models are trained or designed.",
+      "whyItMatters": "Understanding the inherent biases in AI models is crucial for users, especially when using them for sensitive tasks or seeking neutral information. This information helps users choose models that align with their needs for impartiality.",
+      "modelIds": [
+        "grok-4-7",
+        "gpt-4o",
+        "gpt-4o-mini"
+      ],
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+      "publishedAt": "2026-10-25T01:07:24Z"
+    },
+    {
+      "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
+      "summary": "Five versions of the Qwen3.8-27B AI model have been shown to perform as well as Anthropic's Claude Fable 5 model in certain tests.",
+      "whyItMatters": "This indicates that the Qwen3.8-27B models are competitive with established models like Claude Fable 5, giving users more high-performing options to consider for their AI needs.",
+      "modelIds": [
+        "qwen3-8-27b",
+        "claude-fable-5-1"
+      ],
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://github.com/slee-persis/GVS5H",
+      "publishedAt": "2026-10-25T03:56:01Z"
+    }
+  ]
+}

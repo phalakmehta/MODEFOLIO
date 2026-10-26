@@ -834,5 +834,185 @@
     "type": "new-model-detected",
     "source": "openrouter",
     "status": "needs-review"
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "mistral-large-4",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.68,
+    "new": 1.36
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "mistral-large-4",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 2.09,
+    "new": 4.18
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.032,
+    "new": 0.02
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.08,
+    "new": 1.0
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "glm-5-3-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.048,
+    "new": 0.15
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "glm-5-3-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.16,
+    "new": 0.5
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "glm-5-3-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 943718,
+    "new": 943717
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "qwen3-8-27b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.24,
+    "new": 0.2
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "qwen3-8-27b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 2.2,
+    "new": 2.5
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "solar-pro-4",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.09,
+    "new": 0.15
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "solar-pro-4",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.36,
+    "new": 0.6
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.239,
+    "new": 0.179
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 11.936,
+    "new": 20.0
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.40716,
+    "new": 0.752028
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.81432,
+    "new": 1.504056
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "llama-3-2-3b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.0509,
+    "new": 0.05
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "llama-3-2-3b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.335,
+    "new": 0.33
+  },
+  {
+    "date": "2026-10-26",
+    "modelId": "llama-3-2-3b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 72000,
+    "new": 117964
   }
 ]

@@ -41,6 +41,11 @@
   ],
   "deepseek-v4-1-flash": [
     {
+      "date": "2026-10-21",
+      "headline": "Alibaba hikes DeepSeek V4 Flash output prices by 230%",
+      "url": "https://www.stork.ai/newsletter/2026-10-20-alibaba-quietly-tripled-deepseek-prices#lead"
+    },
+    {
       "date": "2026-10-17",
       "headline": "DeepSeek releases new 'Flash' model, DeepSeek-v4.1-Flash-1017",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -91,6 +96,11 @@
   ],
   "qwen3-8-27b": [
     {
+      "date": "2026-10-25",
+      "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
+      "url": "https://github.com/slee-persis/GVS5H"
+    },
+    {
       "date": "2026-09-23",
       "headline": "Qwen Image 2.1 Model Challenges Top AI Image Generators with Small Size",
       "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/alibaba-claims-new-qwen-image-2-1-ai-model-beats-google-nano-banana-2-0-with-minuscule-7b-parameter-model-benchmarks-show-open-weight-contender-is-competitive-with-openai-and-meta-image-models"
@@ -122,6 +132,34 @@
       "date": "2026-10-15",
       "headline": "Meta releases Muse Spark Open, a new open-weight multimodal AI model",
       "url": "https://huggingface.co/blog/meta-muse-spark-open"
+    }
+  ],
+  "grok-4-7": [
+    {
+      "date": "2026-10-25",
+      "headline": "Grok's AI model chooses Republicans, while OpenAI's picks Democrats",
+      "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/"
+    }
+  ],
+  "gpt-4o": [
+    {
+      "date": "2026-10-25",
+      "headline": "Grok's AI model chooses Republicans, while OpenAI's picks Democrats",
+      "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/"
+    }
+  ],
+  "gpt-4o-mini": [
+    {
+      "date": "2026-10-25",
+      "headline": "Grok's AI model chooses Republicans, while OpenAI's picks Democrats",
+      "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/"
+    }
+  ],
+  "claude-fable-5-1": [
+    {
+      "date": "2026-10-25",
+      "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
+      "url": "https://github.com/slee-persis/GVS5H"
     }
   ]
 }

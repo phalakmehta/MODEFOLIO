@@ -48,7 +48,7 @@
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
       "openRouterUrl": "https://openrouter.ai/anthropic/claude-haiku-5.5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -81,8 +81,8 @@
       "contextWindow": 1048576,
       "maxOutputTokens": 262144,
       "pricing": {
-        "input": 0.68,
-        "output": 2.09,
+        "input": 1.36,
+        "output": 4.18,
         "unit": "per 1M tokens"
       }
     },
@@ -97,7 +97,7 @@
       "docsUrl": "https://docs.mistral.ai/getting-started/models/",
       "openRouterUrl": "https://openrouter.ai/mistralai/mistral-large-4-0"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -149,7 +149,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-6.1-sol"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -202,7 +202,7 @@
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
       "openRouterUrl": "https://openrouter.ai/anthropic/claude-sonnet-5.5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -253,7 +253,7 @@
       "docsUrl": "https://www.alibabacloud.com/help/en/model-studio/",
       "openRouterUrl": "https://openrouter.ai/qwen/qwen3.8-max-prime"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -302,7 +302,7 @@
       "docsUrl": "https://docs.z.ai/",
       "openRouterUrl": "https://openrouter.ai/z-ai/glm-5.3-prime"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -356,7 +356,7 @@
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
       "openRouterUrl": "https://openrouter.ai/anthropic/claude-opus-5.5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -408,7 +408,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-6-sol"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -460,7 +460,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-6-luna"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -510,7 +510,7 @@
       "docsUrl": "https://docs.cohere.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/cohere/command-a-plus"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -560,7 +560,7 @@
       "docsUrl": "https://docs.x.ai/docs/models",
       "openRouterUrl": "https://openrouter.ai/x-ai/grok-4.7"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -612,7 +612,7 @@
       "docsUrl": "https://www.alibabacloud.com/help/en/model-studio/",
       "openRouterUrl": "https://openrouter.ai/qwen/qwen3.8-omni-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -645,8 +645,8 @@
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
       "pricing": {
-        "input": 0.032,
-        "output": 0.08,
+        "input": 0.02,
+        "output": 1.0,
         "unit": "per 1M tokens"
       }
     },
@@ -661,7 +661,7 @@
       "docsUrl": "https://api-docs.deepseek.com/",
       "openRouterUrl": "https://openrouter.ai/deepseek/deepseek-v4.1-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -714,7 +714,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-6-astra"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -769,7 +769,7 @@
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models",
       "openRouterUrl": "https://openrouter.ai/google/gemini-3.8-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -818,7 +818,7 @@
       "docsUrl": "https://www.llama.com/docs/overview",
       "openRouterUrl": "https://openrouter.ai/meta/muse-spark-1.3"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -869,7 +869,7 @@
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
       "openRouterUrl": "https://openrouter.ai/anthropic/claude-fable-5.1"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -916,7 +916,7 @@
       "docsUrl": "https://www.ibm.com/granite/docs/",
       "openRouterUrl": "https://openrouter.ai/ibm-granite/granite-4.2-8b"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -966,7 +966,7 @@
       "docsUrl": "https://www.alibabacloud.com/help/en/model-studio/",
       "openRouterUrl": "https://openrouter.ai/qwen/qwen3.8-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -998,10 +998,10 @@
     },
     "specs": {
       "contextWindow": 1048576,
-      "maxOutputTokens": 943718,
+      "maxOutputTokens": 943717,
       "pricing": {
-        "input": 0.048,
-        "output": 0.16,
+        "input": 0.15,
+        "output": 0.5,
         "unit": "per 1M tokens"
       }
     },
@@ -1017,7 +1017,7 @@
       "docsUrl": "https://docs.z.ai/",
       "openRouterUrl": "https://openrouter.ai/z-ai/glm-5.3-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1051,8 +1051,8 @@
       "contextWindow": 1000000,
       "maxOutputTokens": 235929,
       "pricing": {
-        "input": 0.24,
-        "output": 2.2,
+        "input": 0.2,
+        "output": 2.5,
         "unit": "per 1M tokens"
       }
     },
@@ -1068,7 +1068,7 @@
       "docsUrl": "https://qwen.readthedocs.io/",
       "openRouterUrl": "https://openrouter.ai/qwen/qwen3.8-27b"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1118,7 +1118,7 @@
       "docsUrl": "https://www.volcengine.com/docs",
       "openRouterUrl": "https://openrouter.ai/bytedance-seed/seed-2-1-turbo"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1165,7 +1165,7 @@
       "docsUrl": "https://docs.nvidia.com/nemo/",
       "openRouterUrl": "https://openrouter.ai/nvidia/nemotron-3.5-lightning"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1196,8 +1196,8 @@
       "contextWindow": 524288,
       "maxOutputTokens": 131072,
       "pricing": {
-        "input": 0.09,
-        "output": 0.36,
+        "input": 0.15,
+        "output": 0.6,
         "unit": "per 1M tokens"
       }
     },
@@ -1212,7 +1212,7 @@
       "docsUrl": "https://developers.upstage.ai/",
       "openRouterUrl": "https://openrouter.ai/upstage/solar-pro4"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1259,7 +1259,7 @@
       "docsUrl": "https://www.llama.com/docs/overview",
       "openRouterUrl": "https://openrouter.ai/meta/muse-glimmer-30b"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1308,7 +1308,7 @@
       "docsUrl": "https://www.alibabacloud.com/help/en/model-studio/",
       "openRouterUrl": "https://openrouter.ai/qwen/qwen3.7-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1359,7 +1359,7 @@
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
       "openRouterUrl": "https://openrouter.ai/anthropic/claude-opus-5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1411,7 +1411,7 @@
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models",
       "openRouterUrl": "https://openrouter.ai/google/gemini-3.5-flash-lite"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1446,8 +1446,8 @@
       "contextWindow": 1048576,
       "maxOutputTokens": 943718,
       "pricing": {
-        "input": 0.239,
-        "output": 11.936,
+        "input": 0.179,
+        "output": 20.0,
         "unit": "per 1M tokens"
       }
     },
@@ -1462,7 +1462,7 @@
       "docsUrl": "https://platform.moonshot.ai/docs",
       "openRouterUrl": "https://openrouter.ai/moonshotai/kimi-k3"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1510,7 +1510,7 @@
       "docsUrl": "https://docs.x.ai/docs/models",
       "openRouterUrl": "https://openrouter.ai/x-ai/grok-4.5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1560,7 +1560,7 @@
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models",
       "openRouterUrl": "https://openrouter.ai/anthropic/claude-sonnet-5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1609,7 +1609,7 @@
       "docsUrl": "https://platform.moonshot.ai/docs",
       "openRouterUrl": "https://openrouter.ai/moonshotai/kimi-k2.7-code"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1660,7 +1660,7 @@
       "docsUrl": "https://www.minimax.io/platform",
       "openRouterUrl": "https://openrouter.ai/minimax/minimax-m3"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1710,7 +1710,7 @@
       "docsUrl": "https://docs.mistral.ai/getting-started/models/",
       "openRouterUrl": "https://openrouter.ai/mistralai/mistral-medium-3-5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1744,8 +1744,8 @@
       "contextWindow": 1048576,
       "maxOutputTokens": 384000,
       "pricing": {
-        "input": 0.40716,
-        "output": 0.81432,
+        "input": 0.752028,
+        "output": 1.504056,
         "unit": "per 1M tokens"
       }
     },
@@ -1761,7 +1761,7 @@
       "docsUrl": "https://api-docs.deepseek.com/",
       "openRouterUrl": "https://openrouter.ai/deepseek/deepseek-v4-pro"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1812,7 +1812,7 @@
       "docsUrl": "https://ai.google.dev/gemma/docs",
       "openRouterUrl": "https://openrouter.ai/google/gemma-4-26b-a4b-it"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1862,7 +1862,7 @@
       "docsUrl": "https://ai.google.dev/gemma/docs",
       "openRouterUrl": "https://openrouter.ai/google/gemma-4-31b-it"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1911,7 +1911,7 @@
       "docsUrl": "https://docs.mistral.ai/getting-started/models/",
       "openRouterUrl": "https://openrouter.ai/mistralai/mistral-small-2603"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -1961,7 +1961,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-5.4"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2010,7 +2010,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-5.3-codex"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2063,7 +2063,7 @@
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models",
       "openRouterUrl": "https://openrouter.ai/google/gemini-3.1-pro-preview"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2112,7 +2112,7 @@
       "docsUrl": "https://docs.mistral.ai/getting-started/models/",
       "openRouterUrl": "https://openrouter.ai/mistralai/devstral-2512"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2163,7 +2163,7 @@
       "docsUrl": "https://docs.aws.amazon.com/nova/",
       "openRouterUrl": "https://openrouter.ai/amazon/nova-2-lite-v1"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2210,7 +2210,7 @@
       "docsUrl": "https://api-docs.deepseek.com/",
       "openRouterUrl": "https://openrouter.ai/deepseek/deepseek-v3.2"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2258,7 +2258,7 @@
       "docsUrl": "https://docs.aws.amazon.com/nova/",
       "openRouterUrl": "https://openrouter.ai/amazon/nova-premier-v1"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2305,7 +2305,7 @@
       "docsUrl": "https://docs.perplexity.ai/",
       "openRouterUrl": "https://openrouter.ai/perplexity/sonar-pro-search"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2356,7 +2356,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-5"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2406,7 +2406,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-5-mini"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2456,7 +2456,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-oss-120b"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2506,7 +2506,7 @@
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models",
       "openRouterUrl": "https://openrouter.ai/google/gemini-2.5-flash-lite"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2558,7 +2558,7 @@
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models",
       "openRouterUrl": "https://openrouter.ai/google/gemini-2.5-pro"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2610,7 +2610,7 @@
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models",
       "openRouterUrl": "https://openrouter.ai/google/gemini-2.5-flash"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2660,7 +2660,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/o3"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2711,7 +2711,7 @@
       "docsUrl": "https://www.llama.com/docs/overview",
       "openRouterUrl": "https://openrouter.ai/meta-llama/llama-4-maverick"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2760,7 +2760,7 @@
       "docsUrl": "https://www.llama.com/docs/overview",
       "openRouterUrl": "https://openrouter.ai/meta-llama/llama-4-scout"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2806,7 +2806,7 @@
       "docsUrl": "https://docs.cohere.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/cohere/command-a"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2854,7 +2854,7 @@
       "docsUrl": "https://ai.google.dev/gemma/docs",
       "openRouterUrl": "https://openrouter.ai/google/gemma-3-27b-it"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2902,7 +2902,7 @@
       "docsUrl": "https://www.llama.com/docs/overview",
       "openRouterUrl": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -2932,10 +2932,10 @@
     },
     "specs": {
       "contextWindow": 131072,
-      "maxOutputTokens": 72000,
+      "maxOutputTokens": 117964,
       "pricing": {
-        "input": 0.0509,
-        "output": 0.335,
+        "input": 0.05,
+        "output": 0.33,
         "unit": "per 1M tokens"
       }
     },
@@ -2949,7 +2949,7 @@
       "docsUrl": "https://www.llama.com/docs/overview",
       "openRouterUrl": "https://openrouter.ai/meta-llama/llama-3.2-3b-instruct"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -3003,7 +3003,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-4o-mini"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -3059,7 +3059,7 @@
       "docsUrl": "https://platform.openai.com/docs/models",
       "openRouterUrl": "https://openrouter.ai/openai/gpt-4o"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated+openrouter"
   },
   {
@@ -3105,7 +3105,7 @@
     "howToUse": {
       "docsUrl": "https://docs.x.ai/docs/models"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3201,7 +3201,7 @@
     "howToUse": {
       "docsUrl": "https://qwen.readthedocs.io/"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3247,7 +3247,7 @@
     "howToUse": {
       "docsUrl": "https://qwen.readthedocs.io/"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3299,7 +3299,7 @@
     "howToUse": {
       "docsUrl": "https://platform.openai.com/docs/models"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3352,7 +3352,7 @@
     "howToUse": {
       "docsUrl": "https://www.llama.com/docs/overview"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3406,7 +3406,7 @@
     "howToUse": {
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3453,7 +3453,7 @@
     "howToUse": {
       "docsUrl": "https://api-docs.deepseek.com/"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3510,7 +3510,7 @@
     "howToUse": {
       "docsUrl": "https://ai.google.dev/gemini-api/docs/models"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   },
   {
@@ -3563,7 +3563,7 @@
     "howToUse": {
       "docsUrl": "https://docs.anthropic.com/en/docs/about-claude/models"
     },
-    "lastUpdated": "2026-10-19",
+    "lastUpdated": "2026-10-26",
     "updateSource": "curated-frozen"
   }
 ]
