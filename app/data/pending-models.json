@@ -412,5 +412,149 @@
       },
       "extractedBenchmarks": []
     }
+  },
+  {
+    "id": "openai-gpt-6.1-terra-pro",
+    "openrouterId": "openai/gpt-6.1-terra-pro",
+    "name": "OpenAI: GPT-6.1 Terra Pro",
+    "provider": "openai",
+    "releaseDate": "2026-10",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-11-02",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-11-02T21:14:12.488337+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "low",
+      "flagged": true,
+      "unsupportedSentences": [
+        "This model is designed to handle extremely long inputs and outputs, featuring a context window of 1,050,000 tokens, which is the amount of information it can consider at once, and the ability to generate up to 128,000 tokens in response.",
+        "Its pricing is structured per million tokens, indicating a focus on high-volume usage.",
+        "Can process and generate very long texts due to its exceptionally large context window and maximum output token capacity.",
+        "Its pricing model suggests it is suitable for applications requiring high volume."
+      ],
+      "insufficientEvidence": [
+        "inPractice.weaknesses"
+      ],
+      "summary": "This model is designed to handle extremely long inputs and outputs, featuring a context window of 1,050,000 tokens, which is the amount of information it can consider at once, and the ability to generate up to 128,000 tokens in response. Its pricing is structured per million tokens, indicating a focus on high-volume usage.",
+      "strengths": [
+        "Can process and generate very long texts due to its exceptionally large context window and maximum output token capacity.",
+        "Its pricing model suggests it is suitable for applications requiring high volume."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "cheap volume"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 9
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "openai-gpt-6.1-terra",
+    "openrouterId": "openai/gpt-6.1-terra",
+    "name": "OpenAI: GPT-6.1 Terra",
+    "provider": "openai",
+    "releaseDate": "2026-10",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1050000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-11-02",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-11-02T21:14:12.488337+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "low",
+      "flagged": true,
+      "unsupportedSentences": [
+        "It can generate very long outputs, up to 128,000 tokens, which are like words or pieces of words."
+      ],
+      "insufficientEvidence": [
+        "inPractice.weaknesses",
+        "architecture.explanation",
+        "benchmarkCaveat"
+      ],
+      "summary": "This model is characterized by its exceptionally large context window, allowing it to process a vast amount of information, and its ability to generate very long responses. Its pricing is structured per million tokens.",
+      "strengths": [
+        "The model has an exceptionally large context window of 1,050,000 tokens, meaning it can consider a vast amount of text at once.",
+        "It can generate very long outputs, up to 128,000 tokens, which are like words or pieces of words."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "writing",
+        "cheap volume"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 8,
+        "research": 9,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 6
+      },
+      "extractedBenchmarks": []
+    }
   }
 ]

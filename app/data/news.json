@@ -1,63 +1,61 @@
 {
-  "weekOf": "2026-10-19",
-  "generatedAt": "2026-10-26T18:01:41.524383+00:00",
+  "weekOf": "2026-10-26",
+  "generatedAt": "2026-11-02T21:13:34.884289+00:00",
   "model": "gemini-2.5-flash",
   "items": [
     {
-      "headline": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months",
-      "summary": "Major AI companies OpenAI and Anthropic have significantly reduced the cost of using their large language models (LLMs), with price cuts reaching up to 80% in recent months.",
-      "whyItMatters": "This makes powerful AI models much more affordable for individuals and businesses, potentially leading to wider adoption and new applications. For users choosing models, cost is a major factor.",
-      "modelIds": [],
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://minimaxir.com/2026/10/cheap-llms/",
-      "publishedAt": "2026-10-25T21:11:31Z"
-    },
-    {
-      "headline": "Mistral AI releases new advanced model, Mistral Large 4",
-      "summary": "Mistral AI has released a new version of its advanced large language model, called Mistral Large 4.",
-      "whyItMatters": "This is a new, powerful AI model entering the market, offering users another option with potentially improved capabilities for various tasks.",
+      "headline": "Mistral Large 4 AI Model Now Available",
+      "summary": "The new Mistral Large 4 model has been released and is now accessible on Hugging Face, a popular platform for sharing AI models.",
+      "whyItMatters": "This is a new, powerful AI model that users can now try out, expanding the choices available for various tasks.",
       "modelIds": [
         "mistral-large-4"
       ],
-      "sourceName": "Hacker News",
-      "sourceUrl": "https://mistral.ai/news/mistral-large-4/",
-      "publishedAt": "2026-10-21T19:20:55Z"
+      "sourceName": "Hugging Face - Blog",
+      "sourceUrl": "https://huggingface.co/blog/mistral-large4",
+      "publishedAt": "2026-10-29T00:00:00+00:00"
     },
     {
-      "headline": "Alibaba hikes DeepSeek V4 Flash output prices by 230%",
-      "summary": "Alibaba has significantly increased the cost of using its DeepSeek V4 Flash AI model, raising output prices by 230%.",
-      "whyItMatters": "This substantial price increase could make the DeepSeek V4 Flash model less attractive for users and businesses, potentially causing them to look for more cost-effective alternatives.",
+      "headline": "Claude Opus 5.5 Can Now Create Detailed Architectural Drawings",
+      "summary": "The AI model Claude Opus 5.5 has gained a new ability to produce architectural drawings that are detailed enough to be used for permits.",
+      "whyItMatters": "This shows a significant leap in the AI's precision and understanding of complex design, making it a powerful tool for professionals in architecture and related fields.",
       "modelIds": [
-        "deepseek-v4-1-flash"
+        "claude-opus-5-5"
       ],
       "sourceName": "Hacker News",
-      "sourceUrl": "https://www.stork.ai/newsletter/2026-10-20-alibaba-quietly-tripled-deepseek-prices#lead",
-      "publishedAt": "2026-10-21T05:17:15Z"
+      "sourceUrl": "https://stephenjgallagher.substack.com/p/ai-can-draw-blueprints-now",
+      "publishedAt": "2026-11-02T16:25:33Z"
     },
     {
-      "headline": "Grok's AI model chooses Republicans, while OpenAI's picks Democrats",
-      "summary": "A comparison of AI models from Grok and OpenAI revealed that when forced to choose a political party, Grok's model tended to favor Republicans, while OpenAI's models leaned towards Democrats. This highlights potential biases in how these models are trained or designed.",
-      "whyItMatters": "Understanding the inherent biases in AI models is crucial for users, especially when using them for sensitive tasks or seeking neutral information. This information helps users choose models that align with their needs for impartiality.",
+      "headline": "Anthropic's Claude Opus 5.5 Blocks Reverse Engineering Attempts",
+      "summary": "Anthropic has confirmed that its Claude Opus 5.5 AI model now has limits that prevent users from trying to 'reverse engineer' its code, especially to stop things like game cloning. Reverse engineering means trying to figure out how a system works by taking it apart.",
+      "whyItMatters": "This policy change affects how developers and users can interact with and understand the model, potentially limiting certain advanced uses or research.",
       "modelIds": [
-        "grok-4-7",
-        "gpt-4o",
-        "gpt-4o-mini"
+        "claude-opus-5-5"
       ],
       "sourceName": "Hacker News",
-      "sourceUrl": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
-      "publishedAt": "2026-10-25T01:07:24Z"
+      "sourceUrl": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-confirms-new-claude-code-limits-to-prevent-game-cloning-users-report-opus-5-5-is-also-actively-blocking-reverse-engineering-tasks",
+      "publishedAt": "2026-11-02T17:07:28Z"
     },
     {
-      "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
-      "summary": "Five versions of the Qwen3.8-27B AI model have been shown to perform as well as Anthropic's Claude Fable 5 model in certain tests.",
-      "whyItMatters": "This indicates that the Qwen3.8-27B models are competitive with established models like Claude Fable 5, giving users more high-performing options to consider for their AI needs.",
+      "headline": "Team of Qwen3.8-27B Models Outperforms Claude Fable 5 in Coding Challenge",
+      "summary": "A group of five Qwen3.8-27B AI models, working together, successfully beat the Claude Fable 5 model on a difficult coding benchmark called LiveCodeBench Hard.",
+      "whyItMatters": "This demonstrates that combining multiple AI models can lead to superior performance in complex tasks like coding, offering a new strategy for achieving better results.",
       "modelIds": [
         "qwen3-8-27b",
         "claude-fable-5-1"
       ],
       "sourceName": "Hacker News",
-      "sourceUrl": "https://github.com/slee-persis/GVS5H",
-      "publishedAt": "2026-10-25T03:56:01Z"
+      "sourceUrl": "https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve",
+      "publishedAt": "2026-10-31T22:46:12Z"
+    },
+    {
+      "headline": "High Costs Reported in AI Coding Comparison Between Gemini and Claude",
+      "summary": "A comparison of coding tasks using AI models from the Gemini and Claude families resulted in a significant cost of $800 over just 12 hours, highlighting potential expenses when using these tools for development.",
+      "whyItMatters": "This serves as a warning for users considering AI models for coding, emphasizing the importance of monitoring costs, especially for intensive tasks.",
+      "modelIds": [],
+      "sourceName": "Hacker News",
+      "sourceUrl": "https://n.aspencreekbs.com/RZo9ksiKqtTiTLy6b0xiKj2j",
+      "publishedAt": "2026-10-31T14:28:26Z"
     }
   ]
 }

@@ -1,6 +1,16 @@
 {
   "claude-opus-5-5": [
     {
+      "date": "2026-11-02",
+      "headline": "Anthropic's Claude Opus 5.5 Blocks Reverse Engineering Attempts",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropic-confirms-new-claude-code-limits-to-prevent-game-cloning-users-report-opus-5-5-is-also-actively-blocking-reverse-engineering-tasks"
+    },
+    {
+      "date": "2026-11-02",
+      "headline": "Claude Opus 5.5 Can Now Create Detailed Architectural Drawings",
+      "url": "https://stephenjgallagher.substack.com/p/ai-can-draw-blueprints-now"
+    },
+    {
       "date": "2026-10-12",
       "headline": "Opus 5.5 Made a Fully Featured Figma Clone in 3 Hours / 8 Prompts",
       "url": "https://www.mana.space/home/rZfbotNWAXegQypmpkzaAPFC6Mp1/Apps/Figma%20Next%20Launch"
@@ -96,6 +106,11 @@
   ],
   "qwen3-8-27b": [
     {
+      "date": "2026-10-31",
+      "headline": "Team of Qwen3.8-27B Models Outperforms Claude Fable 5 in Coding Challenge",
+      "url": "https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve"
+    },
+    {
       "date": "2026-10-25",
       "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
       "url": "https://github.com/slee-persis/GVS5H"
@@ -121,6 +136,11 @@
     }
   ],
   "mistral-large-4": [
+    {
+      "date": "2026-10-29",
+      "headline": "Mistral Large 4 AI Model Now Available",
+      "url": "https://huggingface.co/blog/mistral-large4"
+    },
     {
       "date": "2026-10-06",
       "headline": "Mistral AI Releases New 'Mistral Large 4' Model",
@@ -156,6 +176,11 @@
     }
   ],
   "claude-fable-5-1": [
+    {
+      "date": "2026-10-31",
+      "headline": "Team of Qwen3.8-27B Models Outperforms Claude Fable 5 in Coding Challenge",
+      "url": "https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve"
+    },
     {
       "date": "2026-10-25",
       "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
