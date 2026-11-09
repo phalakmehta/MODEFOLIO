@@ -1308,5 +1308,246 @@
     "type": "new-model-detected",
     "source": "openrouter",
     "status": "needs-review"
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.045,
+    "new": 0.051
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "deepseek-v4-1-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.5,
+    "new": 0.567
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "granite-4-2-8b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.15,
+    "new": 0.25
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "glm-5-3-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.0285,
+    "new": 0.15
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "glm-5-3-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.0923,
+    "new": 0.5
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "glm-5-3-flash",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 131072,
+    "new": 943717
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "kimi-k3",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 15.0,
+    "new": 16.0
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 1.6,
+    "new": 0.887226
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 3.2,
+    "new": 1.774452
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "deepseek-v4-pro",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 393216,
+    "new": 384000
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "gpt-oss-120b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.029,
+    "new": 0.15
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "gpt-oss-120b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.106,
+    "new": 0.6
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-4-maverick",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.1875,
+    "new": 0.35
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-4-maverick",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.6525,
+    "new": 1.0
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-4-maverick",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 16384,
+    "new": 32768
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "gemma-3-27b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.35,
+    "new": 0.45
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-3-3-70b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.1,
+    "new": 0.59
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-3-3-70b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.32,
+    "new": 0.79
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-3-3-70b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 16384,
+    "new": 32768
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-3-2-3b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.input",
+    "old": 0.0509,
+    "new": 0.05
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-3-2-3b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "price-change",
+    "field": "specs.pricing.output",
+    "old": 0.335,
+    "new": 0.33
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "llama-3-2-3b",
+    "source": "openrouter",
+    "status": "applied",
+    "type": "max-output-change",
+    "field": "specs.maxOutputTokens",
+    "old": 72000,
+    "new": 117964
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "anthropic-claude-fable-5.2",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "google-gemini-omni-1.2-flash",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
+  },
+  {
+    "date": "2026-11-09",
+    "modelId": "google-gemini-omni-1.1-flash",
+    "type": "new-model-detected",
+    "source": "openrouter",
+    "status": "needs-review"
   }
 ]

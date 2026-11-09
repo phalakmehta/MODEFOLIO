@@ -51,6 +51,11 @@
   ],
   "deepseek-v4-1-flash": [
     {
+      "date": "2026-11-06",
+      "headline": "DeepSeek-v4.1-Flash-1017 Can Now Run Locally on 12GB VRAM",
+      "url": "https://github.com/Magnvs7/Promethevs"
+    },
+    {
       "date": "2026-10-21",
       "headline": "Alibaba hikes DeepSeek V4 Flash output prices by 230%",
       "url": "https://www.stork.ai/newsletter/2026-10-20-alibaba-quietly-tripled-deepseek-prices#lead"
@@ -69,11 +74,6 @@
       "date": "2026-09-21",
       "headline": "DeepSeek AI Models Show Increased Security Bugs with Political Prompts",
       "url": "https://venturebeat.com/security/deepseek-injects-50-more-security-bugs-when-prompted-with-chinese-political"
-    },
-    {
-      "date": "2026-09-17",
-      "headline": "DeepSeek Launches Faster V4.1 Flash Model with Improved Memory Handling",
-      "url": "https://zartbot.github.io/blog/model_arch/dsv41flash_arch/en.html"
     }
   ],
   "deepseek-v4-pro": [
@@ -177,6 +177,11 @@
   ],
   "claude-fable-5-1": [
     {
+      "date": "2026-11-09",
+      "headline": "Anthropic Introduces New Claude Fable and Mythos 5.2 AI Models",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2"
+    },
+    {
       "date": "2026-10-31",
       "headline": "Team of Qwen3.8-27B Models Outperforms Claude Fable 5 in Coding Challenge",
       "url": "https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve"
@@ -185,6 +190,20 @@
       "date": "2026-10-25",
       "headline": "Qwen3.8-27B models match Fable 5 performance in new tests",
       "url": "https://github.com/slee-persis/GVS5H"
+    }
+  ],
+  "gpt-6-luna": [
+    {
+      "date": "2026-11-08",
+      "headline": "GPT-6 Luna and GPT-6.1 Sol Models Now 90% Off",
+      "url": "https://anyrouter.dev/blog/releases/2026-11-03-llamport"
+    }
+  ],
+  "gpt-6-1-sol": [
+    {
+      "date": "2026-11-08",
+      "headline": "GPT-6 Luna and GPT-6.1 Sol Models Now 90% Off",
+      "url": "https://anyrouter.dev/blog/releases/2026-11-03-llamport"
     }
   ]
 }

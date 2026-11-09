@@ -556,5 +556,219 @@
       },
       "extractedBenchmarks": []
     }
+  },
+  {
+    "id": "anthropic-claude-fable-5.2",
+    "openrouterId": "anthropic/claude-fable-5.2",
+    "name": "Anthropic: Claude Fable 5.2",
+    "provider": "anthropic",
+    "releaseDate": "2026-11",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "pricing": {
+        "input": 8.0,
+        "output": 40.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-11-09",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-11-09T21:48:48.240929+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "low",
+      "flagged": true,
+      "unsupportedSentences": [
+        "This model is designed to handle extremely long inputs, capable of processing up to 1,000,000 tokens in a single conversation, and can generate very long responses, up to 128,000 tokens.",
+        "Can process exceptionally long input texts, up to 1,000,000 tokens, which is useful for tasks requiring extensive context.",
+        "Capable of generating very long outputs, up to 128,000 tokens."
+      ],
+      "insufficientEvidence": [
+        "inPractice.weaknesses",
+        "architecture.explanation",
+        "benchmarkCaveat"
+      ],
+      "summary": "This model is designed to handle extremely long inputs, capable of processing up to 1,000,000 tokens in a single conversation, and can generate very long responses, up to 128,000 tokens. Its pricing structure is based on the number of tokens processed, with separate rates for input and output.",
+      "strengths": [
+        "Can process exceptionally long input texts, up to 1,000,000 tokens, which is useful for tasks requiring extensive context.",
+        "Capable of generating very long outputs, up to 128,000 tokens."
+      ],
+      "weaknesses": [],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "cheap volume"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 5
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "google-gemini-omni-1.2-flash",
+    "openrouterId": "google/gemini-omni-1.2-flash",
+    "name": "Google: Gemini Omni 1.2 Flash",
+    "provider": "google",
+    "releaseDate": "2026-11",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 131072,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 1.5,
+        "output": 9.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-11-09",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-11-09T21:48:48.240929+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "extractedBenchmarks",
+        "benchmarkCaveat"
+      ],
+      "summary": "This model is designed to handle and generate extensive amounts of text, featuring a large context window for processing input and a substantial capacity for generating output. Its pricing structure indicates a higher cost for generating output compared to processing input.",
+      "strengths": [
+        "Can process a very large amount of information at once due to its extensive context window.",
+        "Capable of generating very long responses."
+      ],
+      "weaknesses": [
+        "Generating output is significantly more expensive than processing input."
+      ],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context",
+        "writing",
+        "research",
+        "complex reasoning"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 8,
+        "research": 8,
+        "agentic": 0,
+        "longContext": 10,
+        "cheapVolume": 0
+      },
+      "extractedBenchmarks": []
+    }
+  },
+  {
+    "id": "google-gemini-omni-1.1-flash",
+    "openrouterId": "google/gemini-omni-1.1-flash",
+    "name": "Google: Gemini Omni 1.1 Flash",
+    "provider": "google",
+    "releaseDate": "2026-11",
+    "openSource": false,
+    "modality": [
+      "text"
+    ],
+    "summary": "",
+    "inPractice": {
+      "strengths": [],
+      "weaknesses": []
+    },
+    "architecture": {
+      "type": "unknown",
+      "explanation": ""
+    },
+    "specs": {
+      "contextWindow": 131072,
+      "maxOutputTokens": 65536,
+      "pricing": {
+        "input": 1.5,
+        "output": 9.0,
+        "unit": "per 1M tokens"
+      }
+    },
+    "benchmarks": [],
+    "benchmarkCaveat": "Not yet reviewed. No benchmark scores published here.",
+    "useCaseTags": [],
+    "howToUse": {
+      "docsUrl": ""
+    },
+    "lastUpdated": "2026-11-09",
+    "updateSource": "automated-pending-review",
+    "draft": {
+      "generatedAt": "2026-11-09T21:48:48.240929+00:00",
+      "generatedBy": "gemini-2.5-flash",
+      "confidence": "high",
+      "flagged": false,
+      "unsupportedSentences": [],
+      "insufficientEvidence": [
+        "benchmarkCaveat",
+        "extractedBenchmarks"
+      ],
+      "summary": "This model features a very large context window, allowing it to process inputs up to 131,072 tokens, and can generate extensive outputs, up to 65,536 tokens. Its pricing structure indicates that generating output is significantly more expensive than processing input.",
+      "strengths": [
+        "The model can handle very long inputs, with a context window of 131,072 tokens, which is the amount of text it can consider at once.",
+        "It can produce very long responses, with a maximum output of 65,536 tokens."
+      ],
+      "weaknesses": [
+        "Generating output is considerably more expensive than processing input, costing 9.0 units per 1 million tokens for output compared to 1.5 units per 1 million tokens for input."
+      ],
+      "archType": "unknown",
+      "useCaseTags": [
+        "long context"
+      ],
+      "wizardScores": {
+        "coding": 0,
+        "writing": 0,
+        "research": 0,
+        "agentic": 0,
+        "longContext": 9,
+        "cheapVolume": 0
+      },
+      "extractedBenchmarks": []
+    }
   }
 ]
